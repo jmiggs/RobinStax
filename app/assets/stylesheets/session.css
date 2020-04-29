@@ -73,6 +73,7 @@
     font-weight: 400;
     height: 30px;
     padding-top: 12px;
+
 }
 
 .signlogprompt {
@@ -87,6 +88,8 @@
   color: white;
   font-size: 15px;
   border-radius: 12px;
+  float: left;
+  margin-right: 40px;
 }
 
 .signprompt {
@@ -96,8 +99,68 @@
   position: absolute;
   font-weight: 200;
   top: 170px;
+  animation: slide-left .50s;
 }
 
+.buttons {
+  display: inline
+}
 
- 
+.four-back {
+  background-image: url(http://fairhomeoffernc.com/wp-content/uploads/2017/01/Background-Hipster-Holding-House-Money.png); 
+  background-size: cover; 
+  height: 100vh;
+  width:100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.four-text {
+  position: absolute;
+  font-size: 40px;
+  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+  font-weight: 800;
+  
+}
+
+.hit-the-floor {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+.errors {
+  font-size: 15px;
+  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  display: block;
+  position: absolute;
+  color:#d10000;
+  animation: slide-left .50s;
+  height: 30px;
+  position: absolute;
+  font-weight: 200;
+  top: 170px;
+}
+
+@keyframes slide-left {
+  from {
+    margin-left: 200px;
+    width: 50%
+  }
+}
+
 
