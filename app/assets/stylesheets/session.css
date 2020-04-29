@@ -1,0 +1,103 @@
+ .flex-container {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    background-color: #e6ffff;
+
+}
+
+#background {
+    background-image: url(http://fairhomeoffernc.com/wp-content/uploads/2017/01/Background-Hipster-Holding-House-Money.png); 
+    background-size: cover; 
+    height:100%;
+    width:100%;
+    background-position: center;
+    
+    flex: 1;
+}
+
+.form-box {
+    display: inline-block;
+    flex: 1;
+    width: 500px;
+    /* background-color: #f2f2f2; */
+}
+
+.form {
+    height: 400px;
+    margin-left: 52px;
+    margin-right: 52px;
+    width: 412px;
+}
+
+.form-head {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+
+}
+
+.logintext {
+    font-size: 15px;
+    font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 30px;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+.login-input {
+    width: 100%;
+    height: 25px;
+    font-size: 15px;
+    font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #ccf2ff;
+    padding: 12px 15px;
+    border-style: solid;
+    border-color: #ccf2ff;
+    border-radius: 8px;
+    font-weight: 250;
+}
+
+.login-input:focus {
+    border-style: solid;
+    border-color: #00ace6;
+}
+
+#signlog {
+    font-size: 17px;
+    font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    height: 30px;
+    padding-top: 12px;
+}
+
+.signlogprompt {
+  color: #1aa3ff;
+  letter-spacing: -1px;
+}
+
+.session-submit {
+  background-color: #1aa3ff;
+  height: 40px;
+  width: 120px;
+  color: white;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+.signprompt {
+  font-size: 15px;
+  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 30px;
+  position: absolute;
+  font-weight: 200;
+  top: 170px;
+}
+
+
+ 
+
