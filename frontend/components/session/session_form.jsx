@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h1 className="form-head"> Welcome to RobinStax </h1>
-          {this.props.formType === 'signup' ? <div className="signprompt"> So easy! All we need is username and email</div> : ''}
+          {this.props.formType === 'signup' ? <div className="signprompt"> So easy! All we need is username and password</div> : ''}
           <br />
           <div className="please-promt">
             {/* Please {this.props.formType}! */}
