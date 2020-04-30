@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
   end
 
+  namespace :iex, defaults: {format: :json} do
+    resource :data, only: {:show}
+  end
+
   root "static#root"
 end
