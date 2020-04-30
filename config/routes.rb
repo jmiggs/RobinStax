@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :iex, defaults: {format: :json} do
-    resource :data, only: {:show}
+    resource :data, only: [:show]
   end
 
   root "static#root"

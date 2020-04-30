@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ToolbarContainer from '../toolbar/toolbar_container'
-import Asset from '../asset/asset'
-import Portfolio from '../portfolio/portfolio_container.jsx'
+import ToolbarContainer from '../toolbar/toolbar_container';
+import AssetContainer from '../asset/asset_container';
+import Portfolio from '../portfolio/portfolio_container.jsx';
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,13 +10,14 @@ class Main extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <div className="main-navbar">
           <ToolbarContainer />
         </div>
 
-        {this.props.renderType === 'portfolio'? <Portfolio /> : <Asset />}
+        {this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.match.params.symbol}/>}
 
       </div>
 

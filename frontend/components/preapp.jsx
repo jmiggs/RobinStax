@@ -11,7 +11,7 @@ import { AuthRoute, InitRoute } from '../util/route_util';
 // import App from './app';
 import fourOFour from './404/404';
 import Portfolio from './portfolio/portfolio'
-import AssetContainer from './main/asset_container'
+import MainAssetContainer from './main/asset_container'
 import MainContainer from './main/main_container';
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from './session/login_form_container.jsx';
@@ -25,7 +25,7 @@ const PreApp = () => (
 
   <div>
     <Switch>
-      <InitRoute exact path="/asset" component={AssetContainer} />
+      <InitRoute exact path="/asset/:symbol" component={MainAssetContainer} />
       <InitRoute exact path="/main" component={MainContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

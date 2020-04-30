@@ -3,9 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Main from './main';
 
-const mapStateToProps = ({ session, entities: { users } }) => ({
+const mapStateToProps = ({ session, entities: { users } }, ownProps ) => ({
   currentUser: users[session.id],
-  renderType: 'Asset'
+  renderType: 'Asset',
+  symbol: ownProps.match.params.symbol,
 
 });
 

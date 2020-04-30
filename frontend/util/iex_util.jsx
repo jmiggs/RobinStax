@@ -1,3 +1,4 @@
+
 export const fetchStock = (sym) => (
   $.ajax({
     method: 'GET',
@@ -5,3 +6,4 @@ export const fetchStock = (sym) => (
     data: { sym },
   })
 );
+
