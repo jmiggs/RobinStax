@@ -42,12 +42,14 @@ class SessionForm extends React.Component {
   renderErrors() {
     // debugger
     return (
-      <ul>
+      <ul className="ul-hold">
         {this.props.errors.map((error, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <li className="errors" key={`error-${i}`}>
-            {error}
-          </li>
+          <div className="error-hold">
+            <li className="errors" key={`error-${i}`}>
+              {error}
+            </li>
+          </div>
         ))}
       </ul>
     );
@@ -72,10 +74,15 @@ class SessionForm extends React.Component {
               {/* <div className="errors"> */}
 
               {/* </div> */}
-              <h1 className="form-head"> Welcome to RobinStax </h1>
-              {this.props.errors.length === 0
-                ? this.props.formType === 'signup' ? <div className="signprompt"> So easy! All we need is username and password</div> : <div className="signprompt">Try it out! Click the demo button :D</div>
-                : this.renderErrors()}
+            
+              <div className="formatter">
+                <h1 className="form-head"> Welcome to RobinStax </h1>
+              <div className="signprompt">
+                {this.props.errors.length === 0
+                  ? this.props.formType === 'signup' ? <div> So easy! All we need is username and password</div> : <div>Try it out! Click the demo button :D</div>
+                  : this.renderErrors()}
+              </div>
+              </div>
 
               <br />
               <div className="please-promt">
@@ -83,7 +90,7 @@ class SessionForm extends React.Component {
               </div>
               <br />
               <label>
-                <div className="logintext">Username</div>
+                <div className="logintext username">Username</div>
                 <input
                   type="text"
                   value={this.state.username}

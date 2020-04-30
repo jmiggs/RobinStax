@@ -38,15 +38,26 @@
     font-family: 'Libre Baskerville', serif;
     font-weight: 600;
     font-size: 30px;
+    position: relative;
 
 }
 
 .logintext {
+ 
     font-size: 15px;
     font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
     height: 30px;
-    padding-top: 10px;
+    padding-top: 20px;
     font-weight: 200;
+}
+
+.logintext.username {
+ 
+  font-size: 15px;
+  font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 30px;
+  padding-top: 30px;
+  font-weight: 200;
 }
 
 .login-input {
@@ -92,14 +103,16 @@
   margin-right: 40px;
 }
 
-.signprompt {
+.signprompt { 
   font-size: 15px;
   font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   height: 30px;
+  width: 500px;
   position: absolute;
   font-weight: 200;
-  top: 170px;
-  animation: slide-left .50s;
+  top: 55px;
+  animation: slide-left .5s;
+  white-space: nowrap;
 }
 
 .buttons {
@@ -147,13 +160,12 @@
   font-size: 15px;
   font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   display: block;
-  position: absolute;
+  /* position: absolute; */
   color:#d10000;
-  animation: slide-left .50s;
-  height: 30px;
-  position: absolute;
+  animation: slide-left .5s;
+  height: 20px;
   font-weight: 200;
-  top: 170px;
+
 }
 
 @keyframes slide-left {
@@ -161,6 +173,21 @@
     margin-left: 200px;
     width: 50%
   }
+}
+
+.formatter {
+  position: relative;
+  height: 50px;
+}
+
+
+.ul-hold {
+  height: 20px;
+  display: block;
+}
+.error-hold {
+  height: 20px;
+  display: block;
 }
 
 
