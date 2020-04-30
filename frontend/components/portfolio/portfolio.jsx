@@ -9,7 +9,7 @@
 import React from 'react';
 
 const Portfolio = () => (
-  <div> stox </div>
+  <div> my stox </div>
 );
 
 export default Portfolio;

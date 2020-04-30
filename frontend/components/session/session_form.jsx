@@ -56,8 +56,6 @@ class SessionForm extends React.Component {
   }
 
 
-
-
   render() {
     return (
       <div className="flex-container">
@@ -74,14 +72,14 @@ class SessionForm extends React.Component {
               {/* <div className="errors"> */}
 
               {/* </div> */}
-            
+
               <div className="formatter">
                 <h1 className="form-head"> Welcome to RobinStax </h1>
-              <div className="signprompt">
-                {this.props.errors.length === 0
-                  ? this.props.formType === 'signup' ? <div> So easy! All we need is username and password</div> : <div>Try it out! Click the demo button :D</div>
-                  : this.renderErrors()}
-              </div>
+                <div className="signprompt">
+                  {this.props.errors.length === 0
+                    ? this.props.formType === 'signup' ? <div> So easy! All we need is username and password</div> : <div>Try it out! Click the demo button :D</div>
+                    : this.renderErrors()}
+                </div>
               </div>
 
               <br />

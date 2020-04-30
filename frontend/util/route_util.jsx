@@ -14,7 +14,7 @@ const Auth = ({
   <Route
     path={path}
     exact={exact}
-    render={(props) => (!loggedIn ? <Component {...props} /> : <Redirect to="/" />)}
+    render={(props) => (!loggedIn ? <Component {...props} /> : <Redirect to="/" />)} //redirect to portfolio of user when finished
   />
 );
 
