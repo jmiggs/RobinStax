@@ -1,9 +1,8 @@
 
-export const fetchStock = (sym) => (
+export const fetchStockQuote = (sym) => (
   $.ajax({
     method: 'GET',
-    url: '/iex/data',
-    data: { sym },
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/quote?token=${window.iexkkaccess}`,
   })
 );
 

@@ -18,7 +18,7 @@ const Greeting = ({ currentUser, logout }) => {
         !
         THIS IS THE GREETINGS CONTAINER BRO
       </h2>
-      <button type="submit" className="header-button" onClick={logout}>Log THE FUCK Out</button>
+      <button type="submit" className="header-button" onClick={logout}></button>
     </hgroup>
   );
 
