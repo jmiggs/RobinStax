@@ -10,14 +10,13 @@ class Main extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <div className="main-navbar">
           <ToolbarContainer />
         </div>
 
-        {this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.match.params.symbol}/>}
+        {this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.symbol} />}
 
       </div>
 
