@@ -7,12 +7,12 @@ class Counter extends React.Component {
     this.state = {
       // counter componenet is recieving a single OBJECT from graph, the very first data point
       // append data feild to .data to key into the data object
-      price: this.props.data.uv,
+      price: this.props.data.average,
     };
   }
 
   updatePrice(data)  {
-    this.setState({price: data.payload.uv})
+    this.setState({price: data.payload.average})
   }
 
   render() {

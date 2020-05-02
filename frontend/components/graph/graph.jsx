@@ -3,6 +3,7 @@ import Counter from './counter';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+import CustomTooltip from './customTooltip'
 
 // test data of the graph
 const data = [
@@ -50,29 +51,24 @@ class Graph extends React.Component {
       return (
         <div>
 
-          <Counter ref={this.refCounter} data={this.props.data[0]} />
           Graph
+          <Counter ref={this.refCounter} data={this.props.data[0]} />
           <LineChart
             width={730}
             height={250}
-            data={data}
+            data={this.props.data}
             margin={{
               top: 5, right: 30, left: 0, bottom: 5,
             }}
           >
-            <YAxis domain={["dataMin-2", "dataMax+1"]} axisLine={{ stroke: 'white' }} tick={true} />
+            <YAxis domain={["auto", "dataMax+4"]} axisLine={{ stroke: 'white' }} tick={true} />
             <XAxis domain={[0, 500000]} axisLine={{ stroke: 'white' }} tick={true} />
-            <Tooltip position={{y:0}} isAnimationActive={false} unit={.01} />
-            <Line dataKey="uv" domain={["dataMax", "dataMin"]} dot={false} activeDot={this.renderCounter.bind(this)} />
+            <Tooltip content={<CustomTooltip />} position={{y:0}} isAnimationActive={false} unit={.01} />
+            <Line dataKey="average" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
             {/* saved options for LineGraph  */}
             {/* content={this.showTooltipData.bind(this)} */}
 
-            {/* Line */}
-           
-            {/* tooltip */}
-            {/* content={<CustomTooltip />}  */}
-          
           </LineChart>
         </div>
       );

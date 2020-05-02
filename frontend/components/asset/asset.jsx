@@ -11,6 +11,7 @@ class Asset extends React.Component {
   }
 
   componentDidMount() {
+
     this.props.fetchStock(this.props.symbol);
   }
   // all data restructuring should occur at the asset_container.jsx; by the time it 
@@ -24,6 +25,8 @@ class Asset extends React.Component {
   // ]
 
   render() {
+
+
     if (!this.props.data) return null
       return (
         <div>

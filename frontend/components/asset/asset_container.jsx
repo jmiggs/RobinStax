@@ -31,11 +31,15 @@ const testdata = [
 ];
 
 
-const mapStateToProps = ({ session, entities: { users, assets } }, data) => ({
-  currentUser: users[session.id],
+const mapStateToProps = (state, symbol) => {
+
+  return({
+  currentUser: state.entities.users[state.session.id],
   renderType: 'Asset',
-  data: testdata,
-});
+  data: state.data[symbol.symbol]
+  }
+  )
+};
 
 //create fetchStock thunk action and action creator
 const mapDispatchToProps = (dispatch) => ({
