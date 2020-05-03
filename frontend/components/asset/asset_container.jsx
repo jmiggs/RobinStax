@@ -14,7 +14,7 @@ const mapStateToProps = (state, symbol) => {
   return({
   currentUser: state.entities.users[state.session.id],
   renderType: 'Asset',
-  data: state.data[symbol.symbol]
+  data: state.data.quote
   }
   )
 };

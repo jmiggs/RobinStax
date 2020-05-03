@@ -75,10 +75,12 @@ const dataFiller = (array, currTab) => {
 
 const mapStateToProps = (state, symbol) => {
 
+
+  
   return({
   currentUser: state.entities.users[state.session.id],
   renderType: 'Asset',
-  data: dataFiller(state.data[symbol.symbol], state.data.currTab )
+  data: dataFiller(state.data[symbol.symbol], !state.data.currTab ? '5D' : state.data.currTab )
   }
   )
 };

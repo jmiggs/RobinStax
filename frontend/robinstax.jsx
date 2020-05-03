@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
     const preloadedState = {
+      data: {
+        currTab: '5D'
+      },
       entities: {
         users: { [window.currentUser.id]: window.currentUser },
       },

@@ -7,7 +7,7 @@ const dataReducer = (state = {}, action) => {
     case RECEIVE_DATA:
       return Object.assign({}, state, { [action.sym]: action.data, currTab: action.tab });
     case RECEIVE_QUOTE:
-      return Object.assign({}, state, { [`${sym}quote`]: action.data } )
+      return Object.assign({}, state, { quote: action.data } )
     default:
       return state;
   }

@@ -15,7 +15,7 @@ class Asset extends React.Component {
   // need to add ajax call for companyname
   //this is for initial render!! need to update to get quote and stuff
   componentDidMount() {
-    debugger
+
     this.props.fetchStockQuote(this.props.symbol);
     // this.props.fetchQuote(this.props.symbol)
   }
@@ -23,21 +23,22 @@ class Asset extends React.Component {
   // this is for when user moves from AAPL to MSFT; 
   // params UPDATE, and so we must trigger a new fetchstock
   componentDidUpdate(prevProps) {
-
+  
     if (prevProps.symbol !== this.props.symbol) {
-      this.props.fetch5D(this.props.symbol)
+      this.props.fetchStockQuote(this.props.symbol);
+      this.props.fetch5D(this.props.symbol);
     }
   } 
 
   render() {
-    debugger
+ 
     // will use this conditinal to see if News and analyst ratings are null!!!
     if (!this.props.data) return null
       return (
         <div>
           <div>
-            stok price:
-            {this.props.symbol}
+            
+            {this.props.data.companyName}
             <GraphContainer symbol={this.props.symbol} />
 
           </div>

@@ -4,7 +4,7 @@ export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 export const RECEIVE_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_STOCKs = ''
 export const RECEIVE_DATA = 'RECEIVE_DATA' 
-export const RECEIVE_QUOTE = 'RECEIVE_DATA' 
+export const RECEIVE_QUOTE = 'RECEIVE_QUOTE' 
 
 // create APIutil AJAX request
 
@@ -33,7 +33,6 @@ const receiveErrors = (errors) => {
 }
 
 export const ThunkFetch5D = (sym, tab) => (dispatch) => {
-
   return (
   IEXutil.fetch5D(sym).then(data => (dispatch(receiveData(data, sym, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
@@ -87,9 +86,8 @@ export const ThunkFetch5Y = (sym, tab) => (dispatch) => {
 };
 
 export const ThunkFetchQuote = (sym) => (dispatch) => {
-
   return (
-  IEXutil.fetch5Y(sym).then(data => (dispatch(receiveData(data, sym))),
+  IEXutil.fetchQuote(sym).then(data => (dispatch(receiveQuote(data, sym))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )

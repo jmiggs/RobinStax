@@ -49,8 +49,9 @@ class Graph extends React.Component {
   }
 
   componentDidUpdate() {
+ 
     if (!this.props.data) return null
-    this.refCounter.current.updateCounterOnTabChange(this.props.data[0])
+    this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],  )
   }
 
   renderCounter(e) {
@@ -58,7 +59,8 @@ class Graph extends React.Component {
   }
 
   handleMouseLeave(e) {
-    this.refCounter.current.updateCounterOnLeave(this.props.data.slice(-1).pop())
+
+    this.refCounter.current.updateCounterOnLeave(this.props.data.slice(-1).pop(), this.props.data[0], )
   }
 
   fetch1D(e, tab) {
@@ -95,13 +97,12 @@ class Graph extends React.Component {
   // ]
 
   render() {
-
+ 
       if (!this.props.data) return null
       return (
         <div>
           <div>
 
-            Graph
             <Counter ref={this.refCounter} data={this.props.data.slice(-1).pop()} first={this.props.data[0]} />
             <br/>
             <br/>
@@ -116,7 +117,7 @@ class Graph extends React.Component {
             >
               <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
               <XAxis axisLine={{ stroke: 'white' }} tick={false} />
-              <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false} unit={.01} />
+              <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
               <Line dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
               {/* saved options for LineGraph  */}

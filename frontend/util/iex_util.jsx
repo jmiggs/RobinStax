@@ -32,13 +32,20 @@ export const fetch1Y = (sym) => (
     method: 'GET',
     url: `https://sandbox.iexapis.com/stable/stock/${sym}/chart/1y?token=${window.iexkkaccess}`,
   })
-)
+);
 
-;export const fetch5Y = (sym) => (
+export const fetch5Y = (sym) => (
   $.ajax({
     method: 'GET',
     url: `https://sandbox.iexapis.com/stable/stock/${sym}/chart/5y?token=${window.iexkkaccess}`,
   })
 );
+
+export const fetchQuote = (sym) => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/quote?token=${window.iexkkaccess}`,
+  })
+)
 
 

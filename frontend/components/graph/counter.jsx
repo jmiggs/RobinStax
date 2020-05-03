@@ -15,17 +15,20 @@ class Counter extends React.Component {
     };
   }
 
-  updateCounterOnTabChange(data) {
-    let newDelta = this.state.latestPrice - data.price;
-    let newPercentDDelta = ((this.state.latestPrice - data.price) / this.state.latestPrice) * 100;
+  updateCounterOnTabChange(data2, data1) {
+
+    let newDelta = data2.price - data1.price;
+    let newPercentDDelta = ((data2.price - data1.price)/ data2.price) * 100;
 
     this.setState({
+      first: data1.price,
       delta: newDelta,
       percentDelta: newPercentDDelta
     })
   }
 
   updateCounter(data)  {
+
     this.setState({
       price: data.payload.price, 
       delta: data.payload.price - this.state.first,
@@ -33,18 +36,20 @@ class Counter extends React.Component {
     })
   }
 
-  updateCounterOnLeave(data) {
-    let newDelta = this.state.latestPrice - this.state.first;
-    let newPercentDDelta = ((this.state.latestPrice - this.state.first) / this.state.latestPrice) * 100;
+  updateCounterOnLeave(data2, data1) {
+
+    let newDelta = data2.price - data1.price;
+    let newPercentDDelta = ((data2.price - data1.price)/ data2.price) * 100;
 
     this.setState({
-      price: data.price, 
+      price: data2.price, 
       delta: newDelta,
       percentDelta: newPercentDDelta
     })
   }
 
   componentDidMount() {
+
     let newDelta = this.state.latestPrice - this.state.first;
     let newPercentDDelta = ((this.state.latestPrice - this.state.first) / this.state.latestPrice) * 100;
     this.setState({
@@ -54,18 +59,20 @@ class Counter extends React.Component {
   }
 
   render() {
-    
-      if (!this.state.delta) return null;
+
+      // if (!this.state.delta) return null;
 
       return (
         <div>
           ${(this.state.price).toFixed(2)}
           <br/>
           {this.state.delta < 0?  '-' : '+'}
-            ${Math.abs(this.state.delta.toFixed(2))} 
+          {!this.state.delta? `$${this.state.price.toFixed(2)}` : `$${Math.abs(this.state.delta.toFixed(2))}`  }
+            
 
           {this.state.percentDelta < 0?  '-' : '+'}
-            [{Math.abs(this.state.percentDelta.toFixed(2))}%]
+          {!this.state.percentDelta?  `[${0.0.toFixed(2)}]` : `[${Math.abs(this.state.percentDelta.toFixed(2))}%]`}
+            
         </div>
       );
   }
