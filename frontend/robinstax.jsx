@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchStock = fetchStockQuote; //ajax request
-  window.iexfetch = ThunkFetchQuote// thunk action
+
   // window.receiveStock = IEXactionFetch.receiveStock // action 
 
   ReactDOM.render(<Root store={store} />, root);
