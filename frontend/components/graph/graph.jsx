@@ -33,9 +33,10 @@ const data = [
 
 class Graph extends React.Component {
   constructor(props) {
+
     super(props);
     this.state = {
-      tab: '1D',
+      tab: '',
     };
 
     // this is creating a reference to the Counter Component
@@ -49,9 +50,10 @@ class Graph extends React.Component {
   }
 
   componentDidUpdate() {
- 
+
     if (!this.props.data) return null
-    this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],  )
+    this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],)
+
   }
 
   renderCounter(e) {
@@ -59,13 +61,45 @@ class Graph extends React.Component {
   }
 
   handleMouseLeave(e) {
-
     this.refCounter.current.updateCounterOnLeave(this.props.data.slice(-1).pop(), this.props.data[0], )
   }
+
+  // come back to this for data optimization
+  // checkCache(e, tab) {
+  //   debugger
+  //   e.preventDefault();
+  //   let searchKey = `${this.props.symbol}${tab}`
+  //   if (this.props.cache[searchKey]) {
+  //     this.setState({tab: tab})
+  //   } else {
+  //     switch (tab) {
+  //       case '1D':
+  //         this.props.fetch1D(this.props.symbol, tab)
+  //       // case '5D':
+  //       // need 5 day
+  //       case '1M':
+  //         this.props.fetch1M(this.props.symbol, tab)
+  //       case '3M':
+  //         this.props.fetch3M(this.props.symbol, tab)
+  //       case '1Y':
+  //         this.props.fetch1Y(this.props.symbol, tab)
+  //       case '5Y':
+  //         this.props.fetch5Y(this.props.symbol, tab)
+          
+  //       default:
+  //         break;
+  //     }
+  //   }
+  // };
 
   fetch1D(e, tab) {
     e.preventDefault();
     this.props.fetch1D(this.props.symbol, tab)
+  }
+
+  fetch5D(e, tab) {
+    e.preventDefault();
+    this.props.fetch5D(this.props.symbol, tab)
   }
 
   fetch1M(e, tab) {
@@ -97,7 +131,7 @@ class Graph extends React.Component {
   // ]
 
   render() {
- 
+
       if (!this.props.data) return null
       return (
         <div>
@@ -109,8 +143,9 @@ class Graph extends React.Component {
             <LineChart
               onMouseLeave={(e) => this.handleMouseLeave(e)}
               width={730}
-              height={470}
-              data={this.props.data}
+              height={440}
+              data={Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
+                      this.props.cache[`${this.props.symbol}${this.state.tab}`] : (this.props.data)}
               margin={{
                 top: 5, right: 30, left: 0, bottom: 5,
               }}
@@ -118,7 +153,7 @@ class Graph extends React.Component {
               <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
               <XAxis axisLine={{ stroke: 'white' }} tick={false} />
               <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
-              <Line dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
+              <Line connectNulls dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
               {/* saved options for LineGraph  */}
               {/* content={this.showTooltipData.bind(this)} */}
@@ -127,7 +162,7 @@ class Graph extends React.Component {
           </div>
           <div className="button=box">
             <button onClick={(e) => this.fetch1D(e, '1D') }> <div> 1D </div> </button>
-            {/* <button onClick={(e) => this.fetch1W(e, '1W') }> <div> 1W </div> </button> */}
+            <button onClick={(e) => this.fetch5D(e, '5D') }> <div> 5D </div> </button>
             <button onClick={(e) => this.fetch1M(e, '1M') }> <div> 1M </div> </button>
             <button onClick={(e) => this.fetch3M(e, '3M') }> <div> 3M </div> </button>
             <button onClick={(e) => this.fetch1Y(e, '1Y') }> <div> 1Y </div> </button>

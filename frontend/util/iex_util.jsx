@@ -1,4 +1,11 @@
 
+
+
+// TESTING FETCHES
+// TESTING FETCHES
+// TESTING FETCHES
+// TESTING FETCHES
+// TESTING FETCHES
 export const fetch5D = (sym) => (
   $.ajax({
     method: 'GET',
@@ -47,5 +54,28 @@ export const fetchQuote = (sym) => (
     url: `https://sandbox.iexapis.com/stable/stock/${sym}/quote?token=${window.iexkkaccess}`,
   })
 )
+
+export const fetchInfo = (sym) => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/company?token=${window.iexkkaccess}`,
+  })
+)
+
+export const fetchNews = (sym) => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/news?token=${window.iexkkaccess}`,
+  })
+)
+
+export const fetchEarnings = (sym) => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/earnings/6?token=${window.iexkkaccess}`,
+  })
+)
+
+
 
 

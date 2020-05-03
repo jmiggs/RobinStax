@@ -1,5 +1,6 @@
 import React from 'react';
 import GraphContainer from '../graph/graph_container'
+import Earnings from './earnings'
 
 
 
@@ -17,6 +18,9 @@ class Asset extends React.Component {
   componentDidMount() {
 
     this.props.fetchStockQuote(this.props.symbol);
+    this.props.fetchInfo(this.props.symbol)
+    this.props.fetchNews(this.props.symbol)
+    this.props.fetchEarnings(this.props.symbol)
     // this.props.fetchQuote(this.props.symbol)
   }
 
@@ -27,13 +31,42 @@ class Asset extends React.Component {
     if (prevProps.symbol !== this.props.symbol) {
       this.props.fetchStockQuote(this.props.symbol);
       this.props.fetch5D(this.props.symbol);
+      this.props.fetchInfo(this.props.symbol)
+      this.props.fetchEarnings(this.props.symbol)
+      this.props.fetchNews(this.props.symbol)
     }
   } 
+
+  
+ MoneyFormat(labelValue) {
+  // Nine Zeroes for Billions
+  return Math.abs(Number(labelValue)) >= 1.0e+12
+
+       ? (Math.abs(Number(labelValue)) / 1.0e+12).toFixed(2) + 'T'
+  
+       : Math.abs(Number(labelValue)) >= 1.0e+9
+
+       ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
+       // Six Zeroes for Millions 
+       : Math.abs(Number(labelValue)) >= 1.0e+6
+
+       ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
+       // Three Zeroes for Thousands
+       : Math.abs(Number(labelValue)) >= 1.0e+3
+
+       ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
+
+       : Math.abs(Number(labelValue));
+
+  }
+
 
   render() {
  
     // will use this conditinal to see if News and analyst ratings are null!!!
-    if (!this.props.data) return null
+    if (!this.props.data || !this.props.info) return null
+    let { data, info, news } = this.props
+      debugger
       return (
         <div>
           <div>
@@ -41,6 +74,28 @@ class Asset extends React.Component {
             {this.props.data.companyName}
             <GraphContainer symbol={this.props.symbol} />
 
+            <div>
+              <div>About: {info.description}</div>
+              <br/>
+              <div>CEO: {info.CEO}</div>
+              <div>employees: {info.employees}</div>
+              <div>Location: {info.city},{info.state}</div>
+              {/* /* key data */}
+              <div>Open Price: ${data.open.toFixed(2)}</div> 
+              {/* need additional logic for formatting */}
+              <div>Market Cap: ${this.MoneyFormat(data.marketCap)}</div>
+              <div>High Today: ${data.high}</div>
+              <div>Low Today: ${data.low}</div>
+              <div>PE Ratio: {data.peRatio}</div>
+              <div>52-Week Hi: ${data.week52High}</div>
+              <div>52-week Lo: ${data.week52Low}</div>
+              <div>Avg Vol: {this.MoneyFormat(data.avgTotalVolume)}</div>
+              <div>Volume: {this.MoneyFormat(data.volume)}</div>
+            </div>
+
+            <Earnings data={this.props.earnings}/>
+            
+          
           </div>
         </div>
       );

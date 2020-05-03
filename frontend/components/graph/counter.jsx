@@ -32,7 +32,7 @@ class Counter extends React.Component {
     this.setState({
       price: data.payload.price, 
       delta: data.payload.price - this.state.first,
-      percentDelta: (data.payload.price - this.state.first) / data.payload.price
+      percentDelta: ((data.payload.price - this.state.first) / data.payload.price) * 100
     })
   }
 
