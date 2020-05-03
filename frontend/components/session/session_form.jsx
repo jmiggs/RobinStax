@@ -64,15 +64,11 @@ class SessionForm extends React.Component {
 
           {/* <div className="form-background"> */}
         </div>
-
         <div className="form-box">
           <div className="form">
-
             <form onSubmit={this.handleSubmit} className="login-form-box">
               {/* <div className="errors"> */}
-
               {/* </div> */}
-
               <div className="formatter">
                 <h1 className="form-head"> Welcome to RobinStax </h1>
                 <div className="signprompt">

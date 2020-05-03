@@ -35,6 +35,7 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      tab: '1D',
     };
 
     // this is creating a reference to the Counter Component
@@ -42,34 +43,58 @@ class Graph extends React.Component {
   }
 
   renderCounter(e) {
-
     this.refCounter.current.updatePrice(e);
   }
 
-  render() {
+  changeTab(e, marker) {
+    e.preventDefault();
 
+    
+  }
+
+  // all data restructuring should occur at the asset_container.jsx; by the time it 
+  // hits the return of the render
+  // the data shold be shaped like so:
+  // [
+  //   {name: "AAPL", price: 400, low: 200, date: someDate }
+  //   {name: "AAPL", price: 400, low: 200, date: someDate }
+  //   {name: "AAPL", price: 400, low: 200, date: someDate }
+  //   {name: "AAPL", price: 400, low: 200, date: someDate }
+  // ]
+
+  render() {
       return (
         <div>
+          <div>
 
-          Graph
-          <Counter ref={this.refCounter} data={this.props.data[0]} />
-          <LineChart
-            width={730}
-            height={250}
-            data={this.props.data}
-            margin={{
-              top: 5, right: 30, left: 0, bottom: 5,
-            }}
-          >
-            <YAxis domain={["auto", "dataMax+4"]} axisLine={{ stroke: 'white' }} tick={true} />
-            <XAxis domain={[0, 500000]} axisLine={{ stroke: 'white' }} tick={true} />
-            <Tooltip content={<CustomTooltip />} position={{y:0}} isAnimationActive={false} unit={.01} />
-            <Line dataKey="average" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
+            Graph
+            <Counter ref={this.refCounter} data={this.props.data[0]} />
+            <LineChart
+              width={730}
+              height={470}
+              data={this.props.data}
+              margin={{
+                top: 5, right: 30, left: 0, bottom: 5,
+              }}
+            >
+              <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} />
+              <XAxis domain={[0, 500000]} axisLine={{ stroke: 'white' }} tick={false} />
+              <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false} unit={.01} />
+              <Line dataKey="average" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
-            {/* saved options for LineGraph  */}
-            {/* content={this.showTooltipData.bind(this)} */}
+              {/* saved options for LineGraph  */}
+              {/* content={this.showTooltipData.bind(this)} */}
 
-          </LineChart>
+            </LineChart>
+          </div>
+          <div className="button=box">
+            <button onClick={(e) => this.changeTab(e, '1D') }> <div> 1D </div> </button>
+            <button onClick={(e) => this.changeTab(e, '1W') }> <div> 1W </div> </button>
+            <button onClick={(e) => this.changeTab(e, '1M') }> <div> 1M </div> </button>
+            <button onClick={(e) => this.changeTab(e, '3M') }> <div> 3M </div> </button>
+            <button onClick={(e) => this.changeTab(e, '1Y') }> <div> 1Y </div> </button>
+            <button onClick={(e) => this.changeTab(e, '5Y') }> <div> 5Y </div> </button>
+          </div>
         </div>
       );
   }
