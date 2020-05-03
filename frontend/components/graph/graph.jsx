@@ -42,14 +42,23 @@ class Graph extends React.Component {
     this.refCounter = React.createRef();
   }
 
-  componentWillMount() {
+  componentDidMount() {
 
     this.props.fetch5D(this.props.symbol, '5D');
     // this.props.fetchQuote(this.props.symbol)
   }
 
+  componentDidUpdate() {
+    if (!this.props.data) return null
+    this.refCounter.current.updateCounterOnTabChange(this.props.data[0])
+  }
+
   renderCounter(e) {
-    this.refCounter.current.updatePrice(e);
+    this.refCounter.current.updateCounter(e);
+  }
+
+  handleMouseLeave(e) {
+    this.refCounter.current.updateCounterOnLeave(this.props.data.slice(-1).pop())
   }
 
   fetch1D(e, tab) {
@@ -86,17 +95,18 @@ class Graph extends React.Component {
   // ]
 
   render() {
-  
+
       if (!this.props.data) return null
       return (
         <div>
           <div>
 
             Graph
-            <Counter ref={this.refCounter} data={this.props.data[0]} />
+            <Counter ref={this.refCounter} data={this.props.data.slice(-1).pop()} first={this.props.data[0]} />
             <br/>
             <br/>
             <LineChart
+              onMouseLeave={(e) => this.handleMouseLeave(e)}
               width={730}
               height={470}
               data={this.props.data}
@@ -104,7 +114,7 @@ class Graph extends React.Component {
                 top: 5, right: 30, left: 0, bottom: 5,
               }}
             >
-              <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} />
+              <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
               <XAxis axisLine={{ stroke: 'white' }} tick={false} />
               <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false} unit={.01} />
               <Line dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
