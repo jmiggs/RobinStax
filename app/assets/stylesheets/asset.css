@@ -4,23 +4,75 @@
 
 }
 
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  align-items: flex-end;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
 .about-head {
   font-weight: 900;
   font-size: x-large;
-  padding-top: 20px;
-  padding-bottom: 20px;
+}
+
+
+button.showmore {
+  background-color: white;
+  border-color: white;
+  border: white;
+  font-weight: 400;
+  font-size: .75em;
+}
+button.showmore:hover {
+  cursor: pointer;
 }
 
 .linechart-container {
   padding-top: 30px;
 }
 
-.descri {
-  padding-top: 30px;
-  width: 600px;
-  height: 60px;
+.more {
+  height: 250px;
+  width: 650px;
+  background-color:white;
+  justify-content: start;
+  flex: 1;
+}
+
+.less {
+  height: 80px;
+  width: 650px;
+  background-color: white;
+  justify-content: start;
   overflow: hidden;
 }
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.read-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 650px;
+
+}
+
+.read-button-container > button {
+  background-color:white;
+  border-color: white;
+  border: white;
+  font-weight: 400;
+  font-size: .75em;
+  width: 90px;
+
+}
+
+
 
 .counter-price {
   font-size: 1.5em;
@@ -51,13 +103,40 @@
   align-content: center;
 }
 
-button.readmore {
-  background-color: white;
-  border-color: white;
-  border: white;
-  font-weight: 400;
-  font-size: .75em;
+
+.datarows {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  width: 700px;
+  overflow-y: visible;
 }
-button.readmore:hover {
-  cursor: pointer;
+
+.datarows > div {
+  flex: 1;
+  font-size: small;
+  padding-bottom: 15px;
+
+}
+
+.data-key {
+  font-weight: 900;
+}
+
+.first-row-info {
+
+}
+
+.data-container {
+  justify-content: start;
+
+}
+
+.entire-data-container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.extra-toggle {
+  display: none;
 }

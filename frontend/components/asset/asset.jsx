@@ -8,9 +8,13 @@ class Asset extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: 'more',
+      read: 'less'
     };
 
     this.tickRef = React.createRef()
+    this.showMore = this.showMore.bind(this)
+    // this.readMore = this.readMore.bind(this);
   }
 
   // initial fetch of stock. triggers 5D AJAX call
@@ -29,7 +33,7 @@ class Asset extends React.Component {
   // this is for when user moves from AAPL to MSFT; 
   // params UPDATE, and so we must trigger a new fetchstock
   componentDidUpdate(prevProps) {
-  
+    debugger
     if (prevProps.symbol !== this.props.symbol) {
       this.props.fetchStockQuote(this.props.symbol);
       this.props.fetch5D(this.props.symbol);
@@ -39,6 +43,31 @@ class Asset extends React.Component {
       this.tickRef.current.updateYticks()
     }
   } 
+
+  showMore(e) {
+
+    e.preventDefault();
+      var element = document.getElementById("extrarows");
+      element.classList.toggle("extra-toggle");
+
+      if (this.state.show === 'more') {
+        this.setState({show: 'less'})
+      } else {
+      this.setState({show: 'more'})
+      };
+  }
+
+  readMore(e) {
+    e.preventDefault();
+
+    if (this.state.read === 'less') {
+      this.setState({read: 'more'})
+    } else {
+      this.setState({read: 'less'})
+    }
+  }
+
+
 
   
  MoneyFormat(labelValue) {
@@ -69,7 +98,7 @@ class Asset extends React.Component {
     // will use this conditinal to see if News and analyst ratings are null!!!
     if (!this.props.data || !this.props.info) return null
     let { data, info, news } = this.props
-    debugger
+
       return (
         <div>
           <div>
@@ -78,26 +107,112 @@ class Asset extends React.Component {
             <GraphContainer symbol={this.props.symbol} />
 
             <div>
-              <div className="about-cont">
+              <div className="about-container">
                 <div className="about-head">About:</div>
-                <div><button className="readmore"><p>Read More</p></button></div>
+                <div>
+                  <button onClick={(e) => this.showMore(e)} className="showmore">
+                  
+                  {this.state.show === 'more'? <p>Show More</p> : <p>Show Less</p> }
+                 
+                  </button>
+                </div>
               </div> 
-              <div className="descri">{info.description}</div>
+              <div className="description-container">
+                <div id="descri" className={this.state.read}>{info.description}</div>
+                <div className="read-button-container">
+                  <button className="read-button" onClick={(e) => this.readMore(e)}>
+                    {this.state.read === 'less'? `Read More` : `Read Less`}
+                  </button>
+                </div>
+              </div>
               <br/>
-              <div>CEO: {info.CEO}</div>
-              <div>employees: {info.employees}</div>
-              <div>Location: {info.city},{info.state}</div>
-              {/* /* key data */}
-              <div>Open Price: </div>{!data.open ? <div>${data.previousClose.toFixed(2)}</div> : <div>${data.open.toFixed(2)}</div> }
-              {/* need additional logic for formatting */}
-              <div>Market Cap: ${this.MoneyFormat(data.marketCap)}</div>
-              <div>High Today: ${data.high}</div>
-              <div>Low Today: ${data.low}</div>
-              <div>PE Ratio: {data.peRatio}</div>
-              <div>52-Week Hi: ${data.week52High}</div>
-              <div>52-week Lo: ${data.week52Low}</div>
-              <div>Avg Vol: {this.MoneyFormat(data.avgTotalVolume)}</div>
-              <div>Volume: {this.MoneyFormat(data.volume)}</div>
+
+              {/* FIRST ROW */}
+              <div className="entire-data-container">
+                <div className="data-container">
+                  <div className="first-row-info datarows">
+                    <div>
+                      <div className="data-key">CEO:  </div>
+                      <div>{info.CEO}</div>
+                    </div> 
+                    <div>
+                      <div className="data-key">Employees:</div> 
+                      <div>{info.employees}</div>
+                    </div>
+                    <div>
+                      <div className="data-key">Headquarters:</div>
+                      <div>{info.city},{info.state}</div>
+                    </div>
+                    <div>
+                      <div className="data-key">Exchange:</div>
+                      <div>{info.exchange}</div>
+                    </div>
+                  </div>
+                  {/* /* SECOND ROW */}
+                  <div className="secondrow-data datarows">
+
+                    {/* need additional logic for formatting */}
+                    <div>
+                      <div className="data-key">Market Cap:</div> 
+                      <div>${this.MoneyFormat(data.marketCap)}</div>
+                    </div>
+
+                    <div>
+                      <div className="data-key">52-Week Hi:</div> 
+                      <div>${data.week52High}</div>
+                    </div>
+
+                    <div>
+                      <div className="data-key">52-week Low:</div> 
+                      <div>${data.week52Low}</div>
+                    </div>
+
+                    <div> 
+                      <div  className="data-key">PE Ratio:</div> 
+                      <div>{data.peRatio}</div>
+                    </div>
+                  </div>
+                </div>
+                  
+                <div className="extra-toggle" id="extrarows">
+                  <div className="extrarow datarows">
+                    <div>
+                        <div className="data-key">Open Price: </div>{!data.open ? <div>${data.previousClose.toFixed(2)}</div> : <div>${data.open.toFixed(2)}</div> }
+                    </div>
+
+                    <div>
+                      <div className="data-key">High Today:</div> 
+                      <div>{!data.high? `TBD` : $data.high}</div>
+                    </div>
+
+                    <div> 
+                      <div className="data-key">Low Today:</div>
+                      <div> {!data.low?  `TBD` : data.low} </div>
+                    </div>
+
+                    <div>
+                      <div className="data-key">Avg Vol:</div> 
+                      <div>{this.MoneyFormat(data.avgTotalVolume)}</div>
+                    </div>
+                  </div>
+
+                  <div className="extrarow datarows lastrow">
+                    <div>
+                      <div className="data-key">Website:</div> 
+                      <div>{!info.website? `N/A` : info.website}</div>
+                    </div>
+
+                    <div> 
+                      <div className="data-key">Sector:</div>
+                      <div> {!info.sector?  `N/A` : info.sector} </div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
 
             <Earnings ref={this.tickRef} data={this.props.earnings}/>
