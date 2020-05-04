@@ -12,7 +12,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-background">
         <div className="main-navbar">
           <ToolbarContainer />
         </div>

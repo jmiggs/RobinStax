@@ -9,6 +9,8 @@ class Asset extends React.Component {
     super(props);
     this.state = {
     };
+
+    this.tickRef = React.createRef()
   }
 
   // initial fetch of stock. triggers 5D AJAX call
@@ -20,7 +22,7 @@ class Asset extends React.Component {
     this.props.fetchStockQuote(this.props.symbol);
     this.props.fetchInfo(this.props.symbol)
     this.props.fetchNews(this.props.symbol)
-    this.props.fetchEarnings(this.props.symbol)
+    // this.props.fetchEarnings(this.props.symbol)
     // this.props.fetchQuote(this.props.symbol)
   }
 
@@ -32,8 +34,9 @@ class Asset extends React.Component {
       this.props.fetchStockQuote(this.props.symbol);
       this.props.fetch5D(this.props.symbol);
       this.props.fetchInfo(this.props.symbol)
-      this.props.fetchEarnings(this.props.symbol)
+      // this.props.fetchEarnings(this.props.symbol)
       this.props.fetchNews(this.props.symbol)
+      this.tickRef.current.updateYticks()
     }
   } 
 
@@ -62,11 +65,11 @@ class Asset extends React.Component {
 
 
   render() {
- 
+
     // will use this conditinal to see if News and analyst ratings are null!!!
     if (!this.props.data || !this.props.info) return null
     let { data, info, news } = this.props
-      debugger
+
       return (
         <div>
           <div>
@@ -93,7 +96,7 @@ class Asset extends React.Component {
               <div>Volume: {this.MoneyFormat(data.volume)}</div>
             </div>
 
-            <Earnings data={this.props.earnings}/>
+            <Earnings ref={this.tickRef} data={this.props.earnings}/>
             
           
           </div>

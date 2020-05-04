@@ -72,7 +72,7 @@ export const fetchNews = (sym) => (
 export const fetchEarnings = (sym) => (
   $.ajax({
     method: 'GET',
-    url: `https://sandbox.iexapis.com/stable/stock/${sym}/earnings/6?token=${window.iexkkaccess}`,
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/earnings/5?token=${window.iexkkaccess}`,
   })
 )
 

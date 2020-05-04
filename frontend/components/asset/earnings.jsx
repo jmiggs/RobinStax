@@ -5,36 +5,79 @@ import {
 
 
 const data1 = [
-  { x: 100, y: 1, z: 200 },
-  { x: 120, y: 2, z: 260 },
-  { x: 170, y: 3, z: 400 },
-  { x: 140, y: 4, z: 280 },
-  { x: 150, y: 5, z: 500 },
-  { x: 110, y: 6, z: 200 },
+  { x: 100, y: 1,},
+  { x: 120, y: 2,},
+  { x: 170, y: 3,},
+
 ];
 
 const data2 = [
-  { x: 100, y: 1, z: 200 },
-  { x: 125, y: 2, z: 260 },
-  { x: 175, y: 3, z: 400 },
-  { x: 145, y: 4, z: 280 },
-  { x: 155, y: 5, z: 500 },
-  { x: 115, y: 6, z: 200 },
+  { x: 100, y: 1},
+  { x: 125, y: 2},
+  { x: 175, y: 3},
+
 ];
 
+
+
+
+
 class Earnings extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      yTicks: '',
+
+    }
+  }
+
+  componentDidMount() {
+    this.yTickPoints(data2);
+  }
+
+
+  updateYticks() {
+    this.yTickPoints(data2);
+  }
+
+  yTickPoints(array) {
+    let values = [];
+    let ticks = [];
+
+  
+  
+    for (let i = 0; i < array.length; i++) {
+      values.push(array[i].x)
+    }
+
+    ticks.push(Math.min(...values))
+    ticks.push(((Math.max(...values) - Math.min(...values))/3) + Math.min(...values))
+    ticks.push((((Math.max(...values) - Math.min(...values))/3)*2) + Math.min(...values))
+    ticks.push(Math.max(...values))
+
+
+    this.setState({yTicks: ticks})
+
+  }
+
+  formatXAxis(item) {
+    return `Q${item}`
+  }
+
   render() {
+    debugger
+    let { yTicks } = this.state
     return (
       <ScatterChart
-        width={400}
-        height={400}
+        width={600}
+        height={175}
         margin={{
           top: 20, right: 20, bottom: 20, left: 20,
         }}
       >
-        <CartesianGrid />
-        <XAxis type="number" dataKey="y" name="quarter" unit="Q" />
-        <YAxis type="number" dataKey="x" name="weight" unit="$" />
+
+        <XAxis type="number" dataKey="y" ticks={[1,2,3]} tickFormatter={this.formatXAxis} />
+        <YAxis type="number" dataKey="x" ticks={[ yTicks[0],yTicks[1], yTicks[2], yTicks[3] ]} domain={['dataMin', 'dataMax']} />
  
         <Scatter name="EPS-Actual" data={data1} fill="#8884d8"/>
         <Scatter name="EPS-Est" data={data2} fill="#FF3333"/>
