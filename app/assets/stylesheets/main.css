@@ -1,0 +1,101 @@
+.main-background {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+}
+
+.toolbar-nav-container {
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  background-color: white;
+  z-index: 3;
+  box-sizing: border-box;
+  align-content: center;
+  flex-direction: row
+}
+
+.links-container {
+  align-items: center;
+  display: flex;
+  float: right;
+  padding-right: 40px;
+  padding-top: 25px;
+  font: 300;
+
+}
+
+.links-container > * {
+
+}
+
+.header-button  {
+  background-color: transparent;
+  border: none;
+  font-weight: bolder;
+}
+
+.header-button > * {
+  font-family: 'Quicksand', sans-serif;
+  font-size: small;
+  font-weight: bolder;
+}
+
+.header-button:hover {
+  cursor: pointer;
+}
+
+.greeting {
+  font-weight: 600;
+  padding-right: 20px;
+  font-size: large;
+}
+
+.main-body-container {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  padding-left: 130px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+.content-container {
+  height: 100%;
+  width: 750%;
+  position: relative;
+  flex-basis: 65%;
+  display: block;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+
+
+}
+
+.ql-container {
+  height: 100vmax;
+  width: 100px;
+  flex-basis: 35%;
+  display: inline-block;
+
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+ }
+ 
+ h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+ }

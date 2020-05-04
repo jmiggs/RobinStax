@@ -43,9 +43,12 @@ const dataFiller = (array, currTab) => {
     case '1D':
     case '1M':
     case '5D':
+
       return(
         array.map( (dataPoint, idx) => {
+
           if (!dataPoint.average) {
+
             let newAvg = array[idx -1].average
             return { price: newAvg, date: dataPoint.date, label: dataPoint.label}
           } else {

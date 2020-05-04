@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.testthunk = TestThunk
+
 
   // window.receiveStock = IEXactionFetch.receiveStock // action 
 

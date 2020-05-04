@@ -69,22 +69,26 @@ class Asset extends React.Component {
     // will use this conditinal to see if News and analyst ratings are null!!!
     if (!this.props.data || !this.props.info) return null
     let { data, info, news } = this.props
-
+    debugger
       return (
         <div>
           <div>
+            <h1 className="company-name">{this.props.data.companyName}</h1>
             
-            {this.props.data.companyName}
             <GraphContainer symbol={this.props.symbol} />
 
             <div>
-              <div>About: {info.description}</div>
+              <div className="about-cont">
+                <div className="about-head">About:</div>
+                <div><button className="readmore"><p>Read More</p></button></div>
+              </div> 
+              <div className="descri">{info.description}</div>
               <br/>
               <div>CEO: {info.CEO}</div>
               <div>employees: {info.employees}</div>
               <div>Location: {info.city},{info.state}</div>
               {/* /* key data */}
-              <div>Open Price: ${data.open.toFixed(2)}</div> 
+              <div>Open Price: </div>{!data.open ? <div>${data.previousClose.toFixed(2)}</div> : <div>${data.open.toFixed(2)}</div> }
               {/* need additional logic for formatting */}
               <div>Market Cap: ${this.MoneyFormat(data.marketCap)}</div>
               <div>High Today: ${data.high}</div>

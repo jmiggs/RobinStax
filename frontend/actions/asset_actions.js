@@ -65,7 +65,7 @@ export const ThunkFetch5D = (sym, tab) => (dispatch) => {
 };
 
 export const ThunkFetch1D = (sym, tab) => (dispatch) => {
-  debugger
+
   return (
   IEXutil.fetch1D(sym).then(data => (dispatch(receiveData(data, sym, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
@@ -140,13 +140,13 @@ export const ThunkFetchEarnings = (sym) => (dispatch) => {
 
 
 // for testing
-export const TestThunk = (sym, tab) => (dispatch) => {
-  return (
-  IEXutil.fetch1Y(sym).then(data => console.log(data),
-    err => (dispatch(receiveErrors(err.responseJSON))),
-  )
-  )
-};
+// export const TestThunk = (sym, tab) => (dispatch) => {
+//   return (
+//   IEXutil.fetch1Y(sym).then(data => console.log(data),
+//     err => (dispatch(receiveErrors(err.responseJSON))),
+//   )
+//   )
+// };
 
 // will implement this later. this is for initial render of asst view
 

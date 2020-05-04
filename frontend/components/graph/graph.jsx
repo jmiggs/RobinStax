@@ -66,7 +66,7 @@ class Graph extends React.Component {
 
   // come back to this for data optimization
   // checkCache(e, tab) {
-  //   debugger
+
   //   e.preventDefault();
   //   let searchKey = `${this.props.symbol}${tab}`
   //   if (this.props.cache[searchKey]) {
@@ -131,42 +131,43 @@ class Graph extends React.Component {
   // ]
 
   render() {
-
+    
       if (!this.props.data) return null
       return (
         <div>
           <div>
 
             <Counter ref={this.refCounter} data={this.props.data.slice(-1).pop()} first={this.props.data[0]} />
-            <br/>
-            <br/>
-            <LineChart
-              onMouseLeave={(e) => this.handleMouseLeave(e)}
-              width={730}
-              height={440}
-              data={Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
-                      this.props.cache[`${this.props.symbol}${this.state.tab}`] : (this.props.data)}
-              margin={{
-                top: 5, right: 30, left: 0, bottom: 5,
-              }}
-            >
-              <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
-              <XAxis axisLine={{ stroke: 'white' }} tick={false} />
-              <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
-              <Line connectNulls dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
-              {/* saved options for LineGraph  */}
-              {/* content={this.showTooltipData.bind(this)} */}
+            <div className="linechart-container">
+              <LineChart
+                onMouseLeave={(e) => this.handleMouseLeave(e)}
+                width={750}
+                height={300}
+                data={Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
+                        this.props.cache[`${this.props.symbol}${this.state.tab}`] : (this.props.data)}
+                margin={{
+                  top: 5, right: 30, left: 0, bottom: 5,
+                }}
+              >
+                <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
+                <XAxis axisLine={{ stroke: 'white' }} tick={false} />
+                <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
+                <Line stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
-            </LineChart>
+                {/* saved options for LineGraph  */}
+                {/* content={this.showTooltipData.bind(this)} */}
+
+              </LineChart>
+            </div>
           </div>
-          <div className="button=box">
-            <button onClick={(e) => this.fetch1D(e, '1D') }> <div> 1D </div> </button>
-            <button onClick={(e) => this.fetch5D(e, '5D') }> <div> 5D </div> </button>
-            <button onClick={(e) => this.fetch1M(e, '1M') }> <div> 1M </div> </button>
-            <button onClick={(e) => this.fetch3M(e, '3M') }> <div> 3M </div> </button>
-            <button onClick={(e) => this.fetch1Y(e, '1Y') }> <div> 1Y </div> </button>
-            <button onClick={(e) => this.fetch5Y(e, '5Y') }> <div> 5Y </div> </button>
+          <div className="button-box">
+            <button onClick={(e) => this.fetch1D(e, '1D') }> <div className="tab-button"> 1D </div> </button>
+            <button onClick={(e) => this.fetch5D(e, '5D') }> <div className="tab-button"> 5D </div> </button>
+            <button onClick={(e) => this.fetch1M(e, '1M') }> <div className="tab-button"> 1M </div> </button>
+            <button onClick={(e) => this.fetch3M(e, '3M') }> <div className="tab-button"> 3M </div> </button>
+            <button onClick={(e) => this.fetch1Y(e, '1Y') }> <div className="tab-button"> 1Y </div> </button>
+            <button onClick={(e) => this.fetch5Y(e, '5Y') }> <div className="tab-button"> 5Y </div> </button>
           </div>
         </div>
       );

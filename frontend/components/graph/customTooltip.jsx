@@ -22,6 +22,6 @@ export default function CustomTooltip({payload,}) {
 
 //  for testing
 // export default function CustomTooltip(payload) {
-//   console.log(payload)
+
 //   return 'hello';
 // }

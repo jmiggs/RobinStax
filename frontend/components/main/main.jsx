@@ -13,14 +13,13 @@ class Main extends React.Component {
   render() {
     return (
       <div className="main-background">
-        <div className="main-navbar">
+        <div>
           <ToolbarContainer />
         </div>
-
-        <QuickLook />
-
-        {this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.symbol} />}
-
+        <div className="main-body-container">
+          <div className="content-container">{this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.symbol} />}</div>
+          <div className="ql-container"><QuickLook /></div>
+        </div>
       </div>
 
     );

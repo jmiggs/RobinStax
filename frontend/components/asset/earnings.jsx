@@ -5,16 +5,16 @@ import {
 
 
 const data1 = [
-  { x: 100, y: 1,},
-  { x: 120, y: 2,},
-  { x: 170, y: 3,},
+  { x: 6.9, y: 1,},
+  { x: 5.2, y: 2,},
+  { x: 7.3, y: 3,},
 
 ];
 
 const data2 = [
-  { x: 100, y: 1},
-  { x: 125, y: 2},
-  { x: 175, y: 3},
+  { x: 5.56, y: 1},
+  { x: 4.89, y: 2},
+  { x: 7.41, y: 3},
 
 ];
 
@@ -50,10 +50,10 @@ class Earnings extends React.Component {
       values.push(array[i].x)
     }
 
-    ticks.push(Math.min(...values))
-    ticks.push(((Math.max(...values) - Math.min(...values))/3) + Math.min(...values))
-    ticks.push((((Math.max(...values) - Math.min(...values))/3)*2) + Math.min(...values))
-    ticks.push(Math.max(...values))
+    ticks.push((Math.min(...values)).toFixed(2))
+    ticks.push( (((Math.max(...values) - Math.min(...values))/3) + Math.min(...values)).toFixed(2))
+    ticks.push(((((Math.max(...values) - Math.min(...values))/3)*2) + Math.min(...values)).toFixed(2))
+    ticks.push((Math.max(...values)).toFixed(2))
 
 
     this.setState({yTicks: ticks})
@@ -65,7 +65,7 @@ class Earnings extends React.Component {
   }
 
   render() {
-    debugger
+
     let { yTicks } = this.state
     return (
       <ScatterChart

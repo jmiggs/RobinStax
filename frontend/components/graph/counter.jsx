@@ -64,8 +64,8 @@ class Counter extends React.Component {
 
       return (
         <div>
-          ${(this.state.price).toFixed(2)}
-          <br/>
+          
+          {!this.state.price?  '' : <div className="counter-price">${(this.state.price).toFixed(2)}</div>}
           {this.state.delta < 0?  '-' : '+'}
           {!this.state.delta? `$${this.state.price.toFixed(2)}` : `$${Math.abs(this.state.delta.toFixed(2))}`  }
             

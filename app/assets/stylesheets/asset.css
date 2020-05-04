@@ -1,0 +1,63 @@
+.company-name {
+  font-weight: 900;
+  font-size: 2.5em;
+
+}
+
+.about-head {
+  font-weight: 900;
+  font-size: x-large;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.linechart-container {
+  padding-top: 30px;
+}
+
+.descri {
+  padding-top: 30px;
+  width: 600px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.counter-price {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.button-box > button {
+  background-color: white;
+  border-color: white;
+  border: white;
+  width: 70px
+}
+
+.tab-button {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+}
+
+.about-cont {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+button.readmore {
+  background-color: white;
+  border-color: white;
+  border: white;
+  font-weight: 400;
+  font-size: .75em;
+}
+button.readmore:hover {
+  cursor: pointer;
+}
