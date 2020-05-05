@@ -57,6 +57,7 @@ class Graph extends React.Component {
   }
 
   renderCounter(e) {
+    //is data point null?? if so, dont invoke this function
     this.refCounter.current.updateCounter(e);
   }
 
@@ -153,7 +154,7 @@ class Graph extends React.Component {
                 <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
                 <XAxis axisLine={{ stroke: 'white' }} tick={false} />
                 <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
-                <Line stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
+                <Line connectNulls stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
                 {/* saved options for LineGraph  */}
                 {/* content={this.showTooltipData.bind(this)} */}

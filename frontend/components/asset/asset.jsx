@@ -103,8 +103,9 @@ class Asset extends React.Component {
         <div>
           <div>
             <h1 className="company-name">{this.props.data.companyName}</h1>
-            
-            <GraphContainer symbol={this.props.symbol} />
+            <div className="linegraph-container">
+              <GraphContainer symbol={this.props.symbol} />
+            </div>
 
             <div>
               <div className="about-container">
@@ -121,11 +122,11 @@ class Asset extends React.Component {
                 <div id="descri" className={this.state.read}>{info.description}</div>
                 <div className="read-button-container">
                   <button className="read-button" onClick={(e) => this.readMore(e)}>
-                    {this.state.read === 'less'? `Read More` : `Read Less`}
+                    {this.state.read === 'less'? <p>Read More</p> : <p>Read Less</p>}
                   </button>
                 </div>
               </div>
-              <br/>
+ 
 
               {/* FIRST ROW */}
               <div className="entire-data-container">
@@ -182,7 +183,7 @@ class Asset extends React.Component {
 
                     <div>
                       <div className="data-key">High Today:</div> 
-                      <div>{!data.high? `TBD` : $data.high}</div>
+                      <div>{!data.high? `TBD` : data.high}</div>
                     </div>
 
                     <div> 

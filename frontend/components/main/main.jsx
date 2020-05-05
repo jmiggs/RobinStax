@@ -18,7 +18,11 @@ class Main extends React.Component {
         </div>
         <div className="main-body-container">
           <div className="content-container">{this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.symbol} />}</div>
-          <div className="ql-container"><QuickLook /></div>
+          <div className="ql-container">
+            <div className="ql-general">
+              <QuickLook />
+            </div>
+          </div>
         </div>
       </div>
 

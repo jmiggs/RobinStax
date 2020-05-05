@@ -71,24 +71,32 @@
 }
 
 .content-container {
+  /* margin-top: 80px; */
   height: 100%;
   width: 750%;
   position: relative;
-  flex-basis: 65%;
+  flex-basis: 60%;
   display: block;
   box-sizing: border-box;
   overflow-x: hidden;
   flex-wrap: wrap;
-
-
 }
 
 .ql-container {
-  height: 100vmax;
+  height: 100%;
   width: 100px;
-  flex-basis: 35%;
+  flex-basis: 40%;
   display: inline-block;
+  position: relative;
+}
 
+.ql-general {
+  position: fixed;
+  border: 1px solid white;
+  top: 100px;
+  height: 500px;
+  width: 250px;
+  box-shadow: 8px 8px 10px 0px #E8E8E8, -8px 10px 10px 0px #E8E8E8;
 }
 
 body {
