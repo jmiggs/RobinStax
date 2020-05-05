@@ -1,28 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { render } from 'react-dom';
 
 
-const Greeting = ({ currentUser, logout }) => {
-  const sessionLinks = () => (
-    <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
-    </nav>
-  );
-  const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">
-        Hi,
-        {currentUser.username}
-        !
-        THIS IS THE GREETINGS CONTAINER BRO
-      </h2>
-      <button type="submit" className="header-button" onClick={logout}></button>
-    </hgroup>
-  );
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props)
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  }
+
+  render() {
+    return(
+        <div className="spinner"></div>
+    )
+  }
+
 };
 
 

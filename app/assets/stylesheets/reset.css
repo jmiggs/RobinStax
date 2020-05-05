@@ -64,3 +64,7 @@ button:hover {
 }
   
 button:focus {outline:0;}
+
+input:focus {outline:none;}
+
+input[type=text]:focus {outline:none;}

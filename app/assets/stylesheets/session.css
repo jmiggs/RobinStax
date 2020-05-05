@@ -65,17 +65,20 @@
     height: 25px;
     font-size: 15px;
     font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #ccf2ff;
+    background-color: rgba(204, 244, 254, 0.67);
     padding: 12px 15px;
     border-style: solid;
-    border-color: #ccf2ff;
+    border-color: rgba(204, 244, 254, 0.67);
     border-radius: 8px;
     font-weight: 250;
+    transition: all ease-in-out .5s;
 }
 
 .login-input:focus {
     border-style: solid;
     border-color: #00ace6;
+    background-color: white;
+    transition: all ease-in-out .5s;
 }
 
 #signlog {
@@ -93,7 +96,7 @@
 }
 
 .session-submit {
-  background-color: #1aa3ff;
+  background-color: #0992ee;
   height: 40px;
   width: 120px;
   color: white;
@@ -101,6 +104,7 @@
   border-radius: 12px;
   float: left;
   margin-right: 40px;
+  border-color: #0992ee;
 }
 
 .signprompt { 

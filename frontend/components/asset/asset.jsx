@@ -33,7 +33,7 @@ class Asset extends React.Component {
   // this is for when user moves from AAPL to MSFT; 
   // params UPDATE, and so we must trigger a new fetchstock
   componentDidUpdate(prevProps) {
-    debugger
+
     if (prevProps.symbol !== this.props.symbol) {
       this.props.fetchStockQuote(this.props.symbol);
       this.props.fetch5D(this.props.symbol);

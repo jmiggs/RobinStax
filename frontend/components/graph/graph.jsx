@@ -45,14 +45,16 @@ class Graph extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetch5D(this.props.symbol, '5D');
+    var test = setTimeout(() => this.props.fetch5D(this.props.symbol, '5D'), 750)
+    // this.props.fetch5D(this.props.symbol, '5D');
     // this.props.fetchQuote(this.props.symbol)
   }
 
   componentDidUpdate() {
-
     if (!this.props.data) return null
-    this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],)
+    var update = setTimeout(() => 
+      this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],),
+      10000)
 
   }
 
@@ -133,14 +135,26 @@ class Graph extends React.Component {
 
   render() {
     
-      if (!this.props.data) return null
+    
       return (
+        !this.props.data? 
+        <div className="spin-cont">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        </div>
+        :
         <div>
+         
           <div>
-
             <Counter ref={this.refCounter} data={this.props.data.slice(-1).pop()} first={this.props.data[0]} />
 
             <div className="linechart-container">
+              
               <LineChart
                 onMouseLeave={(e) => this.handleMouseLeave(e)}
                 width={750}
@@ -160,8 +174,10 @@ class Graph extends React.Component {
                 {/* content={this.showTooltipData.bind(this)} */}
 
               </LineChart>
+              
             </div>
           </div>
+          
           <div className="button-box">
             <button onClick={(e) => this.fetch1D(e, '1D') }> <div className="tab-button"> 1D </div> </button>
             <button onClick={(e) => this.fetch5D(e, '5D') }> <div className="tab-button"> 5D </div> </button>
