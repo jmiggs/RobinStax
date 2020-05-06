@@ -10,29 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_222801) do
+ActiveRecord::Schema.define(version: 2020_05_06_051720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assets", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "ticker", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_assets_on_user_id"
+    t.index ["ticker"], name: "index_assets_on_ticker", unique: true
   end
 
-  create_table "infos", force: :cascade do |t|
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.bigint "assets_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cost"
+    t.string "transtype"
+    t.integer "totalcost"
+    t.index ["assets_id"], name: "index_transactions_on_assets_id"
+    t.index ["users_id"], name: "index_transactions_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "assets", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true

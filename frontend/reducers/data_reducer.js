@@ -1,4 +1,5 @@
 import { RECEIVE_DATA, RECEIVE_QUOTE, RECEIVE_INFO, RECEIVE_NEWS, RECEIVE_EARNINGS } from '../actions/asset_actions';
+import { RECEIVE_TRANSACTION } from '../actions/transactions_actions';
 
 const dataReducer = (state = {}, action) => {
 
@@ -14,6 +15,8 @@ const dataReducer = (state = {}, action) => {
       return Object.assign({}, state, { news: action.data })
     case RECEIVE_EARNINGS:
       return Object.assign({}, state, { earnings: action.data })
+    case RECEIVE_TRANSACTION:
+      return Object.assign({}, state, { transaction: action.data })
     default:
       return state;
   }

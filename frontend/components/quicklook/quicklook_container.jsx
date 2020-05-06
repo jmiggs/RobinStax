@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import QuickLook from './quicklook'
 import { ThunkFetchQuote, ThunkFetch5D, ThunkFetchInfo, ThunkFetchNews, ThunkFetchEarnings } from '../../actions/asset_actions'
 import { fetch5D } from '../../util/iex_util';
+import { postTransaction } from '../../actions/transactions_actions'
 
 
 const mapStateToProps = (state, symbol) => {
@@ -19,6 +20,7 @@ const mapStateToProps = (state, symbol) => {
 
 //create fetchStock thunk action and action creator
 const mapDispatchToProps = (dispatch) => ({
+  processForm: (data) => dispatch(postTransaction(data))
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),

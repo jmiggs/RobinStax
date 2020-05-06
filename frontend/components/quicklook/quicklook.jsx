@@ -6,20 +6,23 @@ class Quicklook extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sharesCount: 3,
+      amount: 0,
+      cost: '',
+      transtype: 'buy',
     }
     // this.preventText = this.preventText.bind(this)
     this.update = this.update.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const asset = { ...this.state };
-    this.props.processForm(user);
+    this.props.processForm(asset);
   }
 
   update(e, field) {
-    this.setState({ [field]: e.currentTarget.value })
+    this.setState({ [field]: e.currentTarget.value, cost: this.props.data.latestPrice,})
   }
    
 
@@ -32,7 +35,7 @@ class Quicklook extends React.Component {
 
     if (!this.props.data) return null;
       let { latestPrice } = this.props.data;
-      let estCost = latestPrice * this.state.sharesCount;
+      let estCost = latestPrice * this.state.amount;
 
     return(
       <div className="ql">
@@ -41,7 +44,7 @@ class Quicklook extends React.Component {
           <div className="trans-links1">
             <div>Buy {this.props.data.symbol}</div>
           </div>
-          <form className="shares-form-box">
+          <form className="shares-form-box" onSubmit={this.handleSubmit}>
 
             <div className="calc-container">
               <div className="trans-links2"> 
@@ -50,11 +53,10 @@ class Quicklook extends React.Component {
                   <input className="buy-input"
                     type="text"
                     value={this.state.sharesCount}
-                    onChange={(e) => this.update(e,'sharesCount')}
+                    onChange={(e) => this.update(e,'amount')}
                     className="shares-input"
-                   
-                 
-                    
+                    placeholder={this.state.amount}
+
                   /> 
                 </div>
               </div>
@@ -73,7 +75,7 @@ class Quicklook extends React.Component {
 
             <div className="buy-button-container">
               
-              <button className="buy-button">Review Order</button>
+              <button type="submit" className="buy-button">Review Order</button>
             </div>
           </form>
           {/* </form> */}

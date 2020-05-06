@@ -76,6 +76,27 @@ export const fetchEarnings = (sym) => (
   })
 )
 
+export const fetchAll = () => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/ref-data/symbols?token=${window.iexkkaccess}&filter=symbol`,
+  }).then( data =>
+    $.ajax({
+      method: 'Post',
+      url: `api/assets`,
+      data: { data }
+    })
+  )
+)
+
+export const postAll = (data) => (
+  $.ajax({
+    method: 'Post',
+    url: `api/assets`
+  }
+  )
+);
+
 
 
 

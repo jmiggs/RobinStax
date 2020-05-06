@@ -139,6 +139,8 @@ export const ThunkFetchEarnings = (sym) => (dispatch) => {
 
 
 
+
+
 // for testing
 // export const TestThunk = (sym, tab) => (dispatch) => {
 //   return (
