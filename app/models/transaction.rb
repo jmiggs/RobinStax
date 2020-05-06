@@ -1,4 +1,12 @@
 class Transaction < ApplicationRecord
-  validates :users_id, :assets_id, :amount, :transtype, presence: true
+  validates :user_id, :asset_id, :amount, :transtype, presence: true
 
+
+  belongs_to :user
+
+
+  belongs_to :asset
+
+
+  
 end

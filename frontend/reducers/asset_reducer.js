@@ -1,10 +1,10 @@
-import { RECEIVE_STOCK, RECEIVE_STOCKs } from '../actions/asset_actions';
+import { RECEIVE_BATCH } from '../actions/asset_actions';
 
 const assetReducer = (state = {}, action) => {
-  
+  // need to flatten stateshape
   switch (action.type) {
-    case RECEIVE_STOCKs:
-      return Object.assign({}, state, { stock: action.stock });
+    case RECEIVE_BATCH:
+      return Object.assign({}, state, { fiveday: action.data });
     default:
       return state;
   }

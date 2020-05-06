@@ -19,6 +19,17 @@ class Api::AssetsController < ApplicationController
 
     render json:("api/assets/show")
   end
+
+
+  def show
+    
+    @user =  User.find(current_user.id)
+
+    if @user
+      render('api/assets/show')
+    end
+
+  end
   
 
 end

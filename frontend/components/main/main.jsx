@@ -8,9 +8,23 @@ import QuickLookContainer from '../quicklook/quicklook_container';
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentUser: this.props.currentUser,
+      initStat: this.props.initStat
+    }
   }
 
+  componentDidMount() {
+    if (!this.props.initStat) {
+      // this.props.fetchAll();
+      // this.props.updateInitStatus()
+    }
+  };
+
+
+
   render() {
+
     return (
       <div className="main-background">
         <div>

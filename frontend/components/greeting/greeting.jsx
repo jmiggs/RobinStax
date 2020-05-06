@@ -6,13 +6,17 @@ import { render } from 'react-dom';
 class Greeting extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      currentUser: this.props.currentUser,
+      initStat: this.props.initStat
+    }
   }
 
   componentDidMount() {
-    this.props.fetchAll()
-    // .then( (data) => 
-    //   this.props.postAll(data)
-    
+    if (!this.props.initStat) {
+      this.props.fetchAll();
+      this.props.updateInitStatus()
+    }
   };
 
   render() {

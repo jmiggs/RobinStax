@@ -98,5 +98,26 @@ export const postAll = (data) => (
 );
 
 
+// export const fetchBatch5D = (data) => {
+
+//   var tickers = []
+
+//   for (let i = 0; i < data.length -1; i++) {
+//     if (!tickers.includes(data[i].ticker)) {
+//       tickers.push(data[i].ticker)
+//     }
+//   }
+
+//   var url = `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${tickers.join()}&types=quote&token=${window.iexkkaccess}`
+
+//   return (
+//   $.ajax({
+//     method: 'GET',
+//     url: `${url}`
+//   }
+//   )
+//   )
+// };
+
 
 

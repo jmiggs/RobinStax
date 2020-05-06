@@ -12,6 +12,15 @@ class Api::UsersController < ApplicationController
 
     end
 
+    def show
+      @user =  User.find(current_user.id)
+
+      if @user
+        render('api/assets/show')
+      end
+  
+    end
+
     private
 
     def user_params

@@ -26,10 +26,10 @@ const PreApp = () => (
   <div>
     <Switch>
       <InitRoute exact path="/asset/:symbol" component={MainAssetContainer} />
-      <InitRoute exact path="/main" component={MainContainer} />
+      {/* <InitRoute exact path="/main" component={MainContainer} /> */}
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <InitRoute exact path="/" component={GreetingContainer} />
+      <InitRoute exact path="/" component={MainContainer} />
       <Route path="*" component={fourOFour} />
       {/* <Redirect to="/404" component={fourOFour} /> */}
     </Switch>

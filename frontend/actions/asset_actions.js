@@ -1,4 +1,6 @@
 import * as IEXutil from '../util/iex_util.jsx';
+import * as assetUtil from '../util/asset_util'
+
 
 export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 export const RECEIVE_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -8,6 +10,8 @@ export const RECEIVE_QUOTE = 'RECEIVE_QUOTE'
 export const RECEIVE_INFO = 'RECEIVE_INFO' 
 export const RECEIVE_NEWS = 'RECEIVE_NEWS' 
 export const RECEIVE_EARNINGS = 'RECEIVE_EARNINGS'
+export const UPDATE_INIT_STAT = 'UPDATE_INIT_STAT'
+export const RECEIVE_BATCH = 'RECEIVE_BATCH'
 
 // create APIutil AJAX request
 
@@ -54,6 +58,21 @@ const receiveErrors = (errors) => {
   errors,
 });
 }
+
+export const updateInitStat = () => {
+  return ({
+    type: UPDATE_INIT_STAT,
+  })
+}
+
+export const receiveBatch = (data) => {
+  return ({
+    type: RECEIVE_BATCH,
+    data: data
+  })
+
+}
+
 
 
 export const ThunkFetch5D = (sym, tab) => (dispatch) => {
@@ -132,6 +151,18 @@ export const ThunkFetchEarnings = (sym) => (dispatch) => {
     err => (dispatch(receiveErrors(err.responseJSON))),
     )
 }
+
+export const updateInitStatus = () => (dispatch) => {
+  dispatch(updateInitStat())
+}
+
+export const fetchBatch5D = (data) => (dispatch) => {
+  assetUtil.fetchBatch5D(data).then(data => (dispatch(receiveBatch(data))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+    )
+}
+
+
 
 
 
