@@ -156,27 +156,29 @@ export const updateInitStatus = () => (dispatch) => {
   dispatch(updateInitStat())
 }
 
+
+/// PORTFOLIO INITIAL LOAD
 export const fetchBatch5D = (data) => (dispatch) => {
   assetUtil.fetchBatch5D(data).then(data => (dispatch(receiveBatch(data))),
     err => (dispatch(receiveErrors(err.responseJSON))),
     )
 }
 
-export const ThunkFetchSTBatch = (data) => (dispatch) => {
-  debugger
-  assetUtil.fetchSTBatch(data).then(data => (dispatch(receiveBatch(data))),
-    err => (dispatch(receiveErrors(err.responseJSON))),
-    )
-}
+// export const ThunkFetchSTBatch = (data) => (dispatch) => {
+ 
+//   assetUtil.fetchSTBatch(data).then(data => (dispatch(receiveBatch(data))),
+//     err => (dispatch(receiveErrors(err.responseJSON))),
+//     )
+// }
 
-//// THIS IS FOR PORTFOLIO GRAPH
-//// THIS IS FOR PORTFOLIO GRAPH
-//// THIS IS FOR PORTFOLIO GRAPH
-//// THIS IS FOR PORTFOLIO GRAPH
+//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
+//// THIS IS FOR PORTFOLIO GRAPH, TAB CHAN
+//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
+//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
 
 export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
   return (
-  assetUtil.fetchBatch5D(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch5DBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )
@@ -185,7 +187,7 @@ export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
 export const ThunkFetchBatch1D = (data, tab) => (dispatch) => {
 
   return (
-  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch1DBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )
@@ -194,7 +196,7 @@ export const ThunkFetchBatch1D = (data, tab) => (dispatch) => {
 export const ThunkFetchBatch1M = (data, tab) => (dispatch) => {
 
   return (
-  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch1MBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )
@@ -203,7 +205,7 @@ export const ThunkFetchBatch1M = (data, tab) => (dispatch) => {
 export const ThunkFetchBatch3M = (data, tab) => (dispatch) => {
 
   return (
-  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch3MBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )
@@ -211,7 +213,7 @@ export const ThunkFetchBatch3M = (data, tab) => (dispatch) => {
 
 export const ThunkFetchBatch1Y = (data, tab) => (dispatch) => {
   return (
-  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch1YBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )
@@ -219,7 +221,7 @@ export const ThunkFetchBatch1Y = (data, tab) => (dispatch) => {
 
 export const ThunkFetchBatch5Y = (data, tab) => (dispatch) => {
   return (
-  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+  assetUtil.fetch5YBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )

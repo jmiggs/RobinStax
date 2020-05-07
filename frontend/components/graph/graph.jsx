@@ -172,7 +172,7 @@ class Graph extends React.Component {
   // ]
 
   render() {
-      debugger
+
 
       return (
         !this.props.data? 
@@ -223,7 +223,7 @@ class Graph extends React.Component {
           {this.props.renderType === 'Portfolio'?
           <div className="button-box">
             <button onClick={(e) => this.fetchBatch1D(e, '1d') }> <div className="tab-button"> 1D </div> </button>
-            <button onClick={(e) => this.fetchBatch5D(e, '5dm') }> <div className="tab-button"> 5D </div> </button>
+            <button onClick={(e) => this.fetchBatch5D(e, '5d') }> <div className="tab-button"> 5D </div> </button>
             <button onClick={(e) => this.fetchBatch1M(e, '1m') }> <div className="tab-button"> 1M </div> </button>
             <button onClick={(e) => this.fetchBatch3M(e, '3m') }> <div className="tab-button"> 3M </div> </button>
             <button onClick={(e) => this.fetchBatch1Y(e, '1y') }> <div className="tab-button"> 1Y </div> </button>

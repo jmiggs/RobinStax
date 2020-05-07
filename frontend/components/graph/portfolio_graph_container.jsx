@@ -13,7 +13,7 @@ const dataFiller = (data, currTab) => {
 
 
   if (!data.fiveday) return null;
-
+  debugger
   switch (currTab) {
     case '1D':
     case '1M':
@@ -25,16 +25,25 @@ const dataFiller = (data, currTab) => {
 
         let parsedArr = Object.values(parser);
         let batchAvg = [];
+        let movingTotal = 0;
 
         for (let j = 0; j < parsedArr[0].length; j++) {
+         
           let sum = 0;
           for ( let i = 0; i < parsedArr.length; i++){
             sum += parsedArr[i][j].close;
             if (i === parsedArr.length - 1) {
-              batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum / parsedArr.length})
+              if (j === 0 ) {
+                batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum / parsedArr.length })
+              } else {
+                batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: movingTotal / batchAvg.length + 1 })
+              }
             }
           }
+          movingTotal += sum / parsedArr.length;
         }
+        debugger
+        console.log(batchAvg)
         // console.log(batchAvg)
         return batchAvg
     case '3M':
