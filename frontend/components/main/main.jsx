@@ -4,6 +4,7 @@ import ToolbarContainer from '../toolbar/toolbar_container';
 import AssetContainer from '../asset/asset_container';
 import Portfolio from '../portfolio/portfolio_container.jsx';
 import QuickLookContainer from '../quicklook/quicklook_container';
+import PortfolioQuickLook from '../quicklook/portfolio_quicklook_container';
 
 class Main extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Main extends React.Component {
           <div className="content-container">{this.props.renderType === 'portfolio' ? <Portfolio /> : <AssetContainer symbol={this.props.symbol} />}</div>
           <div className="ql-container">
             <div className="ql-general">
-              <QuickLookContainer />
+            {this.props.renderType === 'portfolio'? <PortfolioQuickLook /> : <QuickLookContainer />}
             </div>
           </div>
         </div>

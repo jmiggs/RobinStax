@@ -12,15 +12,15 @@ import Graph from './graph'
 const dataFiller = (data, currTab) => {
 
 
-  if (!data.fiveday) return null;
-  debugger
+  if (!data.portfolio) return null;
+
   switch (currTab) {
     case '1D':
     case '1M':
     case '5D':
         let parser = {};  
-        Object.keys(data.fiveday).forEach( key =>
-          parser[key] = data.fiveday[key].chart
+        Object.keys(data.portfolio).forEach( key =>
+          parser[key] = data.portfolio[key].chart
         );
 
         let parsedArr = Object.values(parser);
@@ -42,7 +42,7 @@ const dataFiller = (data, currTab) => {
           }
           movingTotal += sum / parsedArr.length;
         }
-        debugger
+
         console.log(batchAvg)
         // console.log(batchAvg)
         return batchAvg
@@ -70,7 +70,7 @@ const mapStateToProps = (state, symbol) => {
   currentUser: state.entities.users[state.session.id],
   renderType: 'Portfolio',
   data: dataFiller(state.entities.assets, !state.data.currTab ? '5D' : state.data.currTab ),
-  assets: !state.entities.assets.fiveday? '' : Object.keys(state.entities.assets.fiveday)
+  assets: !state.entities.assets.portfolio? '' : Object.keys(state.entities.assets.portfolio)
 
   // data: //insert some data formatter heere
   }

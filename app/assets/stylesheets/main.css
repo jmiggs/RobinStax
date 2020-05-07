@@ -88,15 +88,18 @@
   flex-basis: 40%;
   display: inline-block;
   position: relative;
+
 }
 
 .ql-general {
   position: fixed;
   border: 1px solid white;
   top: 100px;
-  height: 500px;
+  height: auto;
   width: 250px;
   box-shadow: 8px 8px 10px 0px #E8E8E8, -8px 10px 10px 0px #E8E8E8;
+  /* padding-right: 15px; */
+
 }
 
 body {

@@ -4,7 +4,7 @@ const assetReducer = (state = {}, action) => {
   // need to flatten stateshape
   switch (action.type) {
     case RECEIVE_BATCH:
-      return Object.assign({}, state, { fiveday: action.data });
+      return Object.assign({}, state, { portfolio: action.data });
     default:
       return state;
   }

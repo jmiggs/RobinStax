@@ -17,7 +17,7 @@ export const fetchBatch5D = (data) => {
   }
   
   var url = `https://sandbox.iexapis.com/stable/stock/market/batch?types=chart&symbols=${tickers.join()}&range=5dm&filter=date,label,close&token=${window.iexkkaccess}`
-  debugger
+
   return (
   $.ajax({
     method: 'GET',
