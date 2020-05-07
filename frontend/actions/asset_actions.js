@@ -162,6 +162,70 @@ export const fetchBatch5D = (data) => (dispatch) => {
     )
 }
 
+export const ThunkFetchSTBatch = (data) => (dispatch) => {
+  debugger
+  assetUtil.fetchSTBatch(data).then(data => (dispatch(receiveBatch(data))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+    )
+}
+
+//// THIS IS FOR PORTFOLIO GRAPH
+//// THIS IS FOR PORTFOLIO GRAPH
+//// THIS IS FOR PORTFOLIO GRAPH
+//// THIS IS FOR PORTFOLIO GRAPH
+
+export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
+  return (
+  assetUtil.fetchBatch5D(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const ThunkFetchBatch1D = (data, tab) => (dispatch) => {
+
+  return (
+  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const ThunkFetchBatch1M = (data, tab) => (dispatch) => {
+
+  return (
+  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const ThunkFetchBatch3M = (data, tab) => (dispatch) => {
+
+  return (
+  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const ThunkFetchBatch1Y = (data, tab) => (dispatch) => {
+  return (
+  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const ThunkFetchBatch5Y = (data, tab) => (dispatch) => {
+  return (
+  assetUtil.fetchSTBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+
 
 
 

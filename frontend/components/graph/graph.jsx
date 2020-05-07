@@ -37,6 +37,7 @@ class Graph extends React.Component {
     super(props);
     this.state = {
       tab: '',
+      renderType: this.props.renderType
     };
 
     // this is creating a reference to the Counter Component
@@ -44,7 +45,7 @@ class Graph extends React.Component {
   }
 
   componentDidMount() {
-
+    if (this.props.renderType === 'Portfolio') return null;
     var test = setTimeout(() => this.props.fetch5D(this.props.symbol, '5D'), 750)
     // this.props.fetch5D(this.props.symbol, '5D');
     // this.props.fetchQuote(this.props.symbol)
@@ -52,10 +53,10 @@ class Graph extends React.Component {
 
   componentDidUpdate() {
     if (!this.props.data) return null
+
     var update = setTimeout(() => 
       this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],),
       10000)
-
   }
 
   renderCounter(e) {
@@ -64,6 +65,7 @@ class Graph extends React.Component {
   }
 
   handleMouseLeave(e) {
+    if (!this.refCounter.current) return null;
     this.refCounter.current.updateCounterOnLeave(this.props.data.slice(-1).pop(), this.props.data[0], )
   }
 
@@ -94,7 +96,9 @@ class Graph extends React.Component {
   //     }
   //   }
   // };
-
+  //ASSET SHOW THUNK ACTIONS
+  //ASSET SHOW THUNK ACTIONS
+  //ASSET SHOW THUNK ACTIONS
   fetch1D(e, tab) {
     e.preventDefault();
     this.props.fetch1D(this.props.symbol, tab)
@@ -122,6 +126,40 @@ class Graph extends React.Component {
     this.props.fetch5Y(this.props.symbol, tab)
   }
 
+// PORTFOLIO BATCH FETCHES!!!!
+// PORTFOLIO BATCH FETCHES!!!!
+// PORTFOLIO BATCH FETCHES!!!!
+
+  fetchBatch1D(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch1D(this.props.assets, tab)
+  }
+
+  fetchBatch5D(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch5D(this.props.assets, tab)
+  }
+
+  fetchBatch1M(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch1M(this.props.assets, tab)
+  }
+  fetchBatch3M(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch3M(this.props.assets, tab)
+  }
+  fetchBatch1Y(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch1Y(this.props.assets, tab)
+  }
+  fetchBatch5Y(e, tab) {
+    e.preventDefault();
+    this.props.fetchBatch5Y(this.props.assets, tab)
+  }
+
+
+ 
+ 
 
   // all data restructuring should occur at the asset_container.jsx; by the time it 
   // hits the return of the render
@@ -134,8 +172,8 @@ class Graph extends React.Component {
   // ]
 
   render() {
-    
-    
+      debugger
+
       return (
         !this.props.data? 
         <div className="spin-cont">
@@ -151,7 +189,10 @@ class Graph extends React.Component {
         <div>
          
           <div>
-            <Counter ref={this.refCounter} data={this.props.data.slice(-1).pop()} first={this.props.data[0]} />
+           <Counter   ref={this.refCounter} 
+                      data={this.props.data.slice(-1).pop()} 
+                      first={this.props.data[0]}
+                      renderType={this.props.renderType} />
 
             <div className="linechart-container">
               
@@ -159,8 +200,7 @@ class Graph extends React.Component {
                 onMouseLeave={(e) => this.handleMouseLeave(e)}
                 width={750}
                 height={300}
-                data={Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
-                        this.props.cache[`${this.props.symbol}${this.state.tab}`] : (this.props.data)}
+                data={this.props.data}
                 margin={{
                   top: 5, right: 30, left: 0, bottom: 5,
                 }}
@@ -172,12 +212,24 @@ class Graph extends React.Component {
 
                 {/* saved options for LineGraph  */}
                 {/* content={this.showTooltipData.bind(this)} */}
+                {/* Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
+                        this.props.cache[`${this.props.symbol}${this.state.tab}`] :  */}
 
               </LineChart>
               
             </div>
           </div>
           
+          {this.props.renderType === 'Portfolio'?
+          <div className="button-box">
+            <button onClick={(e) => this.fetchBatch1D(e, '1d') }> <div className="tab-button"> 1D </div> </button>
+            <button onClick={(e) => this.fetchBatch5D(e, '5dm') }> <div className="tab-button"> 5D </div> </button>
+            <button onClick={(e) => this.fetchBatch1M(e, '1m') }> <div className="tab-button"> 1M </div> </button>
+            <button onClick={(e) => this.fetchBatch3M(e, '3m') }> <div className="tab-button"> 3M </div> </button>
+            <button onClick={(e) => this.fetchBatch1Y(e, '1y') }> <div className="tab-button"> 1Y </div> </button>
+            <button onClick={(e) => this.fetchBatch5Y(e, '5y') }> <div className="tab-button"> 5Y </div> </button>
+          </div>
+          :
           <div className="button-box">
             <button onClick={(e) => this.fetch1D(e, '1D') }> <div className="tab-button"> 1D </div> </button>
             <button onClick={(e) => this.fetch5D(e, '5D') }> <div className="tab-button"> 5D </div> </button>
@@ -186,6 +238,9 @@ class Graph extends React.Component {
             <button onClick={(e) => this.fetch1Y(e, '1Y') }> <div className="tab-button"> 1Y </div> </button>
             <button onClick={(e) => this.fetch5Y(e, '5Y') }> <div className="tab-button"> 5Y </div> </button>
           </div>
+          }
+
+
         </div>
       );
   }

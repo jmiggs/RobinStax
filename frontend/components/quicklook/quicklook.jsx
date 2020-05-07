@@ -9,6 +9,7 @@ class Quicklook extends React.Component {
       amount: 0,
       cost: '',
       transtype: 'buy',
+      symbol: ''
     }
     // this.preventText = this.preventText.bind(this)
     this.update = this.update.bind(this)
@@ -22,7 +23,7 @@ class Quicklook extends React.Component {
   }
 
   update(e, field) {
-    this.setState({ [field]: e.currentTarget.value, cost: this.props.data.latestPrice,})
+    this.setState({ [field]: e.currentTarget.value, cost: this.props.data.latestPrice, symbol: this.props.data.symbol})
   }
    
 

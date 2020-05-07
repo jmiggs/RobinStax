@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { ThunkFetchAll, ThunkFetch5D, updateInitStatus } from '../../actions/asset_actions'
-import {postAll, fetchAll} from '../../util/iex_util'
+import { postAll, fetchAll } from '../../util/iex_util'
 
 import Main from './main';
 

@@ -91,6 +91,11 @@ button.read-button > p {
   font-weight: bolder;
 }
 
+.counter-price-portfolio {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
 .button-box > button {
   background-color: white;
   border-color: white;

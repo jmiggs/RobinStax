@@ -4,12 +4,18 @@ class Api::TransactionsController < ApplicationController
 
     @transaction = Transaction.new
 
-    @asset = Asset.find_by(params[:data][:symbol])
+    symbol = params[:data][:symbol].upcase
 
+    @asset = Asset.find_by(ticker: symbol)
+ 
 
     ## add errors here
-    @transaction.users_id = current_user.id
-    @transaction.assets_id = @asset.id
+    @transaction.user_id = current_user.id
+    @transaction.asset_id = @asset.id
+
+    if params[:data][:amount] == nil
+      render json: [`youre not buying anything`], status: 419
+    end
     @transaction.amount = params[:data][:amount]
     @transaction.cost = params[:data][:cost]
     @transaction.transtype = params[:data][:transtype]

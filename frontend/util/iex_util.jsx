@@ -9,14 +9,14 @@
 export const fetch5D = (sym) => (
   $.ajax({
     method: 'GET',
-    url: `https://sandbox.iexapis.com/stable/stock/${sym}/chart/5dm?token=${window.iexkkaccess}`,
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/chart/5dm?&token=${window.iexkkaccess}`,
   })
 );
 
 export const fetch1D = (sym) => (
   $.ajax({
     method: 'GET',
-    url: `https://sandbox.iexapis.com/stable/stock/${sym}/intraday-prices?token=${window.iexkkaccess}`,
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/intraday-prices?chartInterval=5&token=${window.iexkkaccess}`,
   })
 );
 
@@ -96,6 +96,10 @@ export const postAll = (data) => (
   }
   )
 );
+
+
+
+
 
 
 // export const fetchBatch5D = (data) => {

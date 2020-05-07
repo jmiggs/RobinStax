@@ -14,10 +14,12 @@ class Main extends React.Component {
     }
   }
 
+
+  /// for initiation
   componentDidMount() {
-    if (!this.props.initStat) {
-      // this.props.fetchAll();
-      // this.props.updateInitStatus()
+    if (!this.state.initStat) {
+      // this.props.fetchAll;
+      // this.props.updateInitStatus
     }
   };
 

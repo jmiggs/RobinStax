@@ -7,6 +7,7 @@
 // } from 'react-router-dom';
 
 import React from 'react';
+import GraphContainer from '../graph/portfolio_graph_container'
 
 class Portfolio extends React.Component {
   constructor(props) {
@@ -17,9 +18,14 @@ class Portfolio extends React.Component {
     // this.readMore = this.readMore.bind(this);
   }
 
-  
+  componentDidUpdate() {
+
+    this.props.fetchUserStocks(this.props.currentUser).then(data =>
+      this.props.fetchBatch5D(data))
+    }
 
   componentDidMount() {
+
     this.props.fetchUserStocks(this.props.currentUser).then(data =>
       this.props.fetchBatch5D(data))
   }
@@ -27,7 +33,12 @@ class Portfolio extends React.Component {
 
   render() {
     return(
-      <div>stonks</div>
+      <div>stonks
+          <GraphContainer />
+
+
+
+      </div>
 
 
     )
