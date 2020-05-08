@@ -26,8 +26,8 @@ class Portfolio extends React.Component {
 
   componentDidMount() {
 
-    // this.props.fetchUserStocks(this.props.currentUser).then(data =>
-    //   this.props.fetchBatch5D(data))
+    this.props.fetchUserStocks(this.props.currentUser).then(data =>
+      this.props.fetchBatch5D(data))
   }
 
 
