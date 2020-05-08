@@ -12,6 +12,7 @@ export const RECEIVE_NEWS = 'RECEIVE_NEWS'
 export const RECEIVE_EARNINGS = 'RECEIVE_EARNINGS'
 export const UPDATE_INIT_STAT = 'UPDATE_INIT_STAT'
 export const RECEIVE_BATCH = 'RECEIVE_BATCH'
+export const RECEIVE_EMPTY = 'RECEIVE_EMPTY'
 
 // create APIutil AJAX request
 
@@ -70,8 +71,16 @@ export const receiveBatch = (data) => {
     type: RECEIVE_BATCH,
     data: data
   })
-
 }
+
+export const receiveEmpty = (data) => {
+  return ({
+    type: RECEIVE_EMPTY,
+    data: 'empty'
+  })
+}
+
+
 
 
 
@@ -159,9 +168,11 @@ export const updateInitStatus = () => (dispatch) => {
 
 /// PORTFOLIO INITIAL LOAD
 export const fetchBatch5D = (data) => (dispatch) => {
+  return (
   assetUtil.fetchBatch5D(data).then(data => (dispatch(receiveBatch(data))),
     err => (dispatch(receiveErrors(err.responseJSON))),
     )
+  )
 }
 
 // export const ThunkFetchSTBatch = (data) => (dispatch) => {

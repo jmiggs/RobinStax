@@ -173,8 +173,10 @@ class Graph extends React.Component {
 
   render() {
 
-
+      debugger
       return (
+
+        this.props.data === 'nostocks'? <div>no stonks yet</div> :
         !this.props.data? 
         <div className="spin-cont">
         <div class="spinner">
@@ -186,6 +188,8 @@ class Graph extends React.Component {
         </div>
         </div>
         :
+
+      
         <div>
          
           <div>

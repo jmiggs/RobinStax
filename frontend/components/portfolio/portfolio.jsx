@@ -19,12 +19,14 @@ class Portfolio extends React.Component {
   }
 
   componentDidUpdate() {
-    debugger
+
     this.props.fetchUserStocks(this.props.currentUser).then(data =>
       this.props.fetchBatch5D(data))
     }
 
   componentDidMount() {
+
+    // this.props.fetchAll()
 
     this.props.fetchUserStocks(this.props.currentUser).then(data =>
       this.props.fetchBatch5D(data))
@@ -32,7 +34,9 @@ class Portfolio extends React.Component {
 
 
   render() {
+
     return(
+      this.props.status === 'empty?'? <div> no stonks yet</div> :
       <div>stonks
           <GraphContainer />
 

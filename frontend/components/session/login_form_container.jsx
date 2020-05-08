@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { login, clearErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
+import { fetchAll } from '../../util/iex_util';
 
 const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
@@ -14,6 +15,7 @@ const mapStateToProps = ({ errors }) => ({
 const mapDispatchToProps = (dispatch) => ({
   processForm: (user) => dispatch(login(user)),
   clearErrors: () => dispatch(clearErrors()),
+  fetchAll: () => fetchAll()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

@@ -6,7 +6,7 @@ class Api::TransactionsController < ApplicationController
 
     symbol = params[:data][:symbol].upcase
 
-    @asset = Asset.find_by(ticker: symbol)
+    @asset = Asset.find_by(symbol: symbol)
  
 
     ## add errors here

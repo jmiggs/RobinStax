@@ -15,7 +15,9 @@ class Api::UsersController < ApplicationController
     def show
       @user =  User.find(current_user.id)
 
-      if @user
+      if @user.assets.empty?
+        render json: ["nostocks"]
+      else
         render('api/assets/show')
       end
   

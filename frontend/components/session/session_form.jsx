@@ -30,29 +30,30 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = { ...this.state };
     this.props.processForm(user);
+
   }
 
   handleDemoType() {
     this.setState({
-      username: 'aightson',
-      password: '123456',
+      username: 'brostocksbro',
+      password: 'stonks123',
     })
   }
 
   handleDemo(e) {
     e.preventDefault();
     this.setState({
-      username: 'aightson',
-      password: '123456',
+      username: 'brostocksbro',
+      password: 'stonks123',
     })   
      setTimeout(() => {
        this.props.processForm( { ...this.state } )
      }, 300 );
-  
+
   }
 
   renderErrors() {
-    debugger
+
     if (!this.props.errors) return null;
     return (
       <ul className="ul-hold">

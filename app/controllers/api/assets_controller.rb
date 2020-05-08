@@ -8,8 +8,8 @@ class Api::AssetsController < ApplicationController
 
     (0...rawdata.length).each do |i|
 
-      if !Asset.find_by(ticker: rawdata[i][:symbol])
-        @asset = Asset.new(ticker: rawdata[i][:symbol])
+      if !Asset.find_by(symbol: rawdata[i][:symbol])
+        @asset = Asset.new(symbol: rawdata[i][:symbol])
         @asset.save
       end
      

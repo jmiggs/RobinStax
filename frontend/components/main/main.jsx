@@ -19,8 +19,6 @@ class Main extends React.Component {
   /// for initiation
   componentDidMount() {
 
-      this.props.fetchAll;
-      this.props.updateInitStatus
     
   };
 
