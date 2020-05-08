@@ -13,6 +13,7 @@ class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      raining: true
 
     };
     // this.readMore = this.readMore.bind(this);
@@ -32,16 +33,26 @@ class Portfolio extends React.Component {
       this.props.fetchBatch5D(data))
   }
 
+  makeItRain() {
+    if (!this.state.raining) {
+    this.setState({raining: true})
+    } else {
+      this.setState({raining: false})
+    }
+  }
+
 
   render() {
-
+debugger
     return(
-      this.props.status === 'empty?'? <div> no stonks yet</div> :
-      <div>stonks
+
+      <div>
+        <div className="stonks">
+          stonks
+
+
+        </div>
           <GraphContainer />
-
-
-
       </div>
 
 

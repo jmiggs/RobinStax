@@ -17,8 +17,7 @@ class Quicklook extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    debugger
+
     const asset = { ...this.state };
     this.props.processForm(asset);
     location.href = '/'

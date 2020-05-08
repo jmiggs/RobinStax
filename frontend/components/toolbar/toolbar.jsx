@@ -23,7 +23,7 @@ class Toolbar extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+ 
     e.preventDefault()
     location.href = `#/asset/${this.state.searchVal}`
   }
@@ -41,6 +41,7 @@ class Toolbar extends React.Component {
   render() {
  
     return (
+      
       <div className="toolbar-nav-container">
         <div className="header-group">
           <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x"   />

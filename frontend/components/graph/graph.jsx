@@ -173,7 +173,7 @@ class Graph extends React.Component {
 
   render() {
 
-      debugger
+ 
       return (
 
         this.props.data === 'nostocks'? <div>no stonks yet</div> :

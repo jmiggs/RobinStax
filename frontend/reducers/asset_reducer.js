@@ -3,7 +3,7 @@ import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const assetReducer = (state = {}, action) => {
   // need to flatten stateshape
-  debugger
+
   switch (action.type) {
     case RECEIVE_BATCH:
       return Object.assign({}, state, { portfolio: action.data });

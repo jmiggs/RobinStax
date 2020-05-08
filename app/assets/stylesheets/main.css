@@ -63,6 +63,7 @@
 
 .header-button > * {
   right: 20px;
+  flex-basis: auto;
 }
 
 .header-group {
@@ -107,15 +108,13 @@ input.searchbar  {
 
 }
 
-
-
 .header-button:hover {
   cursor: pointer;
 }
 
 .greeting {
   font-weight: 600;
-  flex-basis: 70px;
+  flex-basis: 100px;
   font-size: large;
 }
 

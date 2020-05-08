@@ -11,7 +11,8 @@ class Main extends React.Component {
     super(props);
     this.state = {
       currentUser: this.props.currentUser,
-      initStat: this.props.initStat
+      initStat: this.props.initStat,
+      raining: true
     }
   }
 
@@ -19,10 +20,7 @@ class Main extends React.Component {
   /// for initiation
   componentDidMount() {
 
-    
   };
-
-
 
   render() {
 

@@ -1,4 +1,6 @@
 const path = require('path');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
 
 module.exports = {
   context: __dirname,
@@ -7,6 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
   },
+  // plugins: [
+  //   new BundleAnalyzerPlugin()
+  // ],
   resolve: {
     extensions: ['.js', '.jsx', '*']
   },
