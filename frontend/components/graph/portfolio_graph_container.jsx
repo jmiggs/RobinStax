@@ -43,8 +43,7 @@ const dataFiller = (data, currTab) => {
           movingTotal += sum / parsedArr.length;
         }
 
-        console.log(batchAvg)
-        // console.log(batchAvg)
+
         return batchAvg
     case '3M':
     case '1Y':

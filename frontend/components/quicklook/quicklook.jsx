@@ -30,11 +30,6 @@ class Quicklook extends React.Component {
   }
    
 
-
-  // preventText(e) {
-  //   console.log(e.currentTarget)
-  // }
-
   render() {
 
     if (!this.props.data) return null;

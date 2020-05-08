@@ -238,14 +238,6 @@ export const ThunkFetchBatch5Y = (data, tab) => (dispatch) => {
 
 
 
-// for testing
-// export const TestThunk = (sym, tab) => (dispatch) => {
-//   return (
-//   IEXutil.fetch1Y(sym).then(data => console.log(data),
-//     err => (dispatch(receiveErrors(err.responseJSON))),
-//   )
-//   )
-// };
 
 // will implement this later. this is for initial render of asst view
 
