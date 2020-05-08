@@ -208,7 +208,7 @@ class Graph extends React.Component {
                 <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
                 <XAxis axisLine={{ stroke: 'white' }} tick={false} />
                 <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
-                <Line connectNulls stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
+                <Line connectNulls strokeWidth="3px" stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
 
                 {/* saved options for LineGraph  */}
                 {/* content={this.showTooltipData.bind(this)} */}

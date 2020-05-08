@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
       errors: props.errors,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoType =  this.handleDemoType.bind(this);
   }
 
   componentWillUnmount() {
@@ -31,16 +32,28 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
+  handleDemoType() {
+    this.setState({
+      username: 'aightson',
+      password: '123456',
+    })
+  }
+
   handleDemo(e) {
     e.preventDefault();
     this.setState({
       username: 'aightson',
       password: '123456',
-    });
+    })   
+     setTimeout(() => {
+       this.props.processForm( { ...this.state } )
+     }, 300 );
+  
   }
 
   renderErrors() {
-
+    debugger
+    if (!this.props.errors) return null;
     return (
       <ul className="ul-hold">
         {this.props.errors.map((error, i) => (
@@ -57,6 +70,7 @@ class SessionForm extends React.Component {
 
 
   render() {
+   
     return (
       <div className="flex-container">
         <div id="background">

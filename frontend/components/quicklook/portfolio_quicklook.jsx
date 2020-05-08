@@ -31,6 +31,7 @@ class Quicklook extends React.Component {
         </div>
         <div>
           {Object.keys(assets).map((sym) =>
+          <Link to={`/asset/${sym}`}>
             <div className="stocks">
               <div className="stocks1">
                 <div className="sym">{sym}</div>
@@ -45,6 +46,7 @@ class Quicklook extends React.Component {
               </div>
               </div>
             </div>
+          </Link>
           )}
         </div>
         <div className="lists-header">

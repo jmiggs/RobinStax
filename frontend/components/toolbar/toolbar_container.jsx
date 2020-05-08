@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Toolbar from './toolbar';
 import { logout } from '../../actions/session_actions'
 
-const mapStateToProps = ({ session, entities: { users } }) => ({
-  currentUser: users[session.id],
+const mapStateToProps = (state) => ({
+  currentUser: state.entities.users[state.session.id]
 
 });
 

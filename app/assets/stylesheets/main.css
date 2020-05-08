@@ -9,7 +9,7 @@
 }
 
 .toolbar-nav-container {
-  height: 50px;
+  height: 57px;
   position: fixed;
   width: 100%;
   overflow: hidden;
@@ -18,34 +18,96 @@
   z-index: 3;
   box-sizing: border-box;
   align-content: center;
-  flex-direction: row
 }
 
 .links-container {
   align-items: center;
+  justify-self: flex-end;
+  width: 500px;
   display: flex;
-  float: right;
-  padding-right: 40px;
-  padding-top: 25px;
-  font: 300;
-
+  padding-right: 20px;
+  padding-left: 100px;
+  padding-top: 10px;
+  flex-basis: 600px;
+  min-width: 400px;
 }
 
 .links-container > * {
+  flex: 1;
+}
 
+
+.icon {
+  padding-top: 15px;
+  padding-left: 35px;
+  transition: ease .5px;
+  justify-content: center;
+  padding-right: 60px;
+
+}
+
+.icon:hover {
+  color: rgb(119, 163, 186);
+  transition: ease .5px;
 }
 
 .header-button  {
-  background-color: transparent;
+  background-color: rgb(14, 136, 183);
   border: none;
   font-weight: bolder;
+  right: 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  color: rgb(190, 231, 248);
 }
 
 .header-button > * {
-  font-family: 'Quicksand', sans-serif;
-  font-size: small;
-  font-weight: bolder;
+  right: 20px;
 }
+
+.header-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar-container {
+  flex-basis: 450px;
+  height: 30px;
+  display: flex;
+  border: 1px solid rgba(204, 204, 204, 0.46);
+  border-radius: 7px;
+  margin-right: 100px;
+  margin-top: 15px;
+  transition: ease .2s;
+
+}
+
+.search-bar-container:hover {
+  box-shadow: 5px 5px 5px 0px #E8E8E8, -5px 5px 5px 0px #E8E8E8;
+  transition: ease .2s;
+}
+
+.search-icon {
+  padding-top: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-right: 5px;
+  padding-left: 20px;
+  color: rgba(58, 58, 58, 0.51);
+
+}
+
+
+
+input.searchbar  {
+  width: 100%;
+  height: 28px;
+  border: none;
+
+}
+
+
 
 .header-button:hover {
   cursor: pointer;
@@ -53,7 +115,7 @@
 
 .greeting {
   font-weight: 600;
-  padding-right: 20px;
+  flex-basis: 70px;
   font-size: large;
 }
 
@@ -66,8 +128,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-
-
 }
 
 .content-container {
