@@ -1,0 +1,29 @@
+.news {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.news-source {
+  font-weight: 800;
+}
+
+.news-info-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.news-img {
+  border-radius: 5px;
+}
+
+.news-title {
+  max-width: 525px;
+}
+
+.news-container {
+  width: 750px;
+}
+
+.news-headertext {
+  font-size: 1.3em;
+  font-weight: 700;
+}

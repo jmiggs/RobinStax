@@ -28,12 +28,11 @@ const dataFiller = (data, currTab) => {
         let movingTotal = 0;
 
         for (let j = 0; j < parsedArr[0].length; j++) {
-         
           let sum = 0;
           for ( let i = 0; i < parsedArr.length; i++){
             sum += parsedArr[i][j].close;
             if (i === parsedArr.length - 1) {
-              if (j === 0 ) {
+              if (j === 0) {
                 batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum / parsedArr.length })
               } else {
                 batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: movingTotal / batchAvg.length + 1 })

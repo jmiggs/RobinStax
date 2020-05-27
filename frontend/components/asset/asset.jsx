@@ -39,7 +39,7 @@ class Asset extends React.Component {
       this.props.fetch5D(this.props.symbol);
       this.props.fetchInfo(this.props.symbol)
       // this.props.fetchEarnings(this.props.symbol)
-      this.props.fetchNews(this.props.symbol)
+      // this.props.fetchNews(this.props.symbol)
       this.tickRef.current.updateYticks()
     }
   } 
@@ -157,7 +157,6 @@ class Asset extends React.Component {
                       <div className="data-key">Market Cap:</div> 
                       <div>${this.MoneyFormat(data.marketCap)}</div>
                     </div>
-
                     <div>
                       <div className="data-key">52-Week Hi:</div> 
                       <div>${data.week52High}</div>

@@ -1,18 +1,19 @@
 import * as IEXutil from '../util/iex_util.jsx';
-import * as assetUtil from '../util/asset_util'
+import * as assetUtil from '../util/asset_util';
 
 
 export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 export const RECEIVE_ERRORS = 'RECEIVE_SESSION_ERRORS';
-export const RECEIVE_STOCKs = ''
-export const RECEIVE_DATA = 'RECEIVE_DATA' 
-export const RECEIVE_QUOTE = 'RECEIVE_QUOTE' 
-export const RECEIVE_INFO = 'RECEIVE_INFO' 
-export const RECEIVE_NEWS = 'RECEIVE_NEWS' 
-export const RECEIVE_EARNINGS = 'RECEIVE_EARNINGS'
-export const UPDATE_INIT_STAT = 'UPDATE_INIT_STAT'
-export const RECEIVE_BATCH = 'RECEIVE_BATCH'
-export const RECEIVE_EMPTY = 'RECEIVE_EMPTY'
+export const RECEIVE_STOCKs = '';
+export const RECEIVE_DATA = 'RECEIVE_DATA';
+export const RECEIVE_QUOTE = 'RECEIVE_QUOTE';
+export const RECEIVE_INFO = 'RECEIVE_INFO';
+export const RECEIVE_NEWS = 'RECEIVE_NEWS'; 
+export const RECEIVE_EARNINGS = 'RECEIVE_EARNINGS';
+export const UPDATE_INIT_STAT = 'UPDATE_INIT_STAT';
+export const RECEIVE_BATCH = 'RECEIVE_BATCH';
+export const RECEIVE_EMPTY = 'RECEIVE_EMPTY';
+export const RECEIVE_ALL_NEWS = 'RECEIVE_ALL_NEWS';
 
 // create APIutil AJAX request
 
@@ -80,8 +81,12 @@ export const receiveEmpty = (data) => {
   })
 }
 
-
-
+const receiveAllNews = (data) => {
+  return({
+    type: RECEIVE_ALL_NEWS,
+    data: data
+  })
+}
 
 
 export const ThunkFetch5D = (sym, tab) => (dispatch) => {
@@ -175,17 +180,17 @@ export const fetchBatch5D = (data) => (dispatch) => {
   )
 }
 
-// export const ThunkFetchSTBatch = (data) => (dispatch) => {
- 
-//   assetUtil.fetchSTBatch(data).then(data => (dispatch(receiveBatch(data))),
-//     err => (dispatch(receiveErrors(err.responseJSON))),
-//     )
-// }
+export const fetchAllNews = () => (dispatch) => {
 
-//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
-//// THIS IS FOR PORTFOLIO GRAPH, TAB CHAN
-//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
-//// THIS IS FOR PORTFOLIO GRAPH, TAB CHANGE
+  return(
+    IEXutil.fetchAllNews()
+      .then(data =>
+        (dispatch(receiveAllNews(data))),
+        err => (dispatch(receiveErrors(err.responseJSON))),
+      )
+  )
+
+}
 
 export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
   return (
@@ -196,7 +201,6 @@ export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
 };
 
 export const ThunkFetchBatch1D = (data, tab) => (dispatch) => {
-
   return (
   assetUtil.fetch1DBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),

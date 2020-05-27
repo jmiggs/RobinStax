@@ -8,51 +8,40 @@
 
 import React from 'react';
 import GraphContainer from '../graph/portfolio_graph_container'
+import News from './news'
 
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       raining: true
-
     };
-    // this.readMore = this.readMore.bind(this);
+
   }
 
   componentDidUpdate() {
-
-    this.props.fetchUserStocks(this.props.currentUser).then(data =>
-      this.props.fetchBatch5D(data))
-    }
+    this.props.fetchUserStocks(this.props.currentUser)
+      .then(data =>
+        this.props.fetchBatch5D(data))
+  }
 
   componentDidMount() {
-
-    // this.props.fetchAll()
-
-    this.props.fetchUserStocks(this.props.currentUser).then(data =>
-      this.props.fetchBatch5D(data))
+    this.props.fetchUserStocks(this.props.currentUser)
+      .then(data =>
+        this.props.fetchBatch5D(data));
+    this.props.fetchAllNews();
   }
-
-  makeItRain() {
-    if (!this.state.raining) {
-    this.setState({raining: true})
-    } else {
-      this.setState({raining: false})
-    }
-  }
-
 
   render() {
-debugger
+    if (!this.props.news) return null;
     return(
-
       <div>
-        <div className="stonks">
-          stonks
-
-
+        <GraphContainer />
+        <div className="news">
+          <div className="news-headertext">News</div>
+          <News news={this.props.news} />
         </div>
-          <GraphContainer />
+
       </div>
 
 

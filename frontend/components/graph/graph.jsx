@@ -157,10 +157,6 @@ class Graph extends React.Component {
     this.props.fetchBatch5Y(this.props.assets, tab)
   }
 
-
- 
- 
-
   // all data restructuring should occur at the asset_container.jsx; by the time it 
   // hits the return of the render
   // the data shold be shaped like so:
@@ -172,8 +168,6 @@ class Graph extends React.Component {
   // ]
 
   render() {
-
- 
       return (
 
         this.props.data === 'nostocks'? <div>no stonks yet</div> :
@@ -188,18 +182,16 @@ class Graph extends React.Component {
         </div>
         </div>
         :
-
-      
-        <div>
-         
+        <div> 
           <div>
-           <Counter   ref={this.refCounter} 
-                      data={this.props.data.slice(-1).pop()} 
-                      first={this.props.data[0]}
-                      renderType={this.props.renderType} />
+           <Counter  
+            ref={this.refCounter} 
+            data={this.props.data.slice(-1).pop()} 
+            first={this.props.data[0]}
+            renderType={this.props.renderType} 
+            />
 
             <div className="linechart-container">
-              
               <LineChart
                 onMouseLeave={(e) => this.handleMouseLeave(e)}
                 width={750}
@@ -209,16 +201,35 @@ class Graph extends React.Component {
                   top: 5, right: 30, left: 0, bottom: 5,
                 }}
               >
-                <YAxis domain={["dataMin", "dataMax"]} axisLine={{ stroke: 'white' }} tick={false} hide={true} />
-                <XAxis axisLine={{ stroke: 'white' }} tick={false} />
-                <Tooltip content={<CustomTooltip />} position={{y:-30}} isAnimationActive={false}  />
-                <Line connectNulls strokeWidth="3px" stroke="#0CABDA" type="monotone" dataKey="price" domain={["dataMin", "dataMax"]} dot={false} activeDot={this.renderCounter.bind(this)} />
-
+              <YAxis 
+                domain={["dataMin", "dataMax"]} 
+                axisLine={{ stroke: 'white' }} 
+                tick={false} 
+                hide={true} 
+              />
+              <XAxis 
+                axisLine={{ stroke: 'white' }} 
+                tick={false} 
+              />
+              <Tooltip 
+                content={<CustomTooltip />} 
+                position={{y:-30}} 
+                isAnimationActive={false}  
+              />
+              <Line 
+                connectNulls 
+                strokeWidth="3px" 
+                stroke="#0CABDA" 
+                type="monotone" 
+                dataKey="price" 
+                domain={["dataMin", "dataMax"]} 
+                dot={false} 
+                activeDot={this.renderCounter.bind(this)} 
+              />
                 {/* saved options for LineGraph  */}
                 {/* content={this.showTooltipData.bind(this)} */}
                 {/* Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
                         this.props.cache[`${this.props.symbol}${this.state.tab}`] :  */}
-
               </LineChart>
               
             </div>
@@ -243,8 +254,6 @@ class Graph extends React.Component {
             <button onClick={(e) => this.fetch5Y(e, '5Y') }> <div className="tab-button"> 5Y </div> </button>
           </div>
           }
-
-
         </div>
       );
   }

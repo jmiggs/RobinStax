@@ -12,8 +12,10 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script type="text/javascript">
-        window.iexkkaccess = "<%= Rails.application.credentials.iex[:api_key] %>"
+      window.iexkkaccess = "<%= Rails.application.credentials.iex[:api_key] %>"
+      window.newskkaccess = "8301919d1f424b84ae99257ab31a6067"
     </script>
+ 
   </head>
 
   <body>

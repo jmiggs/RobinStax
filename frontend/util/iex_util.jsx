@@ -62,10 +62,19 @@ export const fetchInfo = (sym) => (
   })
 )
 
+// used for specific news on a given stock
 export const fetchNews = (sym) => (
   $.ajax({
     method: 'GET',
     url: `https://sandbox.iexapis.com/stable/stock/${sym}/news?token=${window.iexkkaccess}`,
+  })
+)
+
+// used to get news across stock market
+export const fetchAllNews = () => (
+  $.ajax({
+    method: 'GET',
+    url: `https://newsapi.org/v2/top-headlines?country=US&category=business&apiKey=${window.newskkaccess}`,
   })
 )
 
