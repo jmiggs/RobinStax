@@ -29,7 +29,10 @@ class Quicklook extends React.Component {
           <Link to={`/asset/${sym}`}>
             <div className="stocks">
               <div className="stocks1">
-                <div className="sym">{sym}</div>
+                <div className="left-side-numbers">
+                  <div className="sym">{sym}</div>
+                  <div>{this.props.numShares[sym]} Shares</div>
+                </div>
                 <div className="right-side-numbers">
                   <div className="latest-price">${this.props.assets[sym][Object.keys(assets).length - 1].close}</div>
                   <div className={

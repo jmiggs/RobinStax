@@ -49,6 +49,7 @@ const mapStateToProps = (state, symbol) => {
   currentUser: state.entities.users[state.session.id],
   renderType: 'Portfolio',
   assets: !state.entities.assets.portfolio? null : dataFiller(state.entities.assets.portfolio, '5D'),
+  numShares: state.entities.assets.numShares
   })
 };
 
