@@ -7,6 +7,7 @@ import { fetchBatch5D, fetchAllNews } from '../../actions/asset_actions'
 import { fetchAll } from '../../util/iex_util';
 
 
+
 const mapStateToProps = (state) => ({
   currentUser: state.session.id,
   status: state.entities.assets.emptystatus, 

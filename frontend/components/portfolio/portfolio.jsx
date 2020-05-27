@@ -22,7 +22,9 @@ class Portfolio extends React.Component {
   componentDidUpdate() {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data =>
-        this.props.fetchBatch5D(data))
+        this.props.fetchBatch5D(data));
+    // this.props.fetchAllNews();
+    // this.props.fetchTransactions();
   }
 
   componentDidMount() {
@@ -30,6 +32,7 @@ class Portfolio extends React.Component {
       .then(data =>
         this.props.fetchBatch5D(data));
     this.props.fetchAllNews();
+    
   }
 
   render() {

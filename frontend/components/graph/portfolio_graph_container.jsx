@@ -9,7 +9,7 @@ import Graph from './graph'
 
 
 
-const dataFiller = (data, currTab) => {
+const movingAvg = (data, currTab) => {
 
 
   if (!data.portfolio) return null;
@@ -41,8 +41,6 @@ const dataFiller = (data, currTab) => {
           }
           movingTotal += sum / parsedArr.length;
         }
-
-
         return batchAvg
     case '3M':
     case '1Y':
@@ -67,7 +65,7 @@ const mapStateToProps = (state, symbol) => {
   return({
   currentUser: state.entities.users[state.session.id],
   renderType: 'Portfolio',
-  data: dataFiller(state.entities.assets, !state.data.currTab ? '5D' : state.data.currTab ),
+  data: movingAvg(state.entities.assets, !state.data.currTab ? '5D' : state.data.currTab ),
   assets: !state.entities.assets.portfolio? '' : Object.keys(state.entities.assets.portfolio)
 
   // data: //insert some data formatter heere

@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { fetchStockQuote, receiveStock } from './util/iex_util'
 import { TestThunk } from './actions/asset_actions';
+import { fetchTransactions } from './util/transaction_util'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchTransactions = fetchTransactions;
 
 
   // window.receiveStock = IEXactionFetch.receiveStock // action 

@@ -173,6 +173,7 @@ export const updateInitStatus = () => (dispatch) => {
 
 /// PORTFOLIO INITIAL LOAD
 export const fetchBatch5D = (data) => (dispatch) => {
+
   return (
   assetUtil.fetchBatch5D(data).then(data => (dispatch(receiveBatch(data))),
     err => (dispatch(receiveErrors(err.responseJSON))),
@@ -193,6 +194,7 @@ export const fetchAllNews = () => (dispatch) => {
 }
 
 export const ThunkFetchBatch5D = (data, tab) => (dispatch) => {
+
   return (
   assetUtil.fetch5DBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),

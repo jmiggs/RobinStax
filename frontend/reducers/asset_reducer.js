@@ -1,4 +1,5 @@
 import { RECEIVE_BATCH, RECEIVE_EMPTY, RECEIVE_ALL_NEWS } from '../actions/asset_actions';
+import { RECEIVE_TRANSACTIONS } from '../actions/transactions_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const assetReducer = (state = {}, action) => {
@@ -13,6 +14,8 @@ const assetReducer = (state = {}, action) => {
       return Object.assign({}, state, { emptystatus: action.data });
     case RECEIVE_ALL_NEWS:
       return Object.assign({}, state, { news: action.data.articles });
+    case RECEIVE_TRANSACTIONS:
+      return Object.assign({}, state, { numShares: action.data });
     default:
       return state;
   }

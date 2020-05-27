@@ -12,6 +12,7 @@ class Api::TransactionsController < ApplicationController
     ## add errors here
     @transaction.user_id = current_user.id
     @transaction.asset_id = @asset.id
+    @transaction.symbol = params[:data][:symbol].upcase
 
     if params[:data][:amount] == nil
       render json: [`youre not buying anything`], status: 419
@@ -25,8 +26,32 @@ class Api::TransactionsController < ApplicationController
     @transaction.totalcost = totalcost
     @transaction.save
 
-    render('api/transactions/show')
+    # render('api/transactions/show')
   end
+
+  def show 
+    user = User.find(current_user.id)
+
+    buys = user.transactions.where(transtype: 'buy')
+    sells = user.transactions.where(transtype: 'sell')
+
+    num_shares = {}
+
+    buys.each do |buy|
+      num_shares[buy.symbol] = buy.amount
+    end
+
+    sells.each do |sell|
+      if num_shares[sell.symbol]
+        num_shares[sell.symbol] -= sell.amount
+      end
+    end
+
+    @num_shares = num_shares
+
+    render json: @num_shares
+  end
+
 
 
 end

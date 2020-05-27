@@ -6,6 +6,7 @@ import QuickLook from './portfolio_quicklook'
 import { ThunkFetchQuote, ThunkFetch5D, ThunkFetchInfo, ThunkFetchNews, ThunkFetchEarnings } from '../../actions/asset_actions'
 import { fetch5D } from '../../util/iex_util';
 import { postTransaction } from '../../actions/transactions_actions'
+import { fetchTransactions } from '../../actions/transactions_actions';
 
 const dataFiller = (data, currTab) => {
 
@@ -48,14 +49,13 @@ const mapStateToProps = (state, symbol) => {
   currentUser: state.entities.users[state.session.id],
   renderType: 'Portfolio',
   assets: !state.entities.assets.portfolio? null : dataFiller(state.entities.assets.portfolio, '5D'),
-
-  }
-  )
+  })
 };
 
 //create fetchStock thunk action and action creator
 const mapDispatchToProps = (dispatch) => ({
-  processForm: (data) => dispatch(postTransaction(data))
+  processForm: (data) => dispatch(postTransaction(data)),
+  fetchTransactions: () => dispatch(fetchTransactions())
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),

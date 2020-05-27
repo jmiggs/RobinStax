@@ -26447,13 +26447,3 @@ stocks = [
   stocks.each do |stock|
     Asset.where(stock).first_or_create
   end
-  
-  
-  @user = User.find_by(username: 'brostocksbro')
-  
-  # if !@user
-  #   @user = User.create!(username:'brostocksbro', password: 'stonks123')
-  # end
-  
-  Transaction.create!(user_id: @user.id, asset_id: 1, amount: 3, transtype: 'buy', cost: 10, totalcost: 20 )
-

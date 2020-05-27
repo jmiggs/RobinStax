@@ -5,3 +5,10 @@ export const postTransaction = (data) => (
     data: { data }
   })
 );
+
+export const fetchTransactions = () => (
+  $.ajax({
+    method: 'Get',
+    url: `api/transactions/1`
+  })
+)

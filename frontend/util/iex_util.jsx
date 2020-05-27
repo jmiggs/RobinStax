@@ -102,8 +102,7 @@ export const postAll = (data) => (
   $.ajax({
     method: 'Post',
     url: `api/assets`
-  }
-  )
+  })
 );
 
 
