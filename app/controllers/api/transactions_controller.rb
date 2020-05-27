@@ -38,7 +38,11 @@ class Api::TransactionsController < ApplicationController
     num_shares = {}
 
     buys.each do |buy|
-      num_shares[buy.symbol] = buy.amount
+      if num_shares[buy.symbol]
+        num_shares[buy.symbol] += buy.amount
+      else
+        num_shares[buy.symbol] = buy.amount
+      end
     end
 
     sells.each do |sell|

@@ -34,7 +34,7 @@
 .sym {
   display: flex;
   align-items: center;
-  font-weight: 400;
+  font-weight: 900;
   font-size: small;
 }
 
@@ -84,5 +84,9 @@
 .plus:hover {
   color: rgba(2, 195, 28, 0.75);
   transition: ease .5s;
+}
+
+.num-shares {
+  font-size: .75em;
 }
 

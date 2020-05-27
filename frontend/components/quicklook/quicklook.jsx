@@ -10,22 +10,45 @@ class Quicklook extends React.Component {
       cost: '',
       transtype: 'buy',
       symbol: ''
-    }
+    };
+    this.transType = 'buy';
     // this.preventText = this.preventText.bind(this)
-    this.update = this.update.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchTransactions();
   }
 
   handleSubmit(e) {
-
     const asset = { ...this.state };
     this.props.processForm(asset);
     location.href = '/'
-
   }
 
   update(e, field) {
-    this.setState({ [field]: e.currentTarget.value, cost: this.props.data.latestPrice, symbol: this.props.data.symbol})
+    this.setState({ 
+      [field]: e.currentTarget.value,
+      cost: this.props.data.latestPrice,
+      symbol: this.props.data.symbol
+    })
+  }
+
+  switchToBuy() {
+    if (this.state.transtype === 'sell') {
+      this.setState({
+        transtype: 'buy'
+      })
+    }
+  }
+
+  switchToSell() {
+    if (this.state.transtype === 'buy') {
+      this.setState({
+        transtype: 'sell'
+      })
+    }
   }
    
 
@@ -37,13 +60,20 @@ class Quicklook extends React.Component {
 
     return(
       <div className="ql">
-
         <div className="transaction-links-container">
           <div className="trans-links1">
-            <div>Buy {this.props.data.symbol}</div>
+            <button 
+              className={this.state.transtype === 'buy'? "active-tab":"buy-sell"} 
+              onClick={() => this.switchToBuy()}>
+              Buy {this.props.data.symbol}
+            </button>
+            <button 
+              className={this.state.transtype === 'sell'? "active-tab":"buy-sell"}  
+              onClick={() => this.switchToSell()}>
+                Sell {this.props.data.symbol}
+            </button>
           </div>
           <form className="shares-form-box" onSubmit={this.handleSubmit}>
-
             <div className="calc-container">
               <div className="trans-links2"> 
                 <div>Shares</div>
@@ -54,25 +84,30 @@ class Quicklook extends React.Component {
                     onChange={(e) => this.update(e,'amount')}
                     className="shares-input"
                     placeholder={this.state.amount}
-
                   /> 
                 </div>
               </div>
               <div className="trans-links2">
-                
                   <div>Market Price</div>
                   <div>${latestPrice.toFixed(2)}</div>
-            
               </div>
               <div className="trans-links3">
-                <div>Estimated Cost</div>
+                <div>Estimated {this.state.transtype === 'buy'? 'Cost' : 'Credit'} </div>
                 <div>${(estCost.toLocaleString('en'))}</div>
               </div>
             </div>
-
-
+            <div className="shares-avail">
+              {this.state.transtype === 'sell'? 
+                <div>
+                  Shares Available: {this.props.numShares[this.props.data.symbol]}
+                </div>
+                :
+                <div>
+                  Buying Power Available
+                </div>
+              }
+            </div>
             <div className="buy-button-container">
-              
               <button type="submit" className="buy-button">Review Order</button>
             </div>
           </form>
@@ -82,11 +117,9 @@ class Quicklook extends React.Component {
         <div className="wl-button-container">
           <button className="wl-button">Add to WatchList</button>
         </div>
-
       </div>
-      )
+    )
   }
-  
 };
 
 

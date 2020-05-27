@@ -13,7 +13,6 @@ const receiveTransaction = (data) => {
 };
 
 const receiveTransactions = (data) => {
-  debugger
   return({
     type: RECEIVE_TRANSACTIONS,
     data,
