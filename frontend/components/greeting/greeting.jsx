@@ -21,7 +21,6 @@ class Greeting extends React.Component {
 
   render() {
     if (!this.props.data) return null
-
     return(
         <div className="spinner"></div>
     )

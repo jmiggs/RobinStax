@@ -11,6 +11,7 @@ export default function News(props) {
                   url={newsItem.url}
                   img={newsItem.urlToImage}
                   date={newsItem.publishedAt}
+                  key={newsItem.publishedAt}
         />
       )}
     </div>

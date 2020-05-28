@@ -16,14 +16,15 @@ import MainContainer from './main/main_container';
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from './session/login_form_container.jsx';
 import SignupFormContainer from './session/signup_form_container.jsx';
+import WatchlistContainer from './main/watchlist_main_container';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes} from '@fortawesome/free-solid-svg-icons'
 
 
 //change main route later once finished
 //currentlly the splash page is rendering greeting page,login at login should redirect to main later
-library.add(fab, faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar)
+library.add(fab, faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes)
 
 const PreApp = () => (
 
@@ -33,6 +34,7 @@ const PreApp = () => (
 
     <Switch>
       <InitRoute exact path="/asset/:symbol" component={MainAssetContainer} />
+      <InitRoute exact path="/watchlist/:id" component={WatchlistContainer} />
       <InitRoute exact path="/asset/*" component={fourOFour} />
       {/* <InitRoute exact path="/main" component={MainContainer} /> */}
       <AuthRoute exact path="/login" component={LoginFormContainer} />

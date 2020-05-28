@@ -1,13 +1,11 @@
-import { connect } from 'react-redux';
-import React from 'react';
-import { Link } from 'react-router-dom';
 import Main from './main';
+import { connect } from 'react-redux';
 
 const mapStateToProps = ({ session, entities: { users } }, ownProps ) => ({
   currentUser: users[session.id],
-  renderType: 'Asset',
-  symbol: ownProps.match.params.symbol,
-  wlIndicator: false,
+  renderType: 'portfolio',
+  wlIndicator: true,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

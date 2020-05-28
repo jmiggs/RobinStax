@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
   renderType: 'portfolio',
   currentUser: state.session.id,
   data: state.data,
-  initStat: state.data.initStat
+  initStat: state.data.initStat,
+  wlIndicator: false,
 
 });
 

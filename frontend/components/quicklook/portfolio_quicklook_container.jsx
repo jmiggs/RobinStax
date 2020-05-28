@@ -7,12 +7,10 @@ import { ThunkFetchQuote, ThunkFetch5D, ThunkFetchInfo, ThunkFetchNews, ThunkFet
 import { fetch5D } from '../../util/iex_util';
 import { postTransaction } from '../../actions/transactions_actions'
 import { fetchTransactions } from '../../actions/transactions_actions';
+import { createWatchlist, fetchWatchlists } from '../../actions/watchlist_actions';
 
 const dataFiller = (data, currTab) => {
-
-
   if (!data) return null;
-
   switch (currTab) {
     case '1D':
     case '1M':
@@ -21,7 +19,6 @@ const dataFiller = (data, currTab) => {
         Object.keys(data).forEach( key =>
           parser[key] = data[key].chart
         );
-
         return parser
     case '3M':
     case '1Y':
@@ -41,22 +38,21 @@ const dataFiller = (data, currTab) => {
   }
 };
 
-
-
 const mapStateToProps = (state, symbol) => {
-
   return({
-  currentUser: state.entities.users[state.session.id],
-  renderType: 'Portfolio',
-  assets: !state.entities.assets.portfolio? null : dataFiller(state.entities.assets.portfolio, '5D'),
-  numShares: state.entities.assets.numShares
+    currentUser: state.entities.users[state.session.id],
+    renderType: 'Portfolio',
+    assets: !state.entities.assets.portfolio? null : dataFiller(state.entities.assets.portfolio, '5D'),
+    numShares: state.entities.assets.numShares,
+    wls: state.entities.watchlists.wls
   })
 };
 
 //create fetchStock thunk action and action creator
 const mapDispatchToProps = (dispatch) => ({
-  processForm: (data) => dispatch(postTransaction(data)),
-  fetchTransactions: () => dispatch(fetchTransactions())
+  processForm: (data) => dispatch(createWatchlist(data)),
+  fetchTransactions: () => dispatch(fetchTransactions()),
+  fetchWatchlists: () => dispatch(fetchWatchlists())
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),

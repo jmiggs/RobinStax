@@ -45,9 +45,8 @@ class Toolbar extends React.Component {
       <div className="toolbar-nav-container">
         <div className="header-group">
           <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x"   />
-
           <div className="search-bar-container"> 
-            <FontAwesomeIcon icon="search-dollar" className="search-icon" size="s"   />
+            <FontAwesomeIcon icon="search-dollar" className="search-icon" size="sm"   />
             <form onSubmit={(e) => this.handleSubmit(e)} className="search-bar">
             <input
                 type="text"
@@ -57,14 +56,12 @@ class Toolbar extends React.Component {
                 placeholder={'Search'}
             />
             </form>
-
           </div>
 
           <div className="links-container">
             <div className="greeting">
             Hello, {this.props.currentUser.username}!
             </div>
-
               {/* <img src={require('../../../public/logo_cash.png')} /> */}
               <Link to='/'> <div className="button-next-nav"> Portfolio </div></Link>
               <Link to='/pizza'> <div className="button-next-nav"> Get Cash </div></Link>
@@ -77,7 +74,6 @@ class Toolbar extends React.Component {
     )
 
   };
-
 };
 
 export default Toolbar;

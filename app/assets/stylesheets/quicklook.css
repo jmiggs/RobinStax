@@ -38,8 +38,8 @@ button {
   flex-direction: column;
   justify-content: center;
   font-family: 'Quicksand', sans-serif;
-  border-bottom: 2px solid rgb(11, 145, 227);
-  color: rgb(11, 145, 227)
+  border-bottom: 2px solid rgb(4, 123, 179);
+  color: rgb(4, 123, 179)
 }
 
 .calc-container  {
@@ -126,6 +126,7 @@ button {
   font-weight: 500;
 }
 
+
 .shares-input {
   width: 60px;
   height: 32px;
@@ -155,7 +156,7 @@ input.shares-input {
 }
 
 .shares-avail > div {
-  font-size: .85em;
+  font-size: .75em;
   padding-top: 20px;
   font-weight: 800;
 }

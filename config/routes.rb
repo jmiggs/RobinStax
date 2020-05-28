@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :assets, only: [:create, :show]
     resources :transactions, only: [:create, :show]
+    resources :watchlists
   end
 
   root "static#root"

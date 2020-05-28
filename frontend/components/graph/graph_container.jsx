@@ -77,17 +77,12 @@ const dataFiller = (array, currTab) => {
 
 
 const mapStateToProps = (state, symbol) => {
-
-
-  
   return({
-  currentUser: state.entities.users[state.session.id],
-  renderType: 'Asset',
-  data: dataFiller(state.data[`${symbol.symbol}${state.data.currTab}`], !state.data.currTab ? '5D' : state.data.currTab ),
-  cache: state.data,
- 
-  }
-  )
+    currentUser: state.entities.users[state.session.id],
+    renderType: 'Asset',
+    data: dataFiller(state.data[`${symbol.symbol}${state.data.currTab}`], !state.data.currTab ? '5D' : state.data.currTab ),
+    cache: state.data,
+  })
 };
 
 //create fetchStock thunk action and action creator
