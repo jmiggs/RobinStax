@@ -54,9 +54,12 @@ class Graph extends React.Component {
   componentDidUpdate() {
     if (!this.props.data) return null
 
-    var update = setTimeout(() => 
-      this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0],),
-      10000)
+
+    if (this.refCounter.current) {
+      var update = setTimeout(() => 
+        this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0]),
+        10000)
+    }
   }
 
   renderCounter(e) {
@@ -226,12 +229,7 @@ class Graph extends React.Component {
                 dot={false} 
                 activeDot={this.renderCounter.bind(this)} 
               />
-                {/* saved options for LineGraph  */}
-                {/* content={this.showTooltipData.bind(this)} */}
-                {/* Object.keys(this.props.cache).includes(`${this.props.symbol}${this.state.tab}`)? 
-                        this.props.cache[`${this.props.symbol}${this.state.tab}`] :  */}
               </LineChart>
-              
             </div>
           </div>
           

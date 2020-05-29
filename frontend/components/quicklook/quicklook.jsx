@@ -1,4 +1,5 @@
 import React from 'react';
+import AddModal from './add_modal'
 import { Link } from 'react-router-dom';
 
 
@@ -9,20 +10,29 @@ class Quicklook extends React.Component {
       amount: 0,
       cost: '',
       transtype: 'buy',
-      symbol: ''
+      symbol: '',
+      modalClass: 'modal-hide'
     };
     this.transType = 'buy';
     // this.preventText = this.preventText.bind(this)
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.modalRef = React.createRef();
   }
 
   componentDidMount() {
     this.props.fetchTransactions();
+    this.props.fetchWatchlists();
   }
 
   handleSubmit(e) {
-    const asset = { ...this.state };
+    const asset = {
+      amount: this.state.amount,
+      cost: this.state.cost,
+      transtype: this.state.transtype,
+      symbol: this.state.symbol
+    }
     this.props.processForm(asset);
     location.href = '/'
   }
@@ -35,6 +45,7 @@ class Quicklook extends React.Component {
     })
   }
 
+  
   switchToBuy() {
     if (this.state.transtype === 'sell') {
       this.setState({
@@ -50,6 +61,10 @@ class Quicklook extends React.Component {
       })
     }
   }
+
+  showModal() {
+    this.modalRef.current.showModal();
+  }
    
 
   render() {
@@ -58,6 +73,8 @@ class Quicklook extends React.Component {
       let { latestPrice } = this.props.data;
       let estCost = latestPrice * this.state.amount;
 
+
+    
     return(
       <div className="ql">
         <div className="transaction-links-container">
@@ -115,8 +132,15 @@ class Quicklook extends React.Component {
         </div>
         <div id="or-space"> Or </div>
         <div className="wl-button-container">
-          <button className="wl-button">Add to WatchList</button>
+          <button className="wl-button" onClick={() => this.showModal()}>Add to WatchList</button>
         </div>
+        <AddModal 
+          ref={this.modalRef} 
+          wls={this.props.wls} 
+          sym={this.props.data.symbol} 
+          processModalForm={this.props.processModalForm}
+          // wlsMap={wlsMap} 
+        />
       </div>
     )
   }

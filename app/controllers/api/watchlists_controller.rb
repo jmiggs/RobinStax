@@ -19,7 +19,16 @@ class Api::WatchlistsController < ApplicationController
     else
       render json: wl.errors.full_messages
     end
+  end
 
+  def show
+ 
+    @wl = Watchlist.find(params[:id])
 
+    if @wl
+      render('api/watchlists/single')
+    else
+      render json: @wl.errors.full_messages
+    end
   end
 end

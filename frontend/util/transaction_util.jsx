@@ -12,3 +12,10 @@ export const fetchTransactions = () => (
     url: `api/transactions/1`
   })
 )
+
+export const fetchTransaction = (id) => (
+  $.ajax({
+    method: 'Get',
+    url: `api/transactions/${id}`
+  })
+)

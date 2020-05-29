@@ -110,7 +110,7 @@ class Quicklook extends React.Component {
                     <FontAwesomeIcon icon="lightbulb" className="list-icon" size="lg"   />
                     {wl.name}
                   </div>
-                    <FontAwesomeIcon icon="times" className="x-icon" size="sm"   />
+                    <FontAwesomeIcon icon="times" className="x-icon" size="xs"   />
                 </div>
               </Link>
             )}

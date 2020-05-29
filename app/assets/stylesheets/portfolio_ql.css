@@ -187,6 +187,10 @@ input.create-input {
   padding-right: 20px;
 }
 
+.x-icon:hover {
+  color: rgb(210, 28, 28)
+}
+
 .list-buttons > * {
   width: 100px;
   height: 30px;

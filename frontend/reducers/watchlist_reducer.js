@@ -6,6 +6,8 @@ const watchlistReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_WATCHLISTS:
       return Object.assign({}, state, {wls: action.data})
+    case RECEIVE_WATCHLIST:
+      return Object.assign({}, state, {currWl: action.data})
     default:
       return state;
   }

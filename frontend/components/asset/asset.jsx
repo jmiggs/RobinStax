@@ -24,8 +24,8 @@ class Asset extends React.Component {
   componentDidMount() {
 
     this.props.fetchStockQuote(this.props.symbol);
-    this.props.fetchInfo(this.props.symbol)
-    this.props.fetchNews(this.props.symbol)
+    this.props.fetchInfo(this.props.symbol);
+    this.props.fetchNews(this.props.symbol);
     // this.props.fetchEarnings(this.props.symbol)
     // this.props.fetchQuote(this.props.symbol)
   }

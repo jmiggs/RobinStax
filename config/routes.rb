@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :assets, only: [:create, :show]
     resources :transactions, only: [:create, :show]
     resources :watchlists
+    resources :watchlistitems, only: [:create, :destroy]
   end
 
   root "static#root"

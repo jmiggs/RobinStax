@@ -39,3 +39,10 @@ export const fetchTransactions = () => (dispatch) => {
       err => (dispatch(receiveErrors(err.responseJSON)))
     )
 }
+export const fetchTransaction = (id) => (dispatch) => {
+  transUtil.fetchTransaction(id)
+    .then(data =>
+      (dispatch(receiveTransaction(data))),
+      err => (dispatch(receiveErrors(err.responseJSON)))
+    )
+}
