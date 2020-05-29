@@ -11,13 +11,13 @@ class Api::WatchlistsController < ApplicationController
     wl = Watchlist.new
 
     wl.user_id = current_user.id
-    wl.name = params[:data][:listName]
+    wl.name = params[:data]
 
     if wl.save
       @watchlists = Watchlist.all
       render("api/watchlists/show")
     else
-      render json: wl.errors.full_messages
+      render json: ['Name has been taken'], status: 422
     end
   end
 

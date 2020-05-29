@@ -5,7 +5,7 @@ class Api::WatchlistitemsController < ApplicationController
     all_wls = params[:wls]
     symbol = params[:sym]
 
-    errMessages = []
+    errFound = 0
 
     all_wls.keys.each do |key|
       if to_boolean(all_wls[key][:toAdd])
@@ -13,17 +13,24 @@ class Api::WatchlistitemsController < ApplicationController
         @wlitem = Watchlistitem.new
         @wlitem.ticker = symbol
         @wlitem.list_id = key.to_i
-        @wlitem.save
+
+        if @wlitem.save
+        else
+          errFound += 1
+        end
 
       end
     end
 
-    if errMessages.length > 0
-      render json: ['failure']
+    if errFound > 0
+      render json: ['Already in one of your lists']
     else
       render json: ['Succesfully added to your Watchlists']
     end
   end
+
+
+  
 
   private
   def to_boolean(str)

@@ -24,6 +24,7 @@ class Quicklook extends React.Component {
     // create redux cycle to post a list
     let { listName } = this.state;
     this.props.processForm(listName);
+    this.hideForm();
   }
 
   showForm() {

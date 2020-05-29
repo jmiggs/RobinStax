@@ -6,6 +6,7 @@ import Portfolio from '../portfolio/portfolio_container.jsx';
 import QuickLookContainer from '../quicklook/quicklook_container';
 import PortfolioQuickLook from '../quicklook/portfolio_quicklook_container';
 import WatchlistContainer from '../portfolio/watchlist_container';
+import Notifs from './notif_container';
 
 class Main extends React.Component {
   constructor(props) {
@@ -37,6 +38,9 @@ class Main extends React.Component {
             {this.props.renderType === 'portfolio'? <PortfolioQuickLook /> : <QuickLookContainer />}
             </div>
           </div>
+        </div>
+        <div>
+            <Notifs />
         </div>
       </div>
 

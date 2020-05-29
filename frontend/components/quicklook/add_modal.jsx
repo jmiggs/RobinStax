@@ -66,13 +66,14 @@ export default class AddModal extends React.Component {
         modalClass: 'modal-show'
       })
     }
+
+
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('hit modal submit')
-
     this.props.processModalForm(this.state.wls, this.props.sym);
+    this.hideModal();
   }
 
   render() {

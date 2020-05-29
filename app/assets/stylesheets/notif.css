@@ -1,0 +1,13 @@
+.notif-container {
+  position: fixed;
+  height: 40px;
+  width: 500px;
+  background-color: crimson;
+  bottom: 0;
+  margin-bottom: 10px;
+  left: 200px
+}
+
+.notif-container-hide {
+  display: none
+}
