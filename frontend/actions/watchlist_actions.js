@@ -5,6 +5,8 @@ export const RECEIVE_WATCHLIST = 'RECEIVE_WATCHLIST';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_POST_SUCCESS = 'RECEIVE_POST_SUCCESS';
 export const RECEIVE_WL_ERRORS = 'RECEIVE_WL_ERRORS';
+export const RECEIVE_WATCHLIST_ITEMS = 'RECEIVE_WATCHLIST_ITEMS';
+
 export const CLEAR = 'CLEAR';
 
 export const clear = () => {
@@ -27,6 +29,13 @@ const receiveWatchlist = (data) => {
   })
 }
 
+const receiveWlItems = (data) => {
+  return({
+    type: RECEIVE_WATCHLIST_ITEMS,
+    data,
+  })
+}
+
 const receivePostSucces = (data) => {
   return({
     type: RECEIVE_POST_SUCCESS,
@@ -42,7 +51,7 @@ const receiveErrors = (errors) => {
 }
 
 const receiveWlErrors = (status) => {
-  debugger
+
   return ({
   type: RECEIVE_WL_ERRORS,
   status,
@@ -58,7 +67,7 @@ export const createWatchlist = (data) => (dispatch) => {
 }
 
 export const fetchWatchlists = (data) => (dispatch) => {
-  console.log(data)
+
   WLutil.fetchWatchlists(data).then(data =>
     (dispatch(receiveWatchlists(data))),
     err => (dispatch(receiveErrors(err.responseJSON)))
@@ -67,16 +76,32 @@ export const fetchWatchlists = (data) => (dispatch) => {
 export const fetchWatchlist = (id) => (dispatch) => {
   WLutil.fetchWatchlist(id).then(data => {
     (dispatch(receiveWatchlist(data)));
+    WLutil.fetchWatchlistInfo(data).then(wlInfo => {
+      dispatch(receiveWlItems(wlInfo))
+    },
+      err => (dispatch(receiveErrors(err.responseJSON)))
+    )
   }, 
     err => (dispatch(receiveErrors(err.responseJSON)))
   )
 }
 
 export const postWatchlistItems = (wls, sym) => (dispatch) => {
-  console.log('hit actions')
+
   WLutil.postWatchlistItems(wls, sym).then(data => {
     (dispatch(receivePostSucces(data)))
   },
     err => (dispatch(receiveErrors(err.responseJSON)))
   )
 }
+
+export const deleteWatchlist = (id) => (dispatch) => {
+  console.log('hit actions')
+  WLutil.deleteWatchlist(id).then(data => {
+    (dispatch(receiveWatchlists(data)))
+  },
+    err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+}
+
+

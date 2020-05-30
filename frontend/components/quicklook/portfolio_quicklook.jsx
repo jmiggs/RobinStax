@@ -12,6 +12,7 @@ class Quicklook extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.deleteList = this.deleteList.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class Quicklook extends React.Component {
     this.props.processForm(listName);
     this.hideForm();
   }
+
+  // deleteList(id) {
+  //   this.props.deleteList(id);
+  // }
 
   showForm() {
     if (this.state.activeClass !== 'create-list-container-on') {
@@ -111,7 +116,9 @@ class Quicklook extends React.Component {
                     <FontAwesomeIcon icon="lightbulb" className="list-icon" size="lg"   />
                     {wl.name}
                   </div>
-                    <FontAwesomeIcon icon="times" className="x-icon" size="xs"   />
+                    {/* <button onClick={()=>this.deleteList(wl.id)} >
+                      <FontAwesomeIcon icon="times" className="x-icon" size="xs"   />
+                    </button> */}
                 </div>
               </Link>
             )}

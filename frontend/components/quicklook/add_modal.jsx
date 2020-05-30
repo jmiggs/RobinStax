@@ -14,7 +14,7 @@ export default class AddModal extends React.Component {
   componentDidMount() {
     let wlsMap = {};
 
-
+    if (!this.props.wls) return null;
     this.props.wls.map(wl => {
       wlsMap[wl.id] = {name: wl.name, toAdd: false}
     })
@@ -52,7 +52,8 @@ export default class AddModal extends React.Component {
     }
   }
 
-  hideModal() {
+  hideModal(e) {
+    e.preventDefault();
     if (this.state.modalClass === 'modal-show') {
       this.setState({
         modalClass: 'modal-hide'
@@ -73,7 +74,7 @@ export default class AddModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processModalForm(this.state.wls, this.props.sym);
-    this.hideModal();
+    this.hideModal(e);
   }
 
   render() {
@@ -83,23 +84,28 @@ export default class AddModal extends React.Component {
     return(
       <div className={this.state.modalClass}>
         <div className="add-modal-content">
-          Add {this.props.sym} to Your Lists
+          <div className="modal-header"> 
+            Add {this.props.sym} to Your Lists
+          </div>
           <form className="wl-modal-form" onSubmit={this.handleSubmit}>
             {Object.keys(wls).map( id =>
               <div className="modal-label-container" key={id}>
                 <label className="modal-labels">
                   <input
+                    className="modal-input"
                     name={id}
                     type="checkbox"
                     checked={wls[id].toAdd}
                     onChange={(e)=>this.handleChange(e)}
                   />
-                  {wls[id].name}
+                  <div className="modal-listname">{wls[id].name} </div>
                 </label>
               </div>
             )}
-            <button onClick={()=>this.hideModal()}> Cancel</button>
-            <button type="submit" onClick={(e) => this.handleSubmit(e)}> Submit </button>
+            <div className="modal-buttons">
+              <button id="modal-cancel" onClick={(e)=>this.hideModal(e)}> Cancel</button>
+              <button type="submit" onClick={(e) => this.handleSubmit(e)}> Save </button>
+            </div>
           </form>
           <div>
           </div>

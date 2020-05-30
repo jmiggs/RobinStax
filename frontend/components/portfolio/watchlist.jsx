@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Watchlist extends React.Component {
   constructor(props) {
@@ -12,10 +13,12 @@ class Watchlist extends React.Component {
   }
 
   render() {
+    if (!this.props.wl) return null;
 
     return(
       <div className="WL">
-        Watchlist
+        <FontAwesomeIcon icon="lightbulb" className="list-icon" size="4x"   />
+        {this.props.wl.name}
       </div>
     )
   }

@@ -28,7 +28,7 @@ class Notifs extends React.Component {
           {this.props.notifs.notif[0]}
         </div>
         <div>
-          <button onClick={()=> this.hideNotif()}> close </button>
+          <button className="notif-close" onClick={()=> this.hideNotif()}> X </button>
         </div>
       </div>
     )

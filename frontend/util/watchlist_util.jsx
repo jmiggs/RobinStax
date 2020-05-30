@@ -22,8 +22,18 @@ export const fetchWatchlist = (id) => (
   })
 );
 
-export const fetchWatchlistInfo = (tickers) => {
-  var url = `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=aapl,fb,tsla&types=quote&token=${window.iexkkaccess}`
+export const fetchWatchlistInfo = (wlInfo) => {
+
+  let wlItems = wlInfo.wlItems;
+  let toFetch = [];
+
+  for (let i = 0; i < wlItems.length; i++) {
+    if (!toFetch.includes(wlItems[i].ticker)) {
+      toFetch.push(wlItems[i].ticker)
+    }
+  }
+
+  var url = `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${toFetch.join()}&types=quote&token=${window.iexkkaccess}`
   return(
   $.ajax({
     method: 'GET',
@@ -38,5 +48,14 @@ export const postWatchlistItems = (wls, sym) => {
       method: 'Post',
       url: `api/watchlistitems`,
       data: { wls, sym }
+  }))
+}
+
+export const deleteWatchlist = (id) => {
+
+  return(
+    $.ajax({
+      method: 'Delete',
+      url: `api/watchlistitems/${id}`,
   }))
 }

@@ -5,12 +5,11 @@ import { fetchWatchlist } from '../../actions/watchlist_actions'
 
 
 const mapStateToProps = (state) => ({
-  // wlId: ownProps.match.params.id
+  wl: state.entities.watchlists.currWl
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchWatchlist: (id) => dispatch(fetchWatchlist(id))
-
+  fetchWatchlist: (id) => dispatch(fetchWatchlist(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Watchlist);

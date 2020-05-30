@@ -1,13 +1,31 @@
 .notif-container {
   position: fixed;
-  height: 40px;
-  width: 500px;
-  background-color: crimson;
+  height: 60px;
+  width: 600px;
+  background-color: rgb(42, 39, 39);
   bottom: 0;
   margin-bottom: 10px;
-  left: 200px
+  left: 200px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .notif-container-hide {
   display: none
+}
+
+.notif-text {
+  color: white;
+  font-weight: 900;
+  padding-left: 15px;
+}
+
+.notif-close {
+  margin-right: 15px;
+  background-color: none;
+  background: none;
+  color: white;
+  font-weight: 900;
 }

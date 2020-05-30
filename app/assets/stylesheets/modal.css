@@ -18,6 +18,77 @@
 
 .add-modal-content {
   max-height: 1000px;
-  width: 350px;
-  background-color: crimson;
+  width: 320px;
+  background-color: white;
+  padding: 25px
 }
+
+.modal-buttons > button {
+  height: 50px;
+  width: 150px;
+  border-radius: 6px;
+  background-color: rgb(66, 210, 255);
+  color: white;
+  font-size: smaller;
+  font-weight: 500;
+}
+
+#modal-cancel {
+  background-color: white;
+  color: rgb(66, 210, 255);
+  border: 2px rgb(66, 210, 255) solid;
+}
+
+.modal-input {
+  height: 25px;
+  width: 25px;
+  border: 2px rgb(4, 154, 234) solid;
+  border-radius: 5px;
+}
+
+.modal-input:checked {
+  content: 'X';
+	background-color: rgb(4, 154, 234);
+	border: 2px rgb(4, 154, 234) solid;
+	color: #99a1a7;
+}
+
+.modal-input:checked:after {
+	content: 'X';
+	font-size: 14px;
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: #99a1a7;
+}
+
+
+.modal-buttons {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.modal-header {
+  font-size: 1.3em;
+  font-weight: 900;
+  padding-bottom: 10px;
+}
+
+.modal-label-container {
+  height: 50px;
+}
+
+.modal-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.modal-listname {
+  font-weight: 900;
+  padding-left: 10px;
+}
+

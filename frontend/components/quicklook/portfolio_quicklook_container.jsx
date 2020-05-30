@@ -8,6 +8,7 @@ import { fetch5D } from '../../util/iex_util';
 import { postTransaction } from '../../actions/transactions_actions'
 import { fetchTransactions } from '../../actions/transactions_actions';
 import { createWatchlist, fetchWatchlists } from '../../actions/watchlist_actions';
+import { deleteWatchlist } from '../../actions/watchlist_actions';
 
 const dataFiller = (data, currTab) => {
   if (!data) return null;
@@ -52,7 +53,8 @@ const mapStateToProps = (state, symbol) => {
 const mapDispatchToProps = (dispatch) => ({
   processForm: (data) => dispatch(createWatchlist(data)),
   fetchTransactions: () => dispatch(fetchTransactions()),
-  fetchWatchlists: () => dispatch(fetchWatchlists())
+  fetchWatchlists: () => dispatch(fetchWatchlists()),
+  deleteList: (id) => dispatch(deleteWatchlist(id))
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),
