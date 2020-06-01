@@ -178,11 +178,66 @@ Finally, the information for each of the companies in ```wlItems``` is saved to 
 
 ## Highlights
 
-One of the funnest things to work on for RobinStax was implementing the graphs on a user's portfolio page and the companies' stock pages. The Graph is from Recharts library (powered by D3), and so learning how to use the library took some time to research and experiment. 
+Working on this project had its joys and thrills, but the most interesting part of this project was undoubtedly having to explore the capabilities of Recharts and React components to produce the line charts on RobinStax. One particular aspect of the line chart that showcase these capabilities is this feature where the displayed price, delta, and percent delta updates as the user hovers across the line chart, and reverts back to the latest information upon the cursor leaving the graph:
 
-*talk about chart code here and updating the counter. talk about Refs
+![alt text](https://im2.ezgif.com/tmp/ezgif-2-ce9df5d3a3be.gif)
 
+### The Line and the Counter
 
+To implement this, a combination of interesting React methods and specific Recharts properties were leveraged. The LineChart is defined in a parent Graph Component As previously noted, the LineChart itself is a React componenet imported from the Recharts library, along with other components that act as supplementary elements to produce the properties of the LineChart. For example, if a LineChart needs to display an x-axis, then a specific XAxis component from the Recharts library is used. *see Recharts section above for LineChartstructure*
 
+Evidently, the **Line** component of a LineChart is used to display the blue line that represents the time-series data we see on the graph. This Line component has a built-in property called `activeDot`, which carries a payload of information from the graph depending on where the cursor is on the Line. This payload contains the time-series data to be used. Here's a snippet of the payload when the cursor is on a single point on the Line:
 
+```
+payload:
+  date: "2020-05-22"
+  label: "09:40"
+  price: 317.772265
+```
+
+The numbers above the graph that display price, delta, and percent delta are from a custom component called **Counter**, which is also defined in the Graph parent component. It should be noted that this custom component **is not** part of the Recharts library, and is therefore not a built-in supplementary element of the LineChart. Because of this, **the issue of passing the payload from the Line's `activeDot` to the Counter arises**. 
+
+### React Refs
+
+Because the Line and the Counter are unrelated through Recharts, and also don't have a parent-sibling relationship, a different (and very interesting) approach to updating the Counter with the ```activeDot```'s current payload was taken. Essentially, a custom function that takes in the payload is invoked as the `activeDot` changes, which in turn invokes another function defined in the Counter. This is made possible through React Refs, which gives the Graph Component access to invoke the Counter.
+
+First, the Ref is defined on the LineChart's parent component Graph:
+```javascript
+  this.refCounter = React.createRef();
+```
+and the Counter is issued this ref:
+
+```javascript
+<Counter  
+ ref={this.refCounter}
+ ...
+/>
+```
+
+Now, the ```this.refCounter```on the Graph has access to the Counter's methods and can be invoked from the Graph! With this, a function defined on the Graph ```renderCounter()``` can be invoked everytime the `activeDot` changes. Here's what the Line's `activeDot` and ```renderCounter()``` looks like:
+```javascript
+<Line 
+  ...
+  ...
+  activeDot={this.renderCounter.bind(this)} 
+/>
+```
+```javascript
+renderCounter(e) {
+ this.refCounter.current.updateCounter(data);
+}
+```
+As previously noted, the `activeDot` carries the current payload, and this payload is passed to `renderCounter()` as `data` upon invokation. This function invokes `updateCounter(data)`, defined on the Counter, and made accessible to the Graph component through the ref! The Counter's ```updateCounter()``` triggers a state change using the payload's information, which in turn triggers the Counter to rerender. This is the final result where we succesfully get the ```activeDot```'s current payload information to render on the Counter.
+
+```javascript
+updateCounter(data)  {
+  this.setState({
+    price: data.payload.price, 
+    delta: data.payload.price - this.state.first,
+    percentDelta: ((data.payload.price - this.state.first) / data.payload.price) * 100
+  })
+}
+```
+
+And Voila! As the ```activeDot``` changes upon mouse hover on the Line, the Counter sucessfully updates with the ```activeDot```'s current information.
 
