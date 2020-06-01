@@ -101,7 +101,7 @@ Another feature is the ability of a user to create Watchlists, where users can k
 
 ![alt text](https://im2.ezgif.com/tmp/ezgif-2-a96cdff42014.gif)
 
-The Watchlist component fetches the companies related to it from the database, and subsequently uses the response to fetch market information using the **IEX API**. Similar to how users own shares through a joins table noted in the previous section, a ```Watchlist``` has items through an  **ActiveRecord** association with ```Watchlistitem```. The Watchlist component sends a GET request for the corresponding Watchlist, and uses **JSON JBuilder** to send a response with that Watchlist's related information. Here's what this call looks like:
+The Watchlist component fetches the companies related to it from the database, and subsequently uses the response to fetch market information using the **IEX API**. Similar to how users own shares through a joins table noted in the previous section, a ```Watchlist``` has items through an  **ActiveRecord** association with ```Watchlistitem```. The Watchlist component sends a GET request for the corresponding Watchlist, and **JSON JBuilder** is used to send a response with that Watchlist's related information. Here's what this call looks like:
 
 **The Action Creator:**
 ``` javascript
