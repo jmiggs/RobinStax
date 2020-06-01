@@ -29,7 +29,10 @@ When a user clicks either of the Buy or Sell buttons, this will then trigger a s
 </button>
 ```
 
-After 
+After a user completes a transaction, the amount of shares is calculated; and the change will be visible in the Quick Menu on the user's portfolio. 
+![alt text](https://im2.ezgif.com/tmp/ezgif-2-a57c5c04757b.gif)
+
+
 
 
 talk about how to do it, and throw some cool code in this section
