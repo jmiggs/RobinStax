@@ -68,8 +68,7 @@ Recharts is a powerful React library containing a wide variety of useable charts
 />
 </LineChart>
 ```
-
-
+Each of the components (such as XAxis, YAxis) are all imported from the Recharts library and are used to produce the LineChart component and its visible elements.
 
 ## Features
 
@@ -92,16 +91,18 @@ When a user clicks either of the Buy or Sell buttons, this will then trigger a s
 
 After a user completes a transaction, the amount of shares is calculated; and the change will be visible in the Quick Menu on the user's portfolio. 
 
-![alt text](https://im2.ezgif.com/tmp/ezgif-2-a57c5c04757b.gif)
-
 Users 'own' shares through an ActiveRecord model ```Transaction ```
 The amount of shares a user has is then determined by summing up the amount of shares of all transactions with ```transtype
 ``` Buy, and then subtracting the sum of all transactions with ```transtype``` Sell. The result is then rendered on the Quick Menu.
 
 ### Watchlists
 
-Another feature is the ability of a user to create watchlists, where users can keep track of companies they are interested in.
-**talk about how to do it, and throw some cool code in this section
+Another feature is the ability of a user to create Watchlists, where users can keep track of companies they are interested in. From the Portfolio page, a user can create a Watchlist. Then, from a company's page, a user can either add that company to a single watchlist, or multiple at a single time. Here's a quick demo:
+
+![alt text](https://im2.ezgif.com/tmp/ezgif-2-a96cdff42014.gif)
+
+
+
 
 ## Highlights
 
