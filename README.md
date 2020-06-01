@@ -184,7 +184,7 @@ Working on this project had its joys and thrills, but the most interesting part 
 
 ### The Line and the Counter
 
-To implement this, a combination of interesting React methods and specific Recharts properties were leveraged. The LineChart is defined in a parent Graph Component As previously noted, the LineChart itself is a React componenet imported from the Recharts library, along with other components that act as supplementary elements to produce the properties of the LineChart. For example, if a LineChart needs to display an x-axis, then a specific XAxis component from the Recharts library is used. *see Recharts section above for LineChartstructure*
+To implement this, a combination of interesting React methods and specific Recharts properties were leveraged. To begin, the LineChart is defined in a parent Graph Component. As previously noted, the LineChart itself is a React componenet imported from the Recharts library, along with other components that act as supplementary elements to produce the properties of the LineChart. For example, if a LineChart needs to display an x-axis, then a specific XAxis component from the Recharts library is used. *see Recharts section above for LineChartstructure*
 
 Evidently, the **Line** component of a LineChart is used to display the blue line that represents the time-series data we see on the graph. This Line component has a built-in property called `activeDot`, which carries a payload of information from the graph depending on where the cursor is on the Line. This payload contains the time-series data to be used. Here's a snippet of the payload when the cursor is on a single point on the Line:
 
