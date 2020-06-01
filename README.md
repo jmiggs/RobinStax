@@ -14,6 +14,8 @@ Here's what a user's portfolio looks like:
 
 ## Features
 
+### Buy/Sell
+
 One of the main features of RobinStax is the ability of a user to buy and sell stock. First, a user can use the search bar to enter a company's stock symbol. Then, the company's information page is rendered, and also a Quick Menu on the right which will allow the user to buy or sell an amount of the stock.
 
 ![alt texst](https://im2.ezgif.com/tmp/ezgif-2-457bef0d2c8f.gif)
@@ -30,14 +32,16 @@ When a user clicks either of the Buy or Sell buttons, this will then trigger a s
 ```
 
 After a user completes a transaction, the amount of shares is calculated; and the change will be visible in the Quick Menu on the user's portfolio. 
+
 ![alt text](https://im2.ezgif.com/tmp/ezgif-2-a57c5c04757b.gif)
 
+Users 'own' shares through an ActiveRecord model ```Transaction ```
+The amount of shares a user has is then determined by summing up the amount of shares of all transactions with ```transtype
+``` Buy, and then subtracting the sum of all transactions with ```transtype``` Sell. The result is then rendered on the Quick Menu.
 
+### Watchlists
 
-
-talk about how to do it, and throw some cool code in this section
-
-Another cool feature is the ability of a user to create watchlists, where users can keep track of companies they are interested in.
+Another feature is the ability of a user to create watchlists, where users can keep track of companies they are interested in.
 **talk about how to do it, and throw some cool code in this section
 
 ## Highlights
