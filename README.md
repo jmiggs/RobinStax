@@ -76,7 +76,7 @@ Each of the components (such as XAxis, YAxis) are all imported from the Recharts
 
 One of the main features of RobinStax is the ability of a user to buy and sell stock. First, a user can use the search bar to enter a company's stock symbol. Then, the company's information page is rendered, and also a Quick Menu on the right which will allow the user to buy or sell an amount of the stock.
 
-![alt text](https://im2.ezgif.com/tmp/ezgif-2-457bef0d2c8f.gif)
+![alt text](https://i.imgur.com/7o6czFX.gif)
 
 The Quick Menu is a single component that allows Buy/Sell capability dynamically based on it's current state. The tranasction type is saved on the component's state as **'transtype'**, which will determine either Buy or Sell elements.
 
@@ -99,7 +99,7 @@ The amount of shares a user has is then determined by summing up the amount of s
 
 Another feature is the ability of a user to create Watchlists, where users can keep track of companies they are interested in. From the Portfolio page, a user can create a Watchlist. Then, from a company's page, a user can either add that company to a single watchlist, or multiple at a single time. Here's a quick demo:
 
-![alt text](https://im2.ezgif.com/tmp/ezgif-2-a96cdff42014.gif)
+![alt text](https://i.imgur.com/O4M2EtZ.gif)
 
 The Watchlist component fetches the companies related to it from the database, and subsequently uses the response to fetch market information using the **IEX API**. Similar to how users own shares through a joins table noted in the previous section, a ```Watchlist``` has items through an  **ActiveRecord** association with ```Watchlistitem```. The Watchlist component sends a GET request for the corresponding Watchlist, and **JSON JBuilder** is used to send a response with that Watchlist's related information. Here's what this call looks like:
 
@@ -180,7 +180,7 @@ Finally, the information for each of the companies in ```wlItems``` is saved to 
 
 Working on this project had its joys and thrills, but the most interesting part of this project was undoubtedly having to explore the capabilities of Recharts and React components to produce the line charts on RobinStax. One particular aspect of the line chart that showcase these capabilities is this feature where the displayed price, delta, and percent delta updates as the user hovers across the line chart, and reverts back to the latest information upon the cursor leaving the graph:
 
-![alt text](https://im2.ezgif.com/tmp/ezgif-2-ce9df5d3a3be.gif)
+![alt text](https://i.imgur.com/iP9qeJT.gif)
 
 ### The Line and the Counter
 
