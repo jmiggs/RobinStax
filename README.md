@@ -13,7 +13,7 @@ Here's what a user's portfolio looks like:
 
 ### IEX Cloud API
 
-IEX API offers a wide variety of possible GET requests to capture real-time market information, as well as other information about a publicly listed company. RobinStax heavily relies on IEX to produce the content shown in the Portfolio page and a Company's page. As noted above, RobinStax uses **AJAX** requests to obtain related information that it uses. Here's an example of an **AJAX** call for a stock quote:
+**IEX API** offers a wide variety of possible GET requests to capture real-time market information, as well as other information about a publicly listed company. RobinStax heavily relies on IEX to produce the content shown in the Portfolio page and a Company's page. As noted above, RobinStax uses **AJAX** requests to obtain related information that it uses. Here's an example of an **AJAX** call for a stock quote:
 
 ```javascript
 export const fetchQuote = (sym) => (
@@ -23,7 +23,53 @@ export const fetchQuote = (sym) => (
   })
 )
 ```
+The fetched information is then saved to state, made accesible to components via the ```Redux``` cycle, and used by the components that need that information.
+
 It should be noted that RobinStax is currently using IEX's Sandbox API, which is the free version used in development stages. As such, some of the information provided by the Sandbox API is marginally inaccurate, or will provide dummy data. This can be seen in the 'About' section of a Company's page.
+
+### Recharts
+
+Recharts is a powerful React library containing a wide variety of useable charts, all made possible through D3 technology. RobinStax uses Recharts to display the graphs visible on the Portfolio page and also a Company's page. After fetching data using **IEX API**, the data from the GET request is passed to a Chart from the Recharts library. Here's how the LineChart seen on a company's page is structured:
+
+```javascript
+<LineChart
+  onMouseLeave={(e) => this.handleMouseLeave(e)}
+  width={750}
+  height={300}
+  data={this.props.data}
+  margin={{
+    top: 5, right: 30, left: 0, bottom: 5,
+  }}
+>
+<YAxis 
+  domain={["dataMin", "dataMax"]} 
+  axisLine={{ stroke: 'white' }} 
+  tick={false} 
+  hide={true} 
+/>
+<XAxis 
+  axisLine={{ stroke: 'white' }} 
+  tick={false} 
+/>
+<Tooltip 
+  content={<CustomTooltip />} 
+  position={{y:-30}} 
+  isAnimationActive={false}  
+/>
+<Line 
+  connectNulls 
+  strokeWidth="3px" 
+  stroke="#0CABDA" 
+  type="monotone" 
+  dataKey="price" 
+  domain={["dataMin", "dataMax"]} 
+  dot={false} 
+  activeDot={this.renderCounter.bind(this)} 
+/>
+</LineChart>
+```
+
+
 
 ## Features
 
