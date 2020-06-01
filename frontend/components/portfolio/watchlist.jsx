@@ -39,7 +39,7 @@ class Watchlist extends React.Component {
           <div >Symbol</div>
           <div >Price</div>
           <div >Today</div>
-          <div >Market Cap</div>
+          <div id='mcap'>Market Cap</div>
         </div>
         <div className="chart-rows">
 

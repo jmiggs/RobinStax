@@ -64,8 +64,8 @@ class Toolbar extends React.Component {
             </div>
               {/* <img src={require('../../../public/logo_cash.png')} /> */}
               <Link to='/'> <div className="button-next-nav"> Portfolio </div></Link>
-              <Link to='/pizza'> <div className="button-next-nav"> Get Cash </div></Link>
-              <Link to='/pizza'> <div className="button-next-nav"> Account </div></Link>
+              <a href="https://github.com/jmiggs/RobinStax"> GitHub <FontAwesomeIcon icon={['fab', 'github']} className="socials" size="sm"   /></a>
+              <a href="https://www.linkedin.com/in/jdelacruzm/"> LinkedIn <FontAwesomeIcon icon={['fab', 'linkedin']} className="socials" size="sm" /></a>
               <button type="submit" className="header-button" onClick={()=>this.handleLogout()}><div className="button-text-nav">Log Out</div></button>
           </div>
 

@@ -1,0 +1,126 @@
+.splash-nav {
+  height: 57px;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  box-sizing: border-box;
+  align-content: center;
+  padding: none;
+  margin: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.splash-nav-left {
+  font-size: 2em;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+.splash-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
+}
+
+#splash-nav-buttons {
+  margin-right: 10px;
+  background-color: rgb(6, 204, 243);
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  border-radius: 13px;
+  font-weight: 900;
+}
+
+#splash-nav-button1 {
+  margin-right: 10px;
+  background-color: none;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  border-radius: 13px;
+  font-weight: 900;
+}
+
+.splash-nav1 {
+  background-color: white;
+  border: none;
+}
+
+.splash-content-container {
+  margin-top: 57px;
+  height: 80vh;
+  width: 100vw;
+  background-color:rgb(6, 204, 243);
+  padding: none;
+  margin: none;
+  border-top: 2px solid rgb(68, 229, 247);
+  border-bottom: 2px solid rgb(68, 229, 247);
+  display: flex;
+  justify-content: center;
+}
+
+.splash-icon {
+  padding-left: 10px;
+}
+
+.splash-content-left {
+  width: 450px;
+  margin-top: 125px;
+  font-family: 'Quicksand', sans-serif;
+  /* background-color: darkseagreen; */
+}
+
+.splash-content-right {
+  width: 450px;
+  margin-top: 125px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 3em;
+  color: rgb(254, 221, 57);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: darksalmon; */
+}
+
+#splash-content-header {
+  font-size: 3em;
+  font-weight: 900;
+}
+
+#left-text {
+  font-size: 1.4em;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#get-started {
+  width: 160px;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+}
+
+#get-started > * {
+  color: white;
+  font-size: 1.3em;
+}

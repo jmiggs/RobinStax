@@ -11,7 +11,7 @@
 }
 
 #background {
-    background-color: rgb(14, 136, 183);
+    background-color: rgb(6, 204, 243);
     background-size: cover; 
     height:100%;
     width:95%;
@@ -87,6 +87,7 @@
     height: 30px;
     padding-top: 12px;
 
+
 }
 
 .signlogprompt {
@@ -95,7 +96,7 @@
 }
 
 .session-submit {
-  background-color: #0992ee;
+  background-color: rgb(6, 204, 243);
   height: 40px;
   width: 120px;
   color: white;
@@ -103,7 +104,9 @@
   border-radius: 12px;
   float: left;
   margin-right: 40px;
-  border-color: #0992ee;
+  border-color: rgb(6, 204, 243);
+  border-width: 2px;
+  border-style: outset;
 }
 
 .signprompt { 

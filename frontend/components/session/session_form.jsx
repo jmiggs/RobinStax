@@ -35,16 +35,16 @@ class SessionForm extends React.Component {
 
   handleDemoType() {
     this.setState({
-      username: 'brostocksbro',
-      password: 'stonks123',
+      username: 'demo123',
+      password: 'demodemo',
     })
   }
 
   handleDemo(e) {
     e.preventDefault();
     this.setState({
-      username: 'brostocksbro',
-      password: 'stonks123',
+      username: 'demo123',
+      password: 'demodemo',
     })   
      setTimeout(() => {
        this.props.processForm( { ...this.state } )
@@ -108,28 +108,22 @@ class SessionForm extends React.Component {
                   
                 />
               </label>
-
               <br />
               <label>
                 <div className="logintext">Password</div>
-
-
                 <input
                   type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   className="login-input"
                 />
-
               </label>
               <br />
               <div id="signlog">{this.props.navLink}</div>
               <br />
               <div className="buttons">
                 <input className="session-submit" type="submit" value={this.props.formType} />
-
                 {this.props.formType !== 'signup' ? <button type="submit" onClick={(e) => this.handleDemo(e)} className="session-submit">demo</button> : ''}
-
               </div>
             </form>
 

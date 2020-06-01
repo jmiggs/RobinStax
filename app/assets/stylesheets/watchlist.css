@@ -6,10 +6,16 @@ button {
   padding-top: 40px;
   overflow-x: hidden;
   min-width: 720px;
+  height: 100vh;
 }
 
 .wl-header {
   padding-bottom: 25px;
+  height: 150px;
+}
+
+#mcap {
+  width:120px;
 }
 
 .wl-title {
