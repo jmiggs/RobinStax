@@ -67,8 +67,10 @@ class Watchlist extends React.Component {
 
   deleteWatchlist(id) {
     this.props.deleteWatchlist(id);
-    location.href = '#/';
-    window.reload();
+    location.href = '#/'
+
+    setTimeout(() => {window.reload()}, 300)
+
   }
 
   removeWlItem(wlItemId, listId) {
