@@ -17,7 +17,7 @@ class Splash extends React.Component {
       <div id="1">
         <div className="splash-nav">
           <div className="splash-nav-left">
-            Robin Stax
+            RobinStax
             <FontAwesomeIcon icon="money-bill-wave" className="splash-icon" size="1x"   />
           </div>
           <div className="splash-nav-right">

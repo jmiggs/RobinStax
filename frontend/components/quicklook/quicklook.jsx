@@ -35,8 +35,9 @@ class Quicklook extends React.Component {
       symbol: this.state.symbol
     }
     this.props.processForm(asset);
-    location.href = '#/'
-    
+    location.href = '#/';
+    setTimeout(() => {window.reload()}, 1000)
+  
   }
 
   update(e, field) {
