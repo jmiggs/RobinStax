@@ -5,12 +5,25 @@ With RobinStax, you can 'mock' invest in the stock market! Build your very own p
 ## Technlogies
 
 RobinStax is built on **Ruby on Rails, PosgresSQL, JavaScript, React.js, and Redux.js.**
-Additionally, RobinStax uses **IEX Cloud API** to capture real-time market information, such as stock quotes and historical data. RobinStax uses AJAX calls to request information from IEX, takes the data in, and formats the data for useability.
+Additionally, RobinStax uses **IEX Cloud API** to capture real-time market information, such as stock quotes and historical data. RobinStax uses **AJAX** calls to request information from IEX, takes the data in, and formats the data for useability.
 RobinStax also uses **Recharts**, a chart library powered by **D3**, to display the data from IEX in the form of dynamic charts.
 
 Here's what a user's portfolio looks like:
 ![alt text](https://i.imgur.com/N4pZcfN.png)
 
+### IEX Cloud API
+
+IEX API offers a wide variety of possible GET requests to capture real-time market information, as well as other information about a publicly listed company. RobinStax heavily relies on IEX to produce the content shown in the Portfolio page and a Company's page. As noted above, RobinStax uses **AJAX** requests to obtain related information that it uses. Here's an example of an **AJAX** call for a stock quote:
+
+```javascript
+export const fetchQuote = (sym) => (
+  $.ajax({
+    method: 'GET',
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/quote?token=${window.iexkkaccess}`,
+  })
+)
+```
+It should be noted that RobinStax is currently using IEX's Sandbox API, which is the free version used in development stages. As such, some of the information provided by the Sandbox API is marginally inaccurate, or will provide dummy data. This can be seen in the 'About' section of a Company's page.
 
 ## Features
 
