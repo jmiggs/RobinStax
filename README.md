@@ -91,7 +91,7 @@ When a user clicks either of the Buy or Sell buttons, this will then trigger a s
 
 After a user completes a transaction, the amount of shares is calculated; and the change will be visible in the Quick Menu on the user's portfolio. 
 
-Users 'own' shares through an ActiveRecord model ```Transaction ```
+Users 'own' shares through an **ActiveRecord** model ```Transaction ```, which acts as a joins table between the ```User``` model and the ```Asset``` model.
 The amount of shares a user has is then determined by summing up the amount of shares of all transactions with ```transtype
 ``` Buy, and then subtracting the sum of all transactions with ```transtype``` Sell. The result is then rendered on the Quick Menu.
 
@@ -101,8 +101,80 @@ Another feature is the ability of a user to create Watchlists, where users can k
 
 ![alt text](https://im2.ezgif.com/tmp/ezgif-2-a96cdff42014.gif)
 
+The Watchlist component fetches the companies related to it from the database, and subsequently uses the response to fetch market information using the **IEX API**. Similar to how users own shares through a joins table noted in the previous section, a ```Watchlist``` has items through an  **ActiveRecord** association with ```Watchlistitem```. The Watchlist component sends a GET request for the corresponding Watchlist, and uses **JSON JBuilder** to send a response with that Watchlist's related information. Here's what this call looks like:
 
+**The Action Creator:**
+``` javascript
+export const fetchWatchlist = (id) => (dispatch) => {
+  WLutil.fetchWatchlist(id).then(data => {
+    (dispatch(receiveWatchlist(data)));
+  ...
+  ...
+  }
+```
+**The AJAX Request:**
+```javascript
+export const fetchWatchlist = (id) => (
+  $.ajax({
+    method: 'Get',
+    url: `api/watchlists/${id}`,
+  })
+);
+```
+**The Response:**
+```
+wlItems: Array(4)
+  0: {ticker: "AAPL"}
+  1: {ticker: "MSFT"}
+  2: {ticker: "GOOGL"}
+  3: {ticker: "TSLA"}
+```
 
+A second request within the action creator is made using the response's wlItems, which contains the Watchlist's items. This request is made to the **IEX API**. ```wlItems``` is manipulated into a string as query params that fits into the an appropriate string used for the GET request:
+
+**The Second Request:**
+``` javascript
+export const fetchWatchlist = (id) => (dispatch) => {
+  WLutil.fetchWatchlist(id).then(data => { 
+    (dispatch(receiveWatchlist(data)));
+    ...
+    ...
+    WLutil.fetchWatchlistInfo(data).then(wlInfo => {
+      dispatch(receiveWlItems(wlInfo))
+    },
+      err => (dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+  ...
+  ...
+}
+```
+
+**The Second AJAX:**
+Here, ```wlItems``` is manipulated to a string to fit into the ```var url``` as query parameters.
+
+```javascript
+export const fetchWatchlistInfo = (wlInfo) => {
+
+  let wlItems = wlInfo.wlItems;
+  let toFetch = [];
+
+  for (let i = 0; i < wlItems.length; i++) {
+    if (!toFetch.includes(wlItems[i].ticker)) {
+      toFetch.push(wlItems[i].ticker)
+    }
+  }
+
+  var url = `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${toFetch.join()}&types=quote&token=${window.iexkkaccess}`
+  return(
+  $.ajax({
+    method: 'GET',
+    url: `${url}`
+  }))
+}
+```
+
+Finally, the information for each of the companies in ```wlItems``` is saved to state and rendered by the Watchlist component accordingly!
 
 ## Highlights
 
