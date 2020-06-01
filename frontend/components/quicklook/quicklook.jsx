@@ -27,6 +27,7 @@ class Quicklook extends React.Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     const asset = {
       amount: this.state.amount,
       cost: this.state.cost,
@@ -34,7 +35,8 @@ class Quicklook extends React.Component {
       symbol: this.state.symbol
     }
     this.props.processForm(asset);
-    location.href = '/'
+    location.href = '#/'
+    
   }
 
   update(e, field) {

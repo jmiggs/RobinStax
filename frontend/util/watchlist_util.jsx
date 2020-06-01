@@ -24,6 +24,7 @@ export const fetchWatchlist = (id) => (
 
 export const fetchWatchlistInfo = (wlInfo) => {
 
+ 
   let wlItems = wlInfo.wlItems;
   let toFetch = [];
 
@@ -56,6 +57,15 @@ export const deleteWatchlist = (id) => {
   return(
     $.ajax({
       method: 'Delete',
-      url: `api/watchlistitems/${id}`,
+      url: `api/watchlists/${id}`,
+  }))
+}
+export const deleteWatchlistItem = (sym, listId) => {
+
+  return(
+    $.ajax({
+      method: 'Delete',
+      url: `api/watchlistitems/${sym}?listid=${listId}`,
+      listId: { listId }
   }))
 }

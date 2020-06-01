@@ -29,6 +29,11 @@ class Api::WatchlistitemsController < ApplicationController
     end
   end
 
+  def destroy
+    @wlitem = Watchlistitem.find_by(list_id: params[:listid], ticker: params[:id])
+    @wlitem.destroy
+  end
+
 
   
 

@@ -94,6 +94,8 @@
 .create-list-container {
   height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .create-list-container-off {
@@ -101,6 +103,8 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+
   -webkit-animation: slide2 .5s ease forwards;
 }
 
@@ -115,6 +119,8 @@ to {height: 0px;}
   overflow: hidden;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding-bottom: 15px;
   -webkit-animation: slide .5s ease forwards;
 }
 
@@ -192,14 +198,22 @@ input.create-input {
 }
 
 .list-buttons > * {
-  width: 100px;
+  width: 200px;
   height: 30px;
   background-color: #00ace6;
   margin-right: 10px;
   border-radius: 5px;
   color: white;
   font-weight: 600;
+
 }
+
+.list-buttons {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+
 
 #cancel-list {
   border: 2px solid #00ace6;

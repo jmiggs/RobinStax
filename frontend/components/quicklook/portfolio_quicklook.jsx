@@ -16,8 +16,14 @@ class Quicklook extends React.Component {
   }
 
   componentDidMount() {
+ 
     this.props.fetchTransactions();
     this.props.fetchWatchlists();
+
+    this.props.fetchUserStocks(this.props.currentUser.id).then(data => {
+      console.log(data)
+      this.props.fetchBatchQuote(data)
+    })
   }
 
   handleSubmit(e) {
@@ -54,10 +60,11 @@ class Quicklook extends React.Component {
   }
 
   render() {
+
    
     if (!this.props.assets) return null
     let { assets } = this.props
-  
+
     return (
       <div className="portfolio-ql-cont">
         <div>
@@ -73,13 +80,9 @@ class Quicklook extends React.Component {
                   <div className="num-shares">{this.props.numShares[sym]} Shares</div>
                 </div>
                 <div className="right-side-numbers">
-                  <div className="latest-price">${this.props.assets[sym][Object.keys(assets).length - 1].close}</div>
-                  <div className={
-                                  (((this.props.assets[sym][Object.keys(assets).length-1].close-this.props.assets[sym][0].close)
-                                  /this.props.assets[sym][0].close)*100).toFixed(2)
-                                  < 0? 
-                                  'neg-perc':'percent'}>
-                    {(((this.props.assets[sym][Object.keys(assets).length-1].close-this.props.assets[sym][0].close)/this.props.assets[sym][0].close)*100).toFixed(2)}%
+                  <div className="latest-price">${this.props.assets[sym].quote.close}</div>
+                  <div className={this.props.assets[sym].quote.changePercent < 0? 'neg-perc':'percent'}>
+                    {(this.props.assets[sym].quote.changePercent * 100).toFixed(2)}%
                   </div>
                 </div>
               </div>
@@ -103,10 +106,12 @@ class Quicklook extends React.Component {
                       placeholder="List Name"
               />
               <div className="list-buttons">
-                <button onClick={()=>this.hideForm()} id="cancel-list">Cancel</button>
                 <button type="submit" >Create List</button>
               </div>
             </form>
+            <div className="list-buttons">
+              <button onClick={()=>this.hideForm()} id="cancel-list">Cancel</button>
+            </div>    
           </div>
           <div className="lists-map-cont">
             {this.props.wls.map(wl =>

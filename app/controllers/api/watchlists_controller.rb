@@ -31,4 +31,10 @@ class Api::WatchlistsController < ApplicationController
       render json: @wl.errors.full_messages
     end
   end
+
+  def destroy
+    wl = Watchlist.find(params[:id])
+    wl.destroy
+  end
+
 end

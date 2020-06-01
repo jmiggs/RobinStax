@@ -59,7 +59,7 @@ const receiveWlErrors = (status) => {
 }
 
 export const createWatchlist = (data) => (dispatch) => {
-  console.log(data)
+
   WLutil.createWatchlist(data).then(data =>
     (dispatch(receiveWatchlists(data))),
     err => (dispatch(receiveWlErrors(err.responseJSON)))
@@ -76,6 +76,11 @@ export const fetchWatchlists = (data) => (dispatch) => {
 export const fetchWatchlist = (id) => (dispatch) => {
   WLutil.fetchWatchlist(id).then(data => {
     (dispatch(receiveWatchlist(data)));
+
+    if (data.wlItems.length === 0) {
+      dispatch(clear())
+      return
+    }
     WLutil.fetchWatchlistInfo(data).then(wlInfo => {
       dispatch(receiveWlItems(wlInfo))
     },
@@ -96,12 +101,23 @@ export const postWatchlistItems = (wls, sym) => (dispatch) => {
 }
 
 export const deleteWatchlist = (id) => (dispatch) => {
-  console.log('hit actions')
+
   WLutil.deleteWatchlist(id).then(data => {
-    (dispatch(receiveWatchlists(data)))
+    console.log('deleted')
+    // (dispatch(receiveWatchlists(data)))
   },
     err => (dispatch(receiveErrors(err.responseJSON)))
   )
 }
 
+export const deleteWatchlistItem = (sym, listId) => (dispatch) => {
+  
+  WLutil.deleteWatchlistItem(sym, listId).then(data => {
+    // (dispatch(receiveWatchlists(data)))
+ 
+    dispatch(fetchWatchlist(listId));
+  },
+    err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+}
 

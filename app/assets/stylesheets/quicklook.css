@@ -20,7 +20,7 @@ button {
 .buy-sell {
   font-size: 1em;
   font-weight: 700;
-  padding-right: px;
+  padding-right: 10px;
   height: 41px;
   display: flex;
   flex-direction: column;

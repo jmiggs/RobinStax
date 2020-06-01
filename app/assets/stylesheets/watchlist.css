@@ -1,0 +1,86 @@
+button {
+  padding: none;
+}
+
+.wl-container {
+  padding-top: 40px;
+  overflow-x: hidden;
+  min-width: 720px;
+}
+
+.wl-header {
+  padding-bottom: 25px;
+}
+
+.wl-title {
+  padding-top: 30px;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.chart-headers {
+  display: flex;
+  flex-direction: row;
+  width: 720px;
+  height: 30px;
+}
+
+.chart-headers > div {
+  width: 85px;
+  display: flex;
+}
+
+#chart-row-name {
+  width: 250px;
+  margin: none;
+
+}
+
+.chart-row-el {
+  display: flex;
+  flex-direction: row;
+  width: 720px;
+  height: 40px;
+  align-items: center;
+
+  border-top: 1px solid rgb(232, 231, 231);
+
+}
+.chart-row-el > div {
+  width: 85px;
+}
+
+.chart-row-el:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.wl-delete-item {
+  padding-left: 40px;
+  width: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.wl-delete-box {
+  background-color: none;
+  margin: none;
+  padding: none !important; 
+}
+
+.el-name {
+  font-weight: 900;
+}
+
+.wl-header-last {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ width: 720px;
+}
+
+
+
+
+

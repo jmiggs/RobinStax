@@ -21,7 +21,7 @@ class Notifs extends React.Component {
 
   render() {
     if (!Object.values(this.props.notifs)[0]) return null;
-    debugger
+ 
     return (
       <div className={this.state.activeClass}>
         <div className="notif-text">

@@ -1,5 +1,6 @@
 import * as IEXutil from '../util/iex_util.jsx';
 import * as assetUtil from '../util/asset_util';
+import * as WlUtil from '../util/watchlist_util'
 
 
 export const RECEIVE_STOCK = 'RECEIVE_STOCK';
@@ -12,6 +13,7 @@ export const RECEIVE_NEWS = 'RECEIVE_NEWS';
 export const RECEIVE_EARNINGS = 'RECEIVE_EARNINGS';
 export const UPDATE_INIT_STAT = 'UPDATE_INIT_STAT';
 export const RECEIVE_BATCH = 'RECEIVE_BATCH';
+export const RECEIVE_BATCH_QUOTE = 'RECEIVE_BATCH_QUOTE';
 export const RECEIVE_EMPTY = 'RECEIVE_EMPTY';
 export const RECEIVE_ALL_NEWS = 'RECEIVE_ALL_NEWS';
 
@@ -70,6 +72,13 @@ export const updateInitStat = () => {
 export const receiveBatch = (data) => {
   return ({
     type: RECEIVE_BATCH,
+    data: data
+  })
+}
+
+export const receiveBatchQuote = (data) => {
+  return ({
+    type: RECEIVE_BATCH_QUOTE,
     data: data
   })
 }
@@ -239,6 +248,15 @@ export const ThunkFetchBatch1Y = (data, tab) => (dispatch) => {
 export const ThunkFetchBatch5Y = (data, tab) => (dispatch) => {
   return (
   assetUtil.fetch5YBatch(data, tab).then(data => (dispatch(receiveBatch(data, tab))),
+    err => (dispatch(receiveErrors(err.responseJSON))),
+  )
+  )
+};
+
+export const fetchBatchQuote = (data) => (dispatch) => {
+
+  return (
+  assetUtil.fetchBatchQuote(data).then(data => (dispatch(receiveBatchQuote(data))),
     err => (dispatch(receiveErrors(err.responseJSON))),
   )
   )

@@ -40,7 +40,7 @@ export default class AddModal extends React.Component {
       this.setState({
         wls: newWls
       })
-      console.log(this.state)
+
     } else {
       wl.toAdd = false;
       newWls[wlKey] = wl;
@@ -48,7 +48,7 @@ export default class AddModal extends React.Component {
       this.setState({
         wls: newWls
       })
-      console.log(this.state)
+  
     }
   }
 
@@ -103,8 +103,8 @@ export default class AddModal extends React.Component {
               </div>
             )}
             <div className="modal-buttons">
-              <button id="modal-cancel" onClick={(e)=>this.hideModal(e)}> Cancel</button>
               <button type="submit" onClick={(e) => this.handleSubmit(e)}> Save </button>
+              <button id="modal-cancel" onClick={(e)=>this.hideModal(e)}> Cancel</button>
             </div>
           </form>
           <div>

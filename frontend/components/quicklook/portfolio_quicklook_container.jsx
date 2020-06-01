@@ -3,12 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import Main from './main';
 import QuickLook from './portfolio_quicklook'
-import { ThunkFetchQuote, ThunkFetch5D, ThunkFetchInfo, ThunkFetchNews, ThunkFetchEarnings } from '../../actions/asset_actions'
+import { fetchBatchQuote } from '../../actions/asset_actions'
 import { fetch5D } from '../../util/iex_util';
 import { postTransaction } from '../../actions/transactions_actions'
 import { fetchTransactions } from '../../actions/transactions_actions';
 import { createWatchlist, fetchWatchlists } from '../../actions/watchlist_actions';
 import { deleteWatchlist } from '../../actions/watchlist_actions';
+import { fetchUserStocks } from '../../util/asset_util'
 
 const dataFiller = (data, currTab) => {
   if (!data) return null;
@@ -43,7 +44,7 @@ const mapStateToProps = (state, symbol) => {
   return({
     currentUser: state.entities.users[state.session.id],
     renderType: 'Portfolio',
-    assets: !state.entities.assets.portfolio? null : dataFiller(state.entities.assets.portfolio, '5D'),
+    assets: state.entities.assets.portfolioQuotes,
     numShares: state.entities.assets.numShares,
     wls: state.entities.watchlists.wls
   })
@@ -54,7 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
   processForm: (data) => dispatch(createWatchlist(data)),
   fetchTransactions: () => dispatch(fetchTransactions()),
   fetchWatchlists: () => dispatch(fetchWatchlists()),
-  deleteList: (id) => dispatch(deleteWatchlist(id))
+  deleteList: (id) => dispatch(deleteWatchlist(id)),
+  fetchUserStocks: (id) => fetchUserStocks(id),
+  fetchBatchQuote: (data) => dispatch(fetchBatchQuote(data))
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),
