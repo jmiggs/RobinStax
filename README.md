@@ -14,9 +14,23 @@ Here's what a user's portfolio looks like:
 
 ## Features
 
-One of the main features of RobinStax is the ability of a user to buy and sell stock. First, a user can use the search bar to enter a company's stock symbol, which will then render the company's information, and also a quick menu on the right which will allow the user to buy or sell an amount of the stock.
+One of the main features of RobinStax is the ability of a user to buy and sell stock. First, a user can use the search bar to enter a company's stock symbol. Then, the company's information page is rendered, and also a Quick Menu on the right which will allow the user to buy or sell an amount of the stock.
 
 ![alt texst](https://im2.ezgif.com/tmp/ezgif-2-457bef0d2c8f.gif)
+
+The Quick Menu is a single component that allows Buy/Sell capability dynamically based on it's current state. The tranasction type is saved on the component's state as **'transtype'**, which will determine either Buy or Sell elements.
+
+When a user clicks either of the Buy or Sell buttons, this will then trigger a state change to render the according tab and function. Here's what the Buy button looks like that triggers the Quick Menu to have Buy functionality:
+```javascript
+<button 
+  className={this.state.transtype === 'buy'? "active-tab":"buy-sell"} 
+  onClick={() => this.switchToBuy()}>
+  Buy {this.props.data.symbol}
+</button>
+```
+
+After 
+
 
 talk about how to do it, and throw some cool code in this section
 
