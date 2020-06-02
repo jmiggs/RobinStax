@@ -26,7 +26,6 @@ class Counter extends React.Component {
   }
 
   updateCounter(data)  {
-
     this.setState({
       price: data.payload.price, 
       delta: data.payload.price - this.state.first,

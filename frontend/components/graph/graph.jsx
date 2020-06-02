@@ -54,7 +54,6 @@ class Graph extends React.Component {
   componentDidUpdate() {
     if (!this.props.data) return null
 
-
     if (this.refCounter.current) {
       var update = setTimeout(() => 
         this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0]),
@@ -64,6 +63,7 @@ class Graph extends React.Component {
 
   renderCounter(e) {
     //is data point null?? if so, dont invoke this function
+
     this.refCounter.current.updateCounter(e);
   }
 

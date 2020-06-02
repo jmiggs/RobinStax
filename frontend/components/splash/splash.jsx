@@ -10,9 +10,7 @@ class Splash extends React.Component {
   }
 
   render() {
-    debugger
 
-    console.log('hit')
     return(
       <div id="1">
         <div className="splash-nav">

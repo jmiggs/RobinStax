@@ -24,7 +24,6 @@ export const fetchWatchlist = (id) => (
 
 export const fetchWatchlistInfo = (wlInfo) => {
 
- 
   let wlItems = wlInfo.wlItems;
   let toFetch = [];
 

@@ -141,7 +141,6 @@ export const fetch5YBatch = (data, range) => {
 };
 
 export const fetchBatchQuote = (data) => {
-  console.log(data)
   var tickers = []
 
   for (let i = 0; i < data.length; i++) {

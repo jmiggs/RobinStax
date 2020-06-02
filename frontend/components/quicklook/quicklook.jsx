@@ -76,8 +76,6 @@ class Quicklook extends React.Component {
       let { latestPrice } = this.props.data;
       let estCost = latestPrice * this.state.amount;
 
-
-    
     return(
       <div className="ql">
         <div className="transaction-links-container">

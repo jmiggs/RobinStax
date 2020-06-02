@@ -23,6 +23,7 @@ const receiveWatchlists = (data) => {
 }
 
 const receiveWatchlist = (data) => {
+
   return({
     type: RECEIVE_WATCHLIST,
     data,
@@ -75,12 +76,14 @@ export const fetchWatchlists = (data) => (dispatch) => {
 }
 export const fetchWatchlist = (id) => (dispatch) => {
   WLutil.fetchWatchlist(id).then(data => {
+    
     (dispatch(receiveWatchlist(data)));
 
     if (data.wlItems.length === 0) {
       dispatch(clear())
       return
     }
+
     WLutil.fetchWatchlistInfo(data).then(wlInfo => {
       dispatch(receiveWlItems(wlInfo))
     },
@@ -103,7 +106,7 @@ export const postWatchlistItems = (wls, sym) => (dispatch) => {
 export const deleteWatchlist = (id) => (dispatch) => {
 
   WLutil.deleteWatchlist(id).then(data => {
-    console.log('deleted')
+
     // (dispatch(receiveWatchlists(data)))
   },
     err => (dispatch(receiveErrors(err.responseJSON)))
