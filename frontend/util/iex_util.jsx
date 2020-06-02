@@ -71,12 +71,14 @@ export const fetchNews = (sym) => (
 )
 
 // used to get news across stock market
-export const fetchAllNews = () => (
+export const fetchAllNews = () => {
+  return(
   $.ajax({
     method: 'GET',
-    url: `https://newsapi.org/v2/top-headlines?country=US&category=business&apiKey=${window.newskkaccess}`,
+    url: `/api/news`,
   })
-)
+  )
+}
 
 export const fetchEarnings = (sym) => (
   $.ajax({

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :transactions, only: [:create, :show]
     resources :watchlists
     resources :watchlistitems, only: [:create, :destroy]
+    resources :news
   end
 
   root "static#root"

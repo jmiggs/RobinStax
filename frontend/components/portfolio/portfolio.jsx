@@ -23,6 +23,7 @@ class Portfolio extends React.Component {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data =>
         this.props.fetchBatch5D(data));
+    
     // this.props.fetchAllNews();
     // this.props.fetchTransactions();
   }
@@ -31,23 +32,20 @@ class Portfolio extends React.Component {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data =>
         this.props.fetchBatch5D(data));
-    // this.props.fetchAllNews();
+    this.props.fetchAllNews();
     
   }
 
   render() {
-    // if (!this.props.news) return null;
+    if (!this.props.news) return null;
     return(
       <div>
         <GraphContainer />
         <div className="news">
           <div className="news-headertext">News</div>
-          {/* <News news={this.props.news} /> */}
+          <News news={this.props.news} />
         </div>
-
       </div>
-
-
     )
   }
 }
