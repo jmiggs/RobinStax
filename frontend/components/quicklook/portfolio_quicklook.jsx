@@ -80,7 +80,7 @@ class Quicklook extends React.Component {
                   <div className="num-shares">{this.props.numShares[sym]} Shares</div>
                 </div>
                 <div className="right-side-numbers">
-                  <div className="latest-price">${this.props.assets[sym].quote.close}</div>
+                  <div className="latest-price">${this.props.assets[sym].quote.latestPrice}</div>
                   <div className={this.props.assets[sym].quote.changePercent < 0? 'neg-perc':'percent'}>
                     {(this.props.assets[sym].quote.changePercent * 100).toFixed(2)}%
                   </div>
