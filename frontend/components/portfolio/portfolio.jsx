@@ -36,13 +36,13 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    if (!this.props.news) return null;
+    // if (!this.props.news) return null;
     return(
       <div>
         <GraphContainer />
         <div className="news">
           <div className="news-headertext">News</div>
-          <News news={this.props.news} />
+          {/* <News news={this.props.news} /> */}
         </div>
 
       </div>
