@@ -31,7 +31,7 @@ class Portfolio extends React.Component {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data =>
         this.props.fetchBatch5D(data));
-    this.props.fetchAllNews();
+    // this.props.fetchAllNews();
     
   }
 
