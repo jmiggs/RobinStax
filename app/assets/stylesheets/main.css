@@ -164,7 +164,17 @@ input.searchbar  {
   font-size: 4em;
   font-weight: 900;
   height: 100vh;
-  
+}
+
+.empty-container {
+  padding-top: 20px;
+  height: 400px;
+}
+
+.empty-header {
+  padding-top: 100px;
+  font-size: 2em;
+  font-weight: 900;
 }
 
 body {

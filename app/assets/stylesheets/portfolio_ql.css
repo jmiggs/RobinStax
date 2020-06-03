@@ -221,5 +221,10 @@ input.create-input {
   color: #00ace6;
 }
 
+#none-yet {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
 
 

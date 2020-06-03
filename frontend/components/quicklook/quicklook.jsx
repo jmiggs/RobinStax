@@ -26,6 +26,8 @@ class Quicklook extends React.Component {
     this.props.fetchWatchlists();
   }
 
+ 
+
   handleSubmit(e) {
     e.preventDefault();
     const asset = {
@@ -35,9 +37,7 @@ class Quicklook extends React.Component {
       symbol: this.state.symbol
     }
     this.props.processForm(asset);
-    location.href = '#/';
-    setTimeout(() => {window.reload()}, 1000)
-  
+    // location.reload()
   }
 
   update(e, field) {

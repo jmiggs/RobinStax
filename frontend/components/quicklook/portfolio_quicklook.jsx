@@ -62,16 +62,17 @@ class Quicklook extends React.Component {
   render() {
 
    
-    if (!this.props.assets) return null
-    let { assets } = this.props
+    // if (!this.props.assets) return null
+    // let { assets } = this.props
 
     return (
       <div className="portfolio-ql-cont">
         <div>
           Stocks
         </div>
+        {!this.props.assets? <div id='none-yet'>None Yet :(</div> :
         <div>
-          {Object.keys(assets).map((sym) =>
+          {Object.keys(this.props.assets).map((sym) =>
           <Link to={`/asset/${sym}`} key={sym}>
             <div className="stocks">
               <div className="stocks1">
@@ -90,6 +91,7 @@ class Quicklook extends React.Component {
           </Link>
           )}
         </div>
+        }
 
         <div className="lists-container">
           <div className="lists-header">
@@ -113,6 +115,7 @@ class Quicklook extends React.Component {
               <button onClick={()=>this.hideForm()} id="cancel-list">Cancel</button>
             </div>    
           </div>
+          {!this.props.wls? '' :
           <div className="lists-map-cont">
             {this.props.wls.map(wl =>
               <Link to={`/watchlist/${wl.id}`} key={wl.id}>
@@ -128,6 +131,7 @@ class Quicklook extends React.Component {
               </Link>
             )}
           </div>
+          }
         </div>
       </div>
 
