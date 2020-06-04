@@ -11,6 +11,7 @@ class Search extends React.Component {
     }
 
     this.update = this.update.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -61,6 +62,12 @@ class Search extends React.Component {
     this.setState({
       searchVal: ''
     })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    location.href = `#/asset/${this.state.searchVal}`
+    this.clearInput()
   }
 
 
