@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-
   overflow-x: hidden;
   box-sizing: border-box;
 
@@ -13,6 +12,7 @@
   position: fixed;
   width: 100%;
   overflow: hidden;
+  overflow-y: visible;
   top: 0;
   background-color: white;
   z-index: 1;
@@ -43,7 +43,6 @@
   transition: ease .5px;
   justify-content: center;
   padding-right: 60px;
-
 }
 
 .icon:hover {
@@ -53,52 +52,17 @@
 
 .header-button  {
   font-weight: bolder;
-
   color: black
 }
-
-
 
 .header-group {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.search-bar-container {
-  flex-basis: 450px;
-  height: 30px;
+.right-toolbar {
   display: flex;
-  border: 1px solid rgba(204, 204, 204, 0.46);
-  border-radius: 7px;
-  margin-right: 100px;
-  margin-top: 15px;
-  transition: ease .2s;
-
-}
-
-.search-bar-container:hover {
-  box-shadow: 5px 5px 5px 0px #E8E8E8, -5px 5px 5px 0px #E8E8E8;
-  transition: ease .2s;
-}
-
-.search-icon {
-  padding-top: 8px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding-right: 5px;
-  padding-left: 20px;
-  color: rgba(58, 58, 58, 0.51);
-
-}
-
-
-
-input.searchbar  {
-  width: 300px;
-  height: 28px;
-  border: none;
-
 }
 
 .header-button:hover {
@@ -115,7 +79,6 @@ input.searchbar  {
   margin-top: 64px;
   display: flex;
   flex-direction: row;
-
   padding-left: 130px;
   position: relative;
   width: 100%;

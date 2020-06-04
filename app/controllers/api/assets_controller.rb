@@ -1,6 +1,14 @@
 
 class Api::AssetsController < ApplicationController
 
+  def index
+  
+    @assets = Asset.all
+
+
+    render("api/assets/index")
+  end
+
   def create
 
     rawdata = params[:data].values

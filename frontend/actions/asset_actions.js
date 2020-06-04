@@ -16,6 +16,7 @@ export const RECEIVE_BATCH = 'RECEIVE_BATCH';
 export const RECEIVE_BATCH_QUOTE = 'RECEIVE_BATCH_QUOTE';
 export const RECEIVE_EMPTY = 'RECEIVE_EMPTY';
 export const RECEIVE_ALL_NEWS = 'RECEIVE_ALL_NEWS';
+export const RECEIVE_ALL_STOCKS = 'RECEIVE_ALL_STOCKS';
 
 // create APIutil AJAX request
 
@@ -93,6 +94,14 @@ export const receiveEmpty = (data) => {
 const receiveAllNews = (data) => {
   return({
     type: RECEIVE_ALL_NEWS,
+    data: data
+  })
+}
+
+const receiveAllStocks = data => {
+
+  return({
+    type: RECEIVE_ALL_STOCKS,
     data: data
   })
 }
@@ -256,11 +265,19 @@ export const ThunkFetchBatch5Y = (data, tab) => (dispatch) => {
 export const fetchBatchQuote = (data) => (dispatch) => {
 
   return (
-  assetUtil.fetchBatchQuote(data).then(data => (dispatch(receiveBatchQuote(data))),
-    err => (dispatch(receiveErrors(err.responseJSON))),
-  )
-  )
+    assetUtil.fetchBatchQuote(data).then(data => (dispatch(receiveBatchQuote(data))),
+      err => (dispatch(receiveErrors(err.responseJSON))),
+  ))
 };
+
+export const fetchAllStocks = () => (dispatch) => {
+
+  return(
+    assetUtil.fetchAllStocks().then(data => dispatch(receiveAllStocks(data)),
+      err => (dispatch(receiveErrors(err.responseJSON))),
+    )
+  )
+}
 
 
 

@@ -19,7 +19,7 @@ class Main extends React.Component {
   }
   /// for initiation
   componentDidMount() {
-  };
+  }
 
   render() {
 

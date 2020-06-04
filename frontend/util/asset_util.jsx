@@ -154,6 +154,15 @@ export const fetchBatchQuote = (data) => {
       method: 'GET',
       url: `${url}`
     }))
+}
+
+export const fetchAllStocks = () => {
+  console.log('hit')
+  return (
+    $.ajax({
+      method: 'GET',
+      url: `api/assets`
+    }))
 
 }
 

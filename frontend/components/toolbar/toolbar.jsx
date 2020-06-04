@@ -2,13 +2,7 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useHistory } from 'react-router-dom';
-
-
-
-// import logo from '../../../public/logo_cash.png'
-// Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-
-
+import Search from './search_container'
 
 class Toolbar extends React.Component {
   constructor(props) {
@@ -17,13 +11,11 @@ class Toolbar extends React.Component {
         searchVal: '',
       }
 
-
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
   }
 
   handleSubmit(e) {
- 
     e.preventDefault()
     location.href = `#/asset/${this.state.searchVal}`
   }
@@ -44,18 +36,21 @@ class Toolbar extends React.Component {
       
       <div className="toolbar-nav-container">
         <div className="header-group">
-          <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x"   />
-          <div className="search-bar-container"> 
-            <FontAwesomeIcon icon="search-dollar" className="search-icon" size="sm"   />
-            <form onSubmit={(e) => this.handleSubmit(e)} className="search-bar">
-            <input
-                type="text"
-                value={this.state.searchVal}
-                onChange={this.update('searchVal')}
-                className="searchbar"
-                placeholder={'Search'}
-            />
-            </form>
+          <div className="right-toolbar">
+            <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x"   />
+            {/* <div className="search-bar-container"> 
+              <FontAwesomeIcon icon="search-dollar" className="search-icon" size="sm"   />
+              <form onSubmit={(e) => this.handleSubmit(e)} className="search-bar">
+              <input
+                  type="text"
+                  value={this.state.searchVal}
+                  onChange={this.update('searchVal')}
+                  className="searchbar"
+                  placeholder={'Search'}
+              />
+              </form>
+            </div> */}
+            <Search />
           </div>
 
           <div className="links-container">
