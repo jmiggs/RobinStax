@@ -25,8 +25,8 @@ class Search extends React.Component {
       if (this.state.searchVal !== '') {
  
         let results = this.props.stocks.filter(stock => {
-          return stock.symbol.includes(this.state.searchVal.toUpperCase())
-        }).slice(0, 10)
+          return stock.symbol.slice(0, this.state.searchVal.length).includes(this.state.searchVal.toUpperCase())
+        }).slice(0, 20)
 
         return(
           <div className="search-res-container">
@@ -75,7 +75,7 @@ class Search extends React.Component {
 
     return(
       <div className="outer-search">
-        <div className="search-bar-container">
+        <div className="search-bar-container" onMouseLeave={() => this.clearInput() }>
           <div className="search-input-cont">
             <FontAwesomeIcon icon="search-dollar" className="search-icon" size="sm"   />
             <form onSubmit={(e) => this.handleSubmit(e)} className="search-bar">
