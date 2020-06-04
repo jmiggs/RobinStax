@@ -58,16 +58,22 @@ class Counter extends React.Component {
   render() {
 
       // if (!this.state.delta) return null;
+      let n = this.state.price.toLocaleString(`en`, {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
 
       return (
         <div>
           
           {!this.state.price?  '' : 
             <div className={this.props.renderType === 'Portfolio'? 'counter-price-portfolio':'counter-price'}>
-              ${(this.state.price).toFixed(2)}
+              {n.toLocaleString()}
             </div>}
           {this.state.delta < 0?  '-' : '+'}
-          {!this.state.delta? `$${this.state.price.toFixed(2)}` : `$${Math.abs(this.state.delta.toFixed(2))}`  }
+          {!this.state.delta? `$${n}` : `$${Math.abs(this.state.delta.toFixed(2))}`  }
             
 
           {this.state.percentDelta < 0?  '-' : '+'}

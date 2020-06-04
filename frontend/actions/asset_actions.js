@@ -108,7 +108,7 @@ const receiveAllStocks = data => {
 
 
 export const ThunkFetch5D = (sym, tab) => (dispatch) => {
-  debugger
+
   return (
   IEXutil.fetch5D(sym).then(data => (dispatch(receiveData(data, sym, tab))),
     err => (dispatch(receiveErrors(err.responseJSON))),

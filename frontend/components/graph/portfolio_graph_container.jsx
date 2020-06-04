@@ -49,7 +49,7 @@ const movingAvg = (data, numShares, currTab) => {
           movingTotal += sum / parsedArr.length;
         }
 
-        debugger
+
         return batchAvg
     case '3M':
     case '1Y':
