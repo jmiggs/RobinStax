@@ -27,7 +27,6 @@ class Search extends React.Component {
           return stock.symbol.includes(this.state.searchVal.toUpperCase())
         }).slice(0, 10)
 
-        console.log(results)
         return(
           <div className="search-res-container">
             <div className="search-header">
@@ -36,7 +35,7 @@ class Search extends React.Component {
             {results.map(res => {
               return(
                 <div className="res-cont">
-                  <Link to={`/asset/${res.symbol}`} className='search-Link'>
+                  <Link to={`/asset/${res.symbol}`} className='search-Link' onClick={()=>this.clearInput()}>
                     <div id="search-res-item">
                       {res.symbol}
                     </div>
@@ -53,9 +52,14 @@ class Search extends React.Component {
   }
 
   update(e) {
-
     this.setState({
       searchVal: e.currentTarget.value
+    })
+  }
+
+  clearInput(e) {
+    this.setState({
+      searchVal: ''
     })
   }
 

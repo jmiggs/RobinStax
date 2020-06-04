@@ -9,10 +9,10 @@ import Graph from './graph'
 
 
 
-const movingAvg = (data, currTab) => {
+const movingAvg = (data, numShares, currTab) => {
 
 
-  if (!data.portfolio) return null;
+  if (!data.portfolio || !numShares) return null;
 
   switch (currTab) {
     case '1D':
@@ -26,11 +26,18 @@ const movingAvg = (data, currTab) => {
         let parsedArr = Object.values(parser);
         let batchAvg = [];
         let movingTotal = 0;
+        let keys = Object.keys(parser);
 
-        for (let j = 0; j < parsedArr[0].length; j++) {
+        let lengths = parsedArr.map(dataArr=> {
+          return dataArr.length
+        })
+
+        let n = Math.min(...lengths);
+
+        for (let j = 0; j < n; j++) {
           let sum = 0;
           for ( let i = 0; i < parsedArr.length; i++){
-            sum += parsedArr[i][j].close;
+            sum += parsedArr[i][j].close * numShares[keys[i]]
             if (i === parsedArr.length - 1) {
               if (j === 0) {
                 batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum / parsedArr.length })
@@ -41,19 +48,13 @@ const movingAvg = (data, currTab) => {
           }
           movingTotal += sum / parsedArr.length;
         }
+
+        debugger
         return batchAvg
     case '3M':
     case '1Y':
     case '5Y':
       return( 'hi'
-        // array.map( (dataPoint, idx) => {
-        //   if (!dataPoint.close) {
-        //     let newAvg = array[idx -1].close
-        //     return { price: newAvg, date: dataPoint.date, label: dataPoint.label}
-        //   } else {
-        //     return { price: dataPoint.close, date: dataPoint.date, label: dataPoint.label }
-        //   };
-        // })
       );
     default:
       break;
@@ -65,8 +66,9 @@ const mapStateToProps = (state, symbol) => {
   return({
   currentUser: state.entities.users[state.session.id],
   renderType: 'Portfolio',
-  data: movingAvg(state.entities.assets, !state.data.currTab ? '5D' : state.data.currTab ),
-  assets: !state.entities.assets.portfolio? '' : Object.keys(state.entities.assets.portfolio)
+  data: movingAvg(state.entities.assets, state.entities.assets.numShares, !state.data.currTab ? '5D' : state.data.currTab ),
+  assets: !state.entities.assets.portfolio? '' : Object.keys(state.entities.assets.portfolio),
+  numShares: state.entities.assets.numShares
 
   // data: //insert some data formatter heere
   }
