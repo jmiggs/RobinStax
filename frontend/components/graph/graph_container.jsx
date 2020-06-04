@@ -43,32 +43,46 @@ const dataFiller = (array, currTab) => {
     case '1D':
     case '1M':
     case '5D':
+      let data = [];
+      let newAvg;
+      let nullCount = 0;
 
+      for (let i = 0; i < array.length; i++) {
+        let dataPoint = array[i];
+
+        if (i === 0 && !dataPoint.average) {
+          for (let j = i + 1; j < array.length; j++) {
+            let subDataPoint = array[j];
+            if (subDataPoint.average) {
+              data.push({ price: subDataPoint.average, date: subDataPoint.date, label: subDataPoint.label} );
+              newAvg = subDataPoint.average;
+            }
+          }
+        }
+        
+        if (!dataPoint.average) {
+          data.push({ price: newAvg, date: dataPoint.date, label: dataPoint.label});
+          nullCount += 1;
+        }
+
+        data.push({ price: dataPoint.average, date: dataPoint.date, label: dataPoint.label});
+        newAvg = dataPoint.average;
+      }
+
+      return nullCount > 50 ? 'insufficient' : data;
+    case '3M':
+    case '1Y':
+    case '5Y':
       return(
         array.map( (dataPoint, idx) => {
-
-          if (!dataPoint.average) {
-
-            let newAvg = array[idx -1].average
+          if (!dataPoint.close) {
+            let newAvg = array[idx -1].close
             return { price: newAvg, date: dataPoint.date, label: dataPoint.label}
           } else {
-            return { price: dataPoint.average, date: dataPoint.date, label: dataPoint.label }
+            return { price: dataPoint.close, date: dataPoint.date, label: dataPoint.label }
           };
         })
       );
-      case '3M':
-      case '1Y':
-      case '5Y':
-        return(
-          array.map( (dataPoint, idx) => {
-            if (!dataPoint.close) {
-              let newAvg = array[idx -1].close
-              return { price: newAvg, date: dataPoint.date, label: dataPoint.label}
-            } else {
-              return { price: dataPoint.close, date: dataPoint.date, label: dataPoint.label }
-            };
-          })
-        );
     default:
       break;
   }

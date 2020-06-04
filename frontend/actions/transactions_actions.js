@@ -21,7 +21,7 @@ const receiveTransactions = (data) => {
 }
 
 const receiveSuccesfulBuy = () => {
-  console.log('hit')
+
   return({
     type: RECEIVE_SUCCESS_BUY,
     status: ['Succesfully Transaction! Check Your Portfolio.']

@@ -157,7 +157,7 @@ export const fetchBatchQuote = (data) => {
 }
 
 export const fetchAllStocks = () => {
-  console.log('hit')
+ 
   return (
     $.ajax({
       method: 'GET',

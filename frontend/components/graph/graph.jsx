@@ -3,7 +3,8 @@ import Counter from './counter';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
-import CustomTooltip from './customTooltip'
+import CustomTooltip from './customTooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // test data of the graph
 const data = [
@@ -160,6 +161,22 @@ class Graph extends React.Component {
     this.props.fetchBatch5Y(this.props.assets, tab)
   }
 
+  renderInsufficient() {
+    return(
+      <div className="insuff-cont">
+        <div className="insuff-content">
+          <div className="insuff-icon">
+            <FontAwesomeIcon icon="exclamation-triangle" id='insuff-icon' size="lg"  />
+          </div>
+          <div className="insuff-text">
+            There was not enough information to display at this time.
+          </div>
+        </div>
+
+      </div>
+    )
+  }
+
   // all data restructuring should occur at the asset_container.jsx; by the time it 
   // hits the return of the render
   // the data shold be shaped like so:
@@ -171,10 +188,8 @@ class Graph extends React.Component {
   // ]
 
   render() {
-
       return (
-
-        this.props.data === 'nostocks'? <div>no stonks yet</div> :
+        this.props.data === 'insufficient'? this.renderInsufficient() :
         !this.props.data? 
         <div className="spin-cont">
         <div className="spinner">

@@ -20,12 +20,12 @@ import WatchlistContainer from './main/watchlist_main_container';
 import Splash from './splash/splash'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes, faDonate } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes, faDonate, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
 
 //change main route later once finished
 //currentlly the splash page is rendering greeting page,login at login should redirect to main later
-library.add(fab, faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes, faDonate, faGithub, faLinkedin)
+library.add(fab, faCheckSquare, faCoffee, faMoneyBillWave, faSearchDollar, faDollarSign, faLightbulb, faTimes, faDonate, faGithub, faLinkedin, faExclamationTriangle)
 
 const PreApp = () => (
 

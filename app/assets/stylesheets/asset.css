@@ -162,5 +162,30 @@ button.read-button > p {
   border-bottom: 1px solid #d9f9ff;
   width: 750px;
   padding-bottom: 10px;
+}
 
+.insuff-cont {
+  height: 350px;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  color: rgb(252, 236, 17);
+  justify-content: center;
+}
+
+.insuff-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.insuff-text {
+  font-size: 1em;
+  padding-top: 15px;
+  color: black;
+}
+
+.insuff-icon {
+  font-size: 5em;
+  color: rgb(252, 236, 17);
 }

@@ -23,7 +23,7 @@ class Search extends React.Component {
     if (this.props.stocks) {
       // fix for first letter find
       if (this.state.searchVal !== '') {
-        console.log(this.state.searchVal)
+ 
         let results = this.props.stocks.filter(stock => {
           return stock.symbol.includes(this.state.searchVal.toUpperCase())
         }).slice(0, 10)
@@ -36,7 +36,7 @@ class Search extends React.Component {
             {results.map(res => {
               return(
                 <div className="res-cont">
-                  <Link to={`/asset/${res.symbol}`} className='search-Link' onClick={()=>this.clearInput()}>
+                  <Link to={`/asset/${res.symbol}`} className='search-Link' id={res.symbol} onClick={()=>this.clearInput()}>
                     <div id="search-res-item">
                       {res.symbol}
                     </div>

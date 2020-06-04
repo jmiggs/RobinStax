@@ -58,6 +58,7 @@ class Counter extends React.Component {
   render() {
 
       // if (!this.state.delta) return null;
+ 
       let n = this.state.price.toLocaleString(`en`, {
         style: "currency",
         currency: "USD",
