@@ -56,6 +56,7 @@ const dataFiller = (array, currTab) => {
             if (subDataPoint.average) {
               data.push({ price: subDataPoint.average, date: subDataPoint.date, label: subDataPoint.label} );
               newAvg = subDataPoint.average;
+              continue;
             }
           }
         }
@@ -63,12 +64,14 @@ const dataFiller = (array, currTab) => {
         if (!dataPoint.average) {
           data.push({ price: newAvg, date: dataPoint.date, label: dataPoint.label});
           nullCount += 1;
+          continue;
         }
 
         data.push({ price: dataPoint.average, date: dataPoint.date, label: dataPoint.label});
         newAvg = dataPoint.average;
+        
       }
-
+ 
       return nullCount > 50 ? 'insufficient' : data;
     case '3M':
     case '1Y':
