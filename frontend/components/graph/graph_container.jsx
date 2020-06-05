@@ -68,8 +68,7 @@ const dataFiller = (array, currTab) => {
         }
 
         data.push({ price: dataPoint.average, date: dataPoint.date, label: dataPoint.label});
-        newAvg = dataPoint.average;
-        
+        newAvg = dataPoint.average;       
       }
  
       return nullCount > 50 ? 'insufficient' : data;

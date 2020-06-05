@@ -1,5 +1,6 @@
 import { RECEIVE_DATA, RECEIVE_QUOTE, RECEIVE_INFO, RECEIVE_NEWS, RECEIVE_EARNINGS, UPDATE_INIT_STAT } from '../actions/asset_actions';
 import { RECEIVE_TRANSACTION } from '../actions/transactions_actions';
+import { CLEAR_STATE } from '../actions/session_actions';
 
 const dataReducer = (state = {}, action) => {
 
@@ -19,6 +20,8 @@ const dataReducer = (state = {}, action) => {
       return Object.assign({}, state, { transaction: action.data })
     case UPDATE_INIT_STAT:
       return Object.assign({}, state, { initStat: true })
+    case CLEAR_STATE:
+      return {};
     default:
       return state;
   }
