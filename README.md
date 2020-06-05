@@ -2,6 +2,8 @@
 
 With RobinStax, you can 'mock' invest in the stock market! Build your very own portfolio cost-free, and once you're ready, you can take it to the real markets.
 
+[Live Site](https://robinstax.herokuapp.com/#/ "RobinStax")
+
 ## Technlogies
 
 RobinStax is built on **Ruby on Rails, PosgresSQL, JavaScript, React.js, and Redux.js.**
