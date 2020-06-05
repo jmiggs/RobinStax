@@ -14,7 +14,7 @@ class Api::TransactionsController < ApplicationController
     @transaction.asset_id = @asset.id
     @transaction.symbol = params[:data][:symbol].upcase
 
-    if params[:data][:amount] == nil
+    if params[:data][:amount] == 0
       render json: [`youre not buying anything`], status: 419
     end
     @transaction.amount = params[:data][:amount]
@@ -45,16 +45,47 @@ class Api::TransactionsController < ApplicationController
       end
     end
 
-    sells.each do |sell|
+    sells.each do |sell|    
       if num_shares[sell.symbol]
         num_shares[sell.symbol] -= sell.amount
       end
     end
 
     @num_shares = num_shares
-
     render json: @num_shares
+
   end
+
+  private
+
+  def calculateNumShares
+    user = User.find(current_user.id)
+
+    buys = user.transactions.where(transtype: 'buy')
+    sells = user.transactions.where(transtype: 'sell')
+
+    num_shares = {}
+
+    buys.each do |buy|
+      if num_shares[buy.symbol]
+        num_shares[buy.symbol] += buy.amount
+      else
+        num_shares[buy.symbol] = buy.amount
+      end
+    end
+
+    sells.each do |sell|
+      if num_shares[sell.symbol]
+        num_shares[sell.symbol] -= sell.amount
+      end
+    end
+
+    return num_shares
+
+
+
+  end
+
 
 
 

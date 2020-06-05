@@ -6,7 +6,7 @@ import QuickLook from './quicklook'
 import { ThunkFetchQuote, ThunkFetch5D, ThunkFetchInfo, ThunkFetchNews, ThunkFetchEarnings } from '../../actions/asset_actions'
 import { fetch5D } from '../../util/iex_util';
 import { postTransaction } from '../../actions/transactions_actions';
-import { fetchTransactions } from '../../actions/transactions_actions';
+import { fetchTransactions, receiveFailedSell } from '../../actions/transactions_actions';
 import { fetchWatchlists, postWatchlistItems } from '../../actions/watchlist_actions';
 
 
@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
   processForm: (data) => dispatch(postTransaction(data)),
   processModalForm: (wls, sym) => dispatch(postWatchlistItems(wls, sym)),
   fetchTransactions: () => dispatch(fetchTransactions()),
-  fetchWatchlists: () => dispatch(fetchWatchlists())
+  fetchWatchlists: () => dispatch(fetchWatchlists()),
+  failedSell: () => dispatch(receiveFailedSell())
   // fetchStockQuote: (sym) => dispatch(ThunkFetchQuote(sym)),
   // fetch5D: (sym) => dispatch(ThunkFetch5D(sym)),
   // fetchInfo: (sym) => dispatch(ThunkFetchInfo(sym)),

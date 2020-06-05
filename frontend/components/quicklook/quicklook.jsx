@@ -35,8 +35,14 @@ class Quicklook extends React.Component {
       cost: this.state.cost,
       transtype: this.state.transtype,
       symbol: this.state.symbol
+    };
+
+    if (this.state.amount > this.props.numShares[this.props.data.symbol] && this.state.transtype === 'sell') {
+      this.props.failedSell();
+    } else {
+      this.props.processForm(asset);
     }
-    this.props.processForm(asset);
+
     // location.reload()
   }
 
@@ -126,7 +132,7 @@ class Quicklook extends React.Component {
               }
             </div>
             <div className="buy-button-container">
-              <button type="submit" className="buy-button">Review Order</button>
+              <button type="submit" className="buy-button">Complete Transaction</button>
             </div>
           </form>
           {/* </form> */}

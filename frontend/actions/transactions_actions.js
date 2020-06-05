@@ -4,6 +4,7 @@ export const RECEIVE_TRANSACTION = 'RECEIVE_TRANSACTION';
 export const RECEIVE_TRANSACTIONS = 'RECEIVE_TRANSACTIONS';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SUCCESS_BUY = 'RECEIVE_SUCCESS_BUY';
+export const RECEIVE_FAILED_SELL = 'RECEIVE_FAILED_SELL';
 
 
 const receiveTransaction = (data) => {
@@ -28,6 +29,16 @@ const receiveSuccesfulBuy = () => {
   })
 }
 
+export const receiveFailedSell = () => {
+
+  return({
+    type: RECEIVE_FAILED_SELL,
+    status: ['Not Enough Shares to Sell']
+  })
+}
+
+
+
 const receiveErrors = (errors) => {
   return ({
   type: RECEIVE_ERRORS,
@@ -50,6 +61,7 @@ export const fetchTransactions = () => (dispatch) => {
       err => (dispatch(receiveErrors(err.responseJSON)))
     )
 }
+
 export const fetchTransaction = (id) => (dispatch) => {
   transUtil.fetchTransaction(id)
     .then(data =>
