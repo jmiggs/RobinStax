@@ -41,6 +41,7 @@ class Watchlist extends React.Component {
           <div >Today</div>
           <div id='mcap'>Market Cap</div>
         </div>
+       
         <div className="chart-rows">
 
           {Object.keys(wlItems).map(sym => {
@@ -104,6 +105,7 @@ class Watchlist extends React.Component {
 
     if (!this.props.wl) return null;
   
+
     return(
       <div className="wl-container">
         <div className="wl-header">
@@ -121,7 +123,13 @@ class Watchlist extends React.Component {
           </div>
         </div>
         <div className="wl-chart-container">
-          {!this.props.wlItems? 'No Items' : this.buildChart()}
+          {!this.props.wlItems? '':
+            !this.props.wlItems.length?
+              <div className="feels-empty-container">
+                <p className="feels-empty-header">Feels a little empty in here...</p>
+                <p>Search for companies to add and stay up to date.</p>
+              </div>
+            : this.buildChart()}
         </div>
       </div>
     )

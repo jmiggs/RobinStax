@@ -9,7 +9,7 @@ import { fetch5D } from '../../util/iex_util';
 
 
 
-const mapStateToProps = (state, symbol) => {
+const mapStateToProps = (state) => {
 
   return({
   currentUser: state.entities.users[state.session.id],

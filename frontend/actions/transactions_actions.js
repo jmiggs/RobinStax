@@ -5,6 +5,7 @@ export const RECEIVE_TRANSACTIONS = 'RECEIVE_TRANSACTIONS';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SUCCESS_BUY = 'RECEIVE_SUCCESS_BUY';
 export const RECEIVE_FAILED_SELL = 'RECEIVE_FAILED_SELL';
+export const RECEIVE_BUY_ZERO = 'RECEIVE_BUY_ZERO';
 
 
 const receiveTransaction = (data) => {
@@ -25,7 +26,7 @@ const receiveSuccesfulBuy = () => {
 
   return({
     type: RECEIVE_SUCCESS_BUY,
-    status: ['Succesfully Transaction! Check Your Portfolio.']
+    status: ['Succesful Transaction! Check Your Portfolio.']
   })
 }
 
@@ -37,7 +38,12 @@ export const receiveFailedSell = () => {
   })
 }
 
-
+export const receiveZeroBuy = () => {
+  return({
+    type: RECEIVE_BUY_ZERO,
+    status: ['Please Enter an Amount']
+  })
+}
 
 const receiveErrors = (errors) => {
   return ({

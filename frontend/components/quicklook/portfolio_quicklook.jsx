@@ -64,7 +64,7 @@ class Quicklook extends React.Component {
    
     // if (!this.props.assets) return null
     // let { assets } = this.props
-
+  
     return (
       <div className="portfolio-ql-cont">
         <div>
@@ -72,7 +72,9 @@ class Quicklook extends React.Component {
         </div>
         {!this.props.assets? <div id='none-yet'>None Yet :(</div> :
         <div>
-          {Object.keys(this.props.assets).map((sym) =>
+          {Object.keys(this.props.assets).filter(sym => {
+            return this.props.numShares[sym]
+          }).map((sym) =>
           <Link to={`/asset/${sym}`} key={sym}>
             <div className="stocks">
               <div className="stocks1">

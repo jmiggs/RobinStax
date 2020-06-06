@@ -40,7 +40,8 @@ class Quicklook extends React.Component {
     if (this.state.amount > this.props.numShares[this.props.data.symbol] && this.state.transtype === 'sell') {
       this.props.failedSell();
     } else {
-      this.props.processForm(asset);
+      !this.state.amount? this.props.zeroBuy():this.props.processForm(asset);
+      
     }
 
     // location.reload()
@@ -123,7 +124,7 @@ class Quicklook extends React.Component {
             <div className="shares-avail">
               {this.state.transtype === 'sell'? 
                 <div>
-                  Shares Available: {this.props.numShares[this.props.data.symbol]}
+                  Shares Available: {this.props.numShares[this.props.data.symbol]? this.props.numShares[this.props.data.symbol]:0 }
                 </div>
                 :
                 <div>

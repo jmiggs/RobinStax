@@ -96,6 +96,8 @@ class Asset extends React.Component {
   render() {
 
     // will use this conditinal to see if News and analyst ratings are null!!!
+
+    
     if (!this.props.data || !this.props.info) return null
     let { data, info, news } = this.props
 

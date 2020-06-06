@@ -37,7 +37,9 @@ class Toolbar extends React.Component {
       <div className="toolbar-nav-container">
         <div className="header-group">
           <div className="right-toolbar">
-            <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x"   />
+            <Link to="/#" >
+              <FontAwesomeIcon icon="money-bill-wave" className="icon" size="2x" />
+            </Link>
             {/* <div className="search-bar-container"> 
               <FontAwesomeIcon icon="search-dollar" className="search-icon" size="sm"   />
               <form onSubmit={(e) => this.handleSubmit(e)} className="search-bar">
