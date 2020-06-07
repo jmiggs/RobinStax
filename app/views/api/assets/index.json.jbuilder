@@ -1,1 +1,1 @@
-json.array! @assets, :symbol
+json.array! @assets, :symbol, :name

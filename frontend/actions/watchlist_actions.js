@@ -106,8 +106,10 @@ export const postWatchlistItems = (wls, sym) => (dispatch) => {
 export const deleteWatchlist = (id) => (dispatch) => {
 
   WLutil.deleteWatchlist(id).then(data => {
-
-    // (dispatch(receiveWatchlists(data)))
+    WLutil.fetchWatchlists(data).then(data =>
+      (dispatch(receiveWatchlists(data))),
+      err => (dispatch(receiveErrors(err.responseJSON)))
+    )
   },
     err => (dispatch(receiveErrors(err.responseJSON)))
   )

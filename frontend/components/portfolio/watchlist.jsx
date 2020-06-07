@@ -105,7 +105,6 @@ class Watchlist extends React.Component {
 
     if (!this.props.wl) return null;
   
-
     return(
       <div className="wl-container">
         <div className="wl-header">
@@ -124,7 +123,7 @@ class Watchlist extends React.Component {
         </div>
         <div className="wl-chart-container">
           {!this.props.wlItems? '':
-            !this.props.wlItems.length?
+            !Object.keys(this.props.wlItems).length?
               <div className="feels-empty-container">
                 <p className="feels-empty-header">Feels a little empty in here...</p>
                 <p>Search for companies to add and stay up to date.</p>

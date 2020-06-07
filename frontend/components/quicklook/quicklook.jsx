@@ -26,8 +26,6 @@ class Quicklook extends React.Component {
     this.props.fetchWatchlists();
   }
 
- 
-
   handleSubmit(e) {
     e.preventDefault();
     const asset = {
@@ -37,15 +35,29 @@ class Quicklook extends React.Component {
       symbol: this.state.symbol
     };
 
+    debugger
     if (this.state.amount > this.props.numShares[this.props.data.symbol] && this.state.transtype === 'sell') {
       this.props.failedSell();
-    } else {
-      !this.state.amount? this.props.zeroBuy():this.props.processForm(asset);
-      
+      return
+    }
+    if (!this.state.amount) {
+      this.props.zeroBuy();
+      return
     }
 
-    // location.reload()
+    let { latestPrice } = this.props.data;
+    let estCost = latestPrice * this.state.amount;
+
+    if (this.state.transtype === 'buy' && estCost > this.props.currentUser.buying_power) {
+      this.props.failedBuy();
+    } else {
+        this.props.processForm(asset)
+        location.href = "#/";
+    }
+    
   }
+
+  
 
   update(e, field) {
     this.setState({ 
@@ -80,6 +92,7 @@ class Quicklook extends React.Component {
   render() {
 
     if (!this.props.data) return null;
+    if (!this.props.numShares) return null
       let { latestPrice } = this.props.data;
       let estCost = latestPrice * this.state.amount;
 
@@ -128,7 +141,10 @@ class Quicklook extends React.Component {
                 </div>
                 :
                 <div>
-                  Buying Power Available
+                  Buying Power: {this.props.numShares.bP.toLocaleString(`en`, {
+                                                                    style: "currency",
+                                                                    currency: "USD",
+                                                                  })}
                 </div>
               }
             </div>

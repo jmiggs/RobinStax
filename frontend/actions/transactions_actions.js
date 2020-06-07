@@ -6,6 +6,7 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SUCCESS_BUY = 'RECEIVE_SUCCESS_BUY';
 export const RECEIVE_FAILED_SELL = 'RECEIVE_FAILED_SELL';
 export const RECEIVE_BUY_ZERO = 'RECEIVE_BUY_ZERO';
+export const RECEIVE_FAILED_BUY = 'RECEIVE_FAILED_BUY';
 
 
 const receiveTransaction = (data) => {
@@ -26,7 +27,7 @@ const receiveSuccesfulBuy = () => {
 
   return({
     type: RECEIVE_SUCCESS_BUY,
-    status: ['Succesful Transaction! Check Your Portfolio.']
+    status: ['Succesful Transaction!']
   })
 }
 
@@ -45,6 +46,13 @@ export const receiveZeroBuy = () => {
   })
 }
 
+export const receiveFailedBuy = () => {
+  return({
+    type: RECEIVE_FAILED_BUY,
+    status: ['Insufficient Buying Power']
+  })
+}
+
 const receiveErrors = (errors) => {
   return ({
   type: RECEIVE_ERRORS,
@@ -56,6 +64,13 @@ export const postTransaction = (data) => (dispatch) => {
   transUtil.postTransaction(data).then(data => {
     dispatch(receiveTransaction(data));
     dispatch(receiveSuccesfulBuy());
+
+    transUtil.fetchTransactions()
+    .then(data =>
+      (dispatch(receiveTransactions(data))),
+      err => (dispatch(receiveErrors(err.responseJSON)))
+    )
+
     }, err => (dispatch(receiveErrors(err.responseJSON))),
     )
 }

@@ -21,13 +21,18 @@ class Search extends React.Component {
   renderResults() {
 
     if (this.props.stocks) {
-      // fix for first letter find
+      
       if (this.state.searchVal !== '') {
  
         let results = this.props.stocks.filter(stock => {
-          return stock.symbol.slice(0, this.state.searchVal.length).includes(this.state.searchVal.toUpperCase())
-        }).slice(0, 20)
+           if (stock.symbol.slice(0, this.state.searchVal.length).includes(this.state.searchVal.toUpperCase()) || 
+                stock.name.toUpperCase().slice(0, this.state.searchVal.length).includes(this.state.searchVal.toUpperCase()) ) {
+                  return stock
+                }
+        }).slice(0, 20) 
 
+        console.log(results)
+    
         return(
           <div className="search-res-container">
             <div className="search-header">
@@ -38,7 +43,9 @@ class Search extends React.Component {
                 <div className="res-cont">
                   <Link to={`/asset/${res.symbol}`} className='search-Link' id={res.symbol} onClick={()=>this.clearInput()}>
                     <div id="search-res-item">
-                      {res.symbol}
+                      <div id="res-sym">{res.symbol}</div>
+                      <div id="res-name">{res.name}</div> 
+                    
                     </div>
                   </Link>
                 </div>

@@ -15,13 +15,12 @@ class Quicklook extends React.Component {
     // this.deleteList = this.deleteList.bind(this);
   }
 
+
   componentDidMount() {
  
     this.props.fetchTransactions();
     this.props.fetchWatchlists();
-
     this.props.fetchUserStocks(this.props.currentUser.id).then(data => {
-
       this.props.fetchBatchQuote(data)
     })
   }

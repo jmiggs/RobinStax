@@ -3,6 +3,8 @@ class Api::UsersController < ApplicationController
     def create
         
         @user = User.new(user_params)
+        @user.buying_power = 3000
+
         if @user.save
             login(@user)
             render("api/users/show")
@@ -13,6 +15,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
+  
       @user =  User.find(current_user.id)
 
       if @user.assets.empty?
