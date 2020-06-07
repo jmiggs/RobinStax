@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 class Splash extends React.Component {
@@ -88,7 +89,7 @@ class Splash extends React.Component {
             </div>
           </div>
           <div className="s3-right">
-            
+            <img src={'https://i.imgur.com/3HaGy0A.png'} height="300px" width="600px"/>
           </div>
 
         </div>

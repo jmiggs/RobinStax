@@ -133,7 +133,7 @@
   justify-content: center;
   align-items: center;
   border-top: 1px solid black;
-  background-color: rgb(244, 243, 240);;
+  background-color: rgb(244, 243, 240);
 }
 
 .s2-content {
@@ -179,7 +179,8 @@
 .s3-right {
   width: 600px;
   height: 400px;
-  background-color: dimgrey;
+  padding-top: 50px;
+
 }
 
 .s3-left-content > * {
