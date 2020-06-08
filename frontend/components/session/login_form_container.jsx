@@ -7,7 +7,7 @@ import { fetchAll } from '../../util/iex_util';
 
 const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
-  formType: 'login',
+  formType: 'Login',
   // eslint-disable-next-line react/no-unescaped-entities
   navLink: <Link to="/signup"><div className="signlogprompt">Don't have an account? Sign Up!</div></Link>,
 });

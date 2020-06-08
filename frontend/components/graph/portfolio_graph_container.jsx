@@ -14,6 +14,8 @@ const movingAvg = (data, numShares, currTab) => {
 
   if (!data.portfolio || !numShares) return null;
 
+  
+
   switch (currTab) {
     case '1D':
     case '1M':
@@ -49,7 +51,7 @@ const movingAvg = (data, numShares, currTab) => {
           movingTotal += sum / parsedArr.length;
         }
 
-
+        console.log(data, numShares, batchAvg, "hey")
         return batchAvg
     case '3M':
     case '1Y':

@@ -8,7 +8,7 @@ import { fetchAll } from '../../util/iex_util';
 
 const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
-  formType: 'signup',
+  formType: 'Signup',
   navLink: <Link to="/login"><div className="signlogprompt">Already Have an Account?</div></Link>,
 });
 

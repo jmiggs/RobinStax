@@ -123,7 +123,7 @@ class SessionForm extends React.Component {
               <br />
               <div className="buttons">
                 <input className="session-submit" type="submit" value={this.props.formType} />
-                {this.props.formType !== 'signup' ? <button type="submit" onClick={(e) => this.handleDemo(e)} className="session-submit">demo</button> : ''}
+                <button type="submit" onClick={(e) => this.handleDemo(e)} className="session-submit">Demo</button>
               </div>
             </form>
 

@@ -56,9 +56,7 @@ class Graph extends React.Component {
     if (!this.props.data) return null
 
     if (this.refCounter.current) {
-      var update = setTimeout(() => 
-        this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0]),
-        10000)
+        this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0]) 
     }
   }
 

@@ -70,8 +70,6 @@ class Api::TransactionsController < ApplicationController
 
     num_shares[:bP] = buying_power
 
-
-
     @num_shares = num_shares
 
     render json: @num_shares

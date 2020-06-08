@@ -1,4 +1,4 @@
-json.array! @user.assets do |asset|
+json.array! @tickers do |asset|
   json.ticker asset.symbol
 end
 
