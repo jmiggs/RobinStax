@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
 
   handleDemoType() {
     this.setState({
-      username: 'demo123',
+      username: 'demouser',
       password: 'demodemo',
     })
   }
