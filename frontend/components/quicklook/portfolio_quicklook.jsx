@@ -21,7 +21,12 @@ class Quicklook extends React.Component {
     this.props.fetchTransactions();
     this.props.fetchWatchlists();
     this.props.fetchUserStocks(this.props.currentUser.id).then(data => {
-      this.props.fetchBatchQuote(data)
+      
+      if (data[0] === 'nostocks') {
+        return
+      } else (
+        this.props.fetchBatchQuote(data)
+      )
     })
   }
 

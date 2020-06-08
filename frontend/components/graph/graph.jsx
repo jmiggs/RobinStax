@@ -186,6 +186,7 @@ class Graph extends React.Component {
   // ]
 
   render() {
+
       return (
         this.props.data === 'insufficient'? this.renderInsufficient() :
         !this.props.data? 

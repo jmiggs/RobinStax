@@ -11,7 +11,8 @@ import { fetchAll } from '../../util/iex_util';
 const mapStateToProps = (state) => ({
   currentUser: state.session.id,
   status: state.entities.assets.emptystatus, 
-  news: state.entities.assets.news
+  news: state.entities.assets.news,
+  portfolio: state.entities.assets.portfolio,
 
 });
 

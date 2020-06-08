@@ -17,8 +17,11 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllStocks();
-
     document.addEventListener('mousedown', this.handleClickOutside)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside )
   }
 
   renderResults() {
