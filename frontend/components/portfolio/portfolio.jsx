@@ -32,9 +32,18 @@ class Portfolio extends React.Component {
   componentDidMount() {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data => {
-        this.props.fetchBatch5D(data)
+       
+        if (data[0] === 'nostocks') {
+          this.setState({empty: true})
+        } else (
+          this.props.fetchBatch5D(data)
+
+        )
         // err => console.log(err))
-      }).fail(err => this.setState({empty: true}))
+      }).fail(err => {
+      
+        this.setState({empty: true})
+      })
     this.props.fetchAllNews();
   }
 

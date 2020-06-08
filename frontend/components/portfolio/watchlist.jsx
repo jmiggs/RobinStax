@@ -46,7 +46,7 @@ class Watchlist extends React.Component {
 
           {Object.keys(wlItems).map(sym => {
             return(
-              <div className="chart-row-el">     
+              <div className="chart-row-el" key={sym}>     
                 <div id="chart-row-name" className="el-name"> {wlItems[sym].quote.companyName} </div>
                 <div> {sym} </div>
                 <div> {wlItems[sym].quote.latestPrice} </div>

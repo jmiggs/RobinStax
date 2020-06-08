@@ -1,6 +1,8 @@
 .search-res-container {
   background-color: white;
   padding-bottom: 10px;
+  max-width: 445px;
+  overflow-x: hidden;
   
 }
 
@@ -18,6 +20,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
   overflow-x: hidden;
 }
 
@@ -74,6 +77,8 @@
 
 #res-name {
   overflow-x: hidden;
+  white-space: nowrap;
+  max-width: 350px;
   font-weight: 400;
   color: rgb(112, 112, 112);
 

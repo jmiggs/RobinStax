@@ -47,7 +47,8 @@ class Graph extends React.Component {
 
   componentDidMount() {
     if (this.props.renderType === 'Portfolio') return null;
-    var test = setTimeout(() => this.props.fetch5D(this.props.symbol, '5D'), 750)
+
+    this.props.fetch5D(this.props.symbol, '5D')
     // this.props.fetch5D(this.props.symbol, '5D');
     // this.props.fetchQuote(this.props.symbol)
   }
@@ -62,7 +63,6 @@ class Graph extends React.Component {
 
   renderCounter(e) {
     //is data point null?? if so, dont invoke this function
-
     this.refCounter.current.updateCounter(e);
   }
 
