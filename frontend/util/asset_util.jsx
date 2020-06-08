@@ -11,15 +11,12 @@ export const fetchUserStocks = (id) => {
 export const fetchBatch5D = (data) => {
 
   var tickers = []
-  console.log(data)
 
   for (let i = 0; i < data.length; i++) {
     if (!tickers.includes(data[i].ticker)) {
       tickers.push(data[i].ticker)
     }
   }
-
-  console.log(tickers)
   
   var url = `https://sandbox.iexapis.com/stable/stock/market/batch?types=chart&symbols=${tickers.join()}&range=5dm&filter=date,label,close&token=${window.iexkkaccess}`
 

@@ -51,7 +51,6 @@ const movingAvg = (data, numShares, currTab) => {
           movingTotal += sum / parsedArr.length;
         }
 
-        console.log(data, numShares, batchAvg, "hey")
         return batchAvg
     case '3M':
     case '1Y':

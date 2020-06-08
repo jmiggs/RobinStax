@@ -35,7 +35,6 @@ class Quicklook extends React.Component {
       symbol: this.state.symbol
     };
 
-    debugger
     if (this.state.amount > this.props.numShares[this.props.data.symbol] && this.state.transtype === 'sell') {
       this.props.failedSell();
       return

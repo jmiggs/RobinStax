@@ -31,7 +31,6 @@ class Search extends React.Component {
                 }
         }).slice(0, 20) 
 
-        console.log(results)
     
         return(
           <div className="search-res-container">

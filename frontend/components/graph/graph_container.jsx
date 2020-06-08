@@ -47,8 +47,6 @@ const dataFiller = (array, currTab) => {
       let newAvg;
       let nullCount = 0;
 
-      console.log(data, 'data')
-
       for (let i = 0; i < array.length; i++) {
         let dataPoint = array[i];
 
