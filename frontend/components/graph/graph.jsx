@@ -106,7 +106,7 @@ class Graph extends React.Component {
     this.props.fetch1D(this.props.symbol, tab)
   }
 
-  fetch5D(e, tab) {Name
+  fetch5D(e, tab) {
     e.preventDefault();
     this.props.fetch5D(this.props.symbol, tab)
   }
