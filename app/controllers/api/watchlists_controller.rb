@@ -2,7 +2,8 @@ class Api::WatchlistsController < ApplicationController
 
   def index
     # @watchlists = Watchlist.find_by(user_id: current_user.id)
-    @watchlists = Watchlist.all
+    @watchlists = Watchlist.where(user_id: current_user.id)
+
     render('api/watchlists/show')
   end
 

@@ -4,9 +4,8 @@ button {
 
 .wl-container {
   padding-top: 40px;
-  overflow-x: hidden;
   min-width: 720px;
-  height: 100vh;
+  height: 100%;
 }
 
 .wl-header {
