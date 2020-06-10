@@ -15,6 +15,20 @@ class Counter extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data && this.props.data) {
+      if (prevProps.data.price !== this.props.data.price) {
+        this.setState({
+          price: this.props.data.price,
+          latestPrice: this.props.data.price,
+          first: this.props.first.price,
+          delta: null, 
+          percentDelta: ""
+        })
+      }
+    }
+  }
+
 
   updateCounterOnTabChange(data2, data1) {
     let newDelta = data2.price - data1.price;

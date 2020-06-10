@@ -53,12 +53,25 @@ class Graph extends React.Component {
     // this.props.fetchQuote(this.props.symbol)
   }
 
-  componentDidUpdate() {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.renderType === 'Portfolio') {
+      if (this.props.assets === nextProps.assets) return false;
+      return true
+    } else {
+      return true
+    }
+
+  }
+
+  componentDidUpdate(prevProps) {
+
+
     if (!this.props.data) return null
 
     if (this.refCounter.current) {
         this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0]) 
     }
+
   }
 
   renderCounter(e) {

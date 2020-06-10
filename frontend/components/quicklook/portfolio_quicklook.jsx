@@ -15,8 +15,30 @@ class Quicklook extends React.Component {
     // this.deleteList = this.deleteList.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+
+    if (prevProps.numShares && this.props.numShares) {
+      if (Object.keys(prevProps.numShares).length !== Object.keys(this.props.numShares).length) {
+
+        this.props.fetchTransactions();
+        this.props.fetchWatchlists();
+        this.props.fetchUserStocks(this.props.currentUser.id).then(data => {
+
+        if (data[0] === 'nostocks') {
+          return
+        } else (
+          this.props.fetchBatchQuote(data)
+        )
+      })
+      }
+    }
+    
+  }
+
 
   componentDidMount() {
+
+
  
     this.props.fetchTransactions();
     this.props.fetchWatchlists();

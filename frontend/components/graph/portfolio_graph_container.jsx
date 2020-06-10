@@ -42,13 +42,13 @@ const movingAvg = (data, numShares, currTab) => {
             sum += parsedArr[i][j].close * numShares[keys[i]]
             if (i === parsedArr.length - 1) {
               if (j === 0) {
-                batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum / parsedArr.length })
+                batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: sum })
               } else {
                 batchAvg.push( {date: parsedArr[i][j].date, label: parsedArr[i][j].label, price: movingTotal / batchAvg.length + 1 })
               }
             }
           }
-          movingTotal += sum / parsedArr.length;
+          movingTotal += sum
         }
 
         return batchAvg

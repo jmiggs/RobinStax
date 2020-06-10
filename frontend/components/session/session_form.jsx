@@ -59,8 +59,8 @@ class SessionForm extends React.Component {
       <ul className="ul-hold">
         {this.props.errors.map((error, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <div className="error-hold">
-            <li className="errors" key={`error-${i}`}>
+          <div className="error-hold" key={`error-${i}`}>
+            <li className="errors" >
               {error}
             </li>
           </div>
