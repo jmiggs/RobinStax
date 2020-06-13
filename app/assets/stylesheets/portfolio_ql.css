@@ -77,9 +77,9 @@
 }
 
 .plus > * {
-  font-size: 1.7em;
-  
+  font-size: .75em;
   transition: ease .3s;
+  font-weight: 500;
 }
 
 .plus > *:hover {

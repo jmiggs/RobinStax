@@ -124,7 +124,7 @@ class Quicklook extends React.Component {
         <div className="lists-container">
           <div className="lists-header">
             <div>Lists</div>
-            <div className="plus"> <button onClick={()=>this.showForm()}>+</button></div>
+            <div className="plus"> <button onClick={()=>this.showForm()}>New List</button></div>
           </div>
 
           <div className={this.state.activeClass} id="create-list-container">

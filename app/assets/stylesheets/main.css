@@ -94,7 +94,6 @@
   flex-basis: 60%;
   display: block;
   box-sizing: border-box;
-  overflow-x: hidden;
   flex-wrap: wrap;
 }
 
