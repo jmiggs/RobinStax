@@ -46,7 +46,7 @@ class Api::TransactionsController < ApplicationController
 
     buys = user.transactions.where(transtype: 'buy')
     sells = user.transactions.where(transtype: 'sell')
-    buying_power = 3000
+    buying_power = 6000
 
     num_shares = {}
 
