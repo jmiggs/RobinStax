@@ -67,8 +67,6 @@ export default class AddModal extends React.Component {
         modalClass: 'modal-show'
       })
     }
-
-
   }
 
   handleSubmit(e) {

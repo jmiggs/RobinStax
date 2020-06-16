@@ -53,10 +53,7 @@ class Quicklook extends React.Component {
         this.props.processForm(asset)
         location.href = "#/";
     }
-    
   }
-
-  
 
   update(e, field) {
     this.setState({ 
@@ -164,6 +161,7 @@ class Quicklook extends React.Component {
           processModalForm={this.props.processModalForm}
           // wlsMap={wlsMap} 
         />
+        {/* Create BuyModal class here on buy */}
       </div>
     )
   }
