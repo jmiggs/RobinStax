@@ -89,7 +89,7 @@ class Splash extends React.Component {
             </div>
           </div>
           <div className="s3-right">
-            <img src={'https://i.imgur.com/3HaGy0A.png'} height="300px" width="600px"/>
+            <img src={'https://i.imgur.com/cd8Txrh.png'} height="350px" width="600px"/>
           </div>
 
         </div>
