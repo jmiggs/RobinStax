@@ -25,7 +25,6 @@ class Portfolio extends React.Component {
 
         this.props.fetchUserStocks(this.props.currentUser)
           .then(data => {
-
             if (data[0] === 'nostocks') {
               this.setState({empty: true})
             } else {
@@ -33,26 +32,20 @@ class Portfolio extends React.Component {
               this.setState({empty: false})
             }
             
-            
           });
       }
 
-    // this.props.fetchAllNews();
-    // this.props.fetchTransactions();
   }
 
   componentDidMount() {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data => {
-
-       
         if (data[0] === 'nostocks') {
           this.setState({empty: true})
         } else (
           this.props.fetchBatch5D(data)
         )
       }).fail(err => {
-      
         this.setState({empty: true})
       })
     this.props.fetchAllNews();
