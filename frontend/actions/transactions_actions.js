@@ -67,7 +67,6 @@ export const postTransaction = (data) => (dispatch) => {
 
     transUtil.fetchTransactions()
     .then(data => {
-      console.log(data, 'fetchtrans')
       dispatch(receiveTransactions(data))
     ,
       err => (dispatch(receiveErrors(err.responseJSON)))

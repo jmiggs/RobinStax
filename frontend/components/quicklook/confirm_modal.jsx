@@ -36,13 +36,9 @@ export default class AddModal extends React.Component {
       transtype: this.props.information.transtype,
       symbol: this.props.information.symbol
     };
-
-    console.log(asset)
-
     this.hideModal(e)
     this.props.processForm(asset)
     location.href = "#/";
-
   }
 
   render() {

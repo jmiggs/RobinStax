@@ -21,23 +21,19 @@ class Portfolio extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-
-    console.log(this.props.portfolioCount)
-    console.log(prevProps.portfolioCount, 'prevprops')
-    
-
       if (this.props.portfolioCount !== prevProps.portfolioCount) {
 
         this.props.fetchUserStocks(this.props.currentUser)
           .then(data => {
 
-            // if (data[0] === 'nostocks') {
-            //   this.setState({empty: true})
-            // } else (
-            //   this.props.fetchBatch5D(data)
-            // )
-            this.props.fetchBatch5D(data)
-            this.setState({empty: false})
+            if (data[0] === 'nostocks') {
+              this.setState({empty: true})
+            } else {
+              this.props.fetchBatch5D(data)
+              this.setState({empty: false})
+            }
+            
+            
           });
       }
 
@@ -48,14 +44,13 @@ class Portfolio extends React.Component {
   componentDidMount() {
     this.props.fetchUserStocks(this.props.currentUser)
       .then(data => {
-        // debugger
+
        
         if (data[0] === 'nostocks') {
           this.setState({empty: true})
         } else (
           this.props.fetchBatch5D(data)
         )
-        // err => console.log(err))
       }).fail(err => {
       
         this.setState({empty: true})
