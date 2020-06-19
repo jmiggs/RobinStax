@@ -22,6 +22,10 @@ class Portfolio extends React.Component {
 
   componentDidUpdate(prevProps) {
 
+    console.log(this.props.portfolioCount)
+    console.log(prevProps.portfolioCount, 'prevprops')
+    
+
       if (this.props.portfolioCount !== prevProps.portfolioCount) {
 
         this.props.fetchUserStocks(this.props.currentUser)
@@ -33,10 +37,10 @@ class Portfolio extends React.Component {
             //   this.props.fetchBatch5D(data)
             // )
             this.props.fetchBatch5D(data)
+            this.setState({empty: false})
           });
       }
 
-    
     // this.props.fetchAllNews();
     // this.props.fetchTransactions();
   }

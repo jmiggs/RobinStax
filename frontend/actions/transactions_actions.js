@@ -66,13 +66,12 @@ export const postTransaction = (data) => (dispatch) => {
     dispatch(receiveSuccesfulBuy());
 
     transUtil.fetchTransactions()
-    .then(data =>
-      (dispatch(receiveTransactions(data))),
+    .then(data => {
+      console.log(data, 'fetchtrans')
+      dispatch(receiveTransactions(data))
+    ,
       err => (dispatch(receiveErrors(err.responseJSON)))
-    )
-
-    
-
+    })
     }, err => (dispatch(receiveErrors(err.responseJSON))),
     )
 }
