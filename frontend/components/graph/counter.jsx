@@ -33,7 +33,9 @@ class Counter extends React.Component {
   updateCounterOnTabChange(data2, data1) {
     let newDelta = data2.price - data1.price;
     let newPercentDDelta = ((data2.price - data1.price)/ data2.price) * 100;
+
     this.setState({
+      price: data2.price,
       first: data1.price,
       delta: newDelta,
       percentDelta: newPercentDDelta
@@ -49,7 +51,6 @@ class Counter extends React.Component {
   }
 
   updateCounterOnLeave(data2, data1) {
-
     let newDelta = data2.price - data1.price;
     let newPercentDDelta = ((data2.price - data1.price)/ data2.price) * 100;
 

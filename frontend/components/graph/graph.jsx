@@ -65,7 +65,6 @@ class Graph extends React.Component {
 
   componentDidUpdate(prevProps) {
 
-
     if (!this.props.data) return null
 
     if (this.refCounter.current) {
@@ -157,7 +156,18 @@ class Graph extends React.Component {
 
   fetchBatch1M(e, tab) {
     e.preventDefault();
-    this.props.fetchBatch1M(this.props.assets, tab)
+
+    // const p1 = new Promise((resolve, reject) => {
+      this.props.fetchBatch1M(this.props.assets, tab)
+      // resolve()
+    // })
+
+    // const p2 = new Promise((resolve, reject)=>{
+      // this.refCounter.current.updateCounterOnTabChange(this.props.data.slice(-1).pop(), this.props.data[0])
+    //   resolve()
+    // })
+
+    // p1.then(()=>p2)
   }
   fetchBatch3M(e, tab) {
     e.preventDefault();

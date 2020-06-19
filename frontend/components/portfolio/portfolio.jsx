@@ -22,7 +22,6 @@ class Portfolio extends React.Component {
 
   componentDidUpdate(prevProps) {
       if (this.props.portfolioCount !== prevProps.portfolioCount) {
-
         this.props.fetchUserStocks(this.props.currentUser)
           .then(data => {
             if (data[0] === 'nostocks') {
@@ -31,7 +30,6 @@ class Portfolio extends React.Component {
               this.props.fetchBatch5D(data)
               this.setState({empty: false})
             }
-            
           });
       }
 

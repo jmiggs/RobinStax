@@ -59,10 +59,10 @@ export const fetchInfo = (sym) => (
   $.ajax({
     method: 'GET',
     // sandbox
-    // url: `https://sandbox.iexapis.com/stable/stock/${sym}/company?token=${window.iexkkaccess}`,
+    url: `https://sandbox.iexapis.com/stable/stock/${sym}/company?token=${window.iexkkaccess}`,
 
     // prod
-    url: `https://cloud.iexapis.com/stable/stock/${sym}/company?token=${window.iexzzaccess}`,
+    // url: `https://cloud.iexapis.com/stable/stock/${sym}/company?token=${window.iexzzaccess}`,
   })
 )
 
