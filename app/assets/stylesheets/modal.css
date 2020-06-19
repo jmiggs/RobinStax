@@ -92,3 +92,67 @@
   padding-left: 10px;
 }
 
+
+.confirm-modal-hide {
+  display: none;
+}
+
+.confirm-modal-show {
+  display: flex;
+  position: fixed; 
+  z-index: 2; 
+  left: 0;
+  top: 0;
+  height: 100%; 
+  width: 100%;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-modal-container {
+  width: 320px;
+  height: 250px;
+  background-color: white;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.confirm-header {
+  font-size: 1.4em;
+  font-weight: 900;
+  padding-bottom: 5px;
+}
+
+.confirm-details {
+  font-weight: 400;
+  color: rgb(122, 122, 122);
+  font-size: .9em;
+  padding-bottom: 5px;
+}
+
+.calcs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 250px;
+  font-size: .9em;
+  padding-left: 30px;
+}
+
+.total {
+  margin-top: 5px;
+  padding-top: 3px;
+  padding-left: 0px;
+  margin-left: 30px;
+  border-top: 1px solid black;
+}
+
+.confirm-final {
+  padding-top: 10px;
+  font-size: .9em;
+  padding-bottom: 5px;
+
+}

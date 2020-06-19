@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   status: state.entities.assets.emptystatus, 
   news: state.entities.assets.news,
   portfolio: state.entities.assets.portfolio,
+  portfolioCount: state.entities.assets.numShares? Object.keys(state.entities.assets.numShares).length : 0
 
 });
 

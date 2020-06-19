@@ -22,21 +22,20 @@ class Portfolio extends React.Component {
 
   componentDidUpdate(prevProps) {
 
-    if (this.props.portfolio && prevProps.portfolio) {
-      if (Object.keys(this.props.portfolio).length !== Object.keys(prevProps.portfolio).length) {
+      if (this.props.portfolioCount !== prevProps.portfolioCount) {
 
         this.props.fetchUserStocks(this.props.currentUser)
           .then(data => {
 
-            if (data[0] === 'nostocks') {
-              this.setState({empty: true})
-            } else (
-              this.props.fetchBatch5D(data)
-            )
+            // if (data[0] === 'nostocks') {
+            //   this.setState({empty: true})
+            // } else (
+            //   this.props.fetchBatch5D(data)
+            // )
             this.props.fetchBatch5D(data)
           });
       }
-    }
+
     
     // this.props.fetchAllNews();
     // this.props.fetchTransactions();

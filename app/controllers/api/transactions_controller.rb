@@ -63,6 +63,9 @@ class Api::TransactionsController < ApplicationController
     sells.each do |sell|    
       if num_shares[sell.symbol]
         num_shares[sell.symbol] -= sell.amount
+        if num_shares[sell.symbol] == 0
+          num_shares.delete(sell.symbol)
+        end
       end
 
       buying_power += sell.cost * sell.amount

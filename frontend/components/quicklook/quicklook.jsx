@@ -1,6 +1,7 @@
 import React from 'react';
 import AddModal from './add_modal'
 import { Link } from 'react-router-dom';
+import ConfirmModal from './confirm_modal';
 
 
 class Quicklook extends React.Component {
@@ -19,6 +20,7 @@ class Quicklook extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.modalRef = React.createRef();
+    this.modalConfirmRef = React.createRef();
   }
 
   componentDidMount() {
@@ -28,12 +30,7 @@ class Quicklook extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const asset = {
-      amount: this.state.amount,
-      cost: this.state.cost,
-      transtype: this.state.transtype,
-      symbol: this.state.symbol
-    };
+
 
     if (this.state.amount > this.props.numShares[this.props.data.symbol] && this.state.transtype === 'sell') {
       this.props.failedSell();
@@ -47,11 +44,13 @@ class Quicklook extends React.Component {
     let { latestPrice } = this.props.data;
     let estCost = latestPrice * this.state.amount;
 
-    if (this.state.transtype === 'buy' && estCost > this.props.currentUser.buying_power) {
+
+    if (this.state.transtype === 'buy' && estCost > this.props.numShares.bP) {
       this.props.failedBuy();
     } else {
-        this.props.processForm(asset)
-        location.href = "#/";
+        // this.props.processForm(asset)
+        // location.href = "#/";
+        this.showConfirmModal()
     }
   }
 
@@ -62,8 +61,7 @@ class Quicklook extends React.Component {
       symbol: this.props.data.symbol
     })
   }
-
-  
+ 
   switchToBuy() {
     if (this.state.transtype === 'sell') {
       this.setState({
@@ -82,6 +80,10 @@ class Quicklook extends React.Component {
 
   showModal() {
     this.modalRef.current.showModal();
+  }
+
+  showConfirmModal() {
+    this.modalConfirmRef.current.showModal()
   }
    
 
@@ -145,7 +147,7 @@ class Quicklook extends React.Component {
               }
             </div>
             <div className="buy-button-container">
-              <button type="submit" className="buy-button">Complete Transaction</button>
+              <button type="submit" className="buy-button">Review Transaction</button>
             </div>
           </form>
           {/* </form> */}
@@ -162,6 +164,12 @@ class Quicklook extends React.Component {
           // wlsMap={wlsMap} 
         />
         {/* Create BuyModal class here on buy */}
+        <ConfirmModal
+          ref={this.modalConfirmRef}
+          processForm={this.props.processForm}
+          information={this.state}
+          transtype={this.state.transtype}
+        />
       </div>
     )
   }

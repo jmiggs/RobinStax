@@ -71,6 +71,8 @@ export const postTransaction = (data) => (dispatch) => {
       err => (dispatch(receiveErrors(err.responseJSON)))
     )
 
+    
+
     }, err => (dispatch(receiveErrors(err.responseJSON))),
     )
 }
