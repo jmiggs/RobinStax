@@ -52,7 +52,7 @@ class Splash extends React.Component {
             </div>
             <div className="s2-descr">
               And any cost at all! Buy or sell stocks and keep track of your favorite companies
-              completely free. Simulate real investments. Start with $3000 Buying Power today!
+              completely free. Simulate real investments. Start with $6000 Buying Power today!
             </div>
           </div>
         </div>
