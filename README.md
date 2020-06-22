@@ -11,7 +11,7 @@ Additionally, RobinStax uses **IEX Cloud API** to capture real-time market infor
 RobinStax also uses **Recharts**, a chart library powered by **D3**, to display the data from IEX in the form of dynamic charts.
 
 Here's what a user's portfolio looks like:
-![alt text](https://i.imgur.com/N4pZcfN.png)
+![sample](https://i.imgur.com/N4pZcfN.png)
 
 ### IEX Cloud API
 
