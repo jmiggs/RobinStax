@@ -17,12 +17,6 @@ class Watchlist extends React.Component {
       this.props.fetchWatchlist(this.props.match.params.id);
     }
 
-    // if (prevProps.wl) {
-    //   if (prevProps.wl.wlItems !== this.props.wl.wlItems) {
-    //     this.props.fetchWatchlist(this.props.match.params.id);
-    //   }
-    // }
-
   }
 
   componentDidMount() {
