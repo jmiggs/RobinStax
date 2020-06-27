@@ -74,6 +74,7 @@ Each of the components (such as XAxis, YAxis) are all imported from the Recharts
 
 ## Features
 
+
 ### Buy/Sell
 
 One of the main features of RobinStax is the ability of a user to buy and sell stock. First, a user can use the search bar to enter a company's stock symbol. Then, the company's information page is rendered, and also a Quick Menu on the right which will allow the user to buy or sell an amount of the stock.
