@@ -2,7 +2,6 @@ import React from 'react';
 import NewsItem from './news_item';
 
 export default function News(props) {
-
   return(
     <div className="news-container">
       {props.news.map(newsItem =>
