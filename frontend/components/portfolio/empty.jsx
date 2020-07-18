@@ -11,7 +11,6 @@ export default function Empty(props) {
       <div className='empty-text'>
         <div>Use the Search Bar and enter a Company's Symbol, like AAPL.</div>
         <div>Then start building your portfolio!</div>
-        
       </div>
     </div>
   )
